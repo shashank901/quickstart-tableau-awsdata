@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<datasource xmlns:ns0="http://www.tableausoftware.com/xml/user" formatted-name="postgres.0p955dc0boqujz11ssisx1qz75f1" inline="true" source-platform="win" version="9.3">
+  <connection authentication="username-password" class="postgres" dbname="quickstart" odbc-native-protocol="yes" port="5432" server="qm1lel2rj0cm76e.ccevijtoi2ps.us-west-2.rds.amazonaws.com" username="placeholder">
+    <relation name="sales_aggregates" table="[public].[sales_aggregates]" type="table" />
+    <metadata-records>
+      <metadata-record class="column">
+        <remote-name>year</remote-name>
+        <remote-type>2</remote-type>
+        <local-name>[year]</local-name>
+        <parent-name>[sales_aggregates]</parent-name>
+        <remote-alias>year</remote-alias>
+        <ordinal>1</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>5</precision>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype="string" name="DebugRemoteType">"SQL_SMALLINT"</attribute>
+          <attribute datatype="string" name="DebugWireType">"SQL_C_SSHORT"</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>month</remote-name>
+        <remote-type>130</remote-type>
+        <local-name>[month]</local-name>
+        <parent-name>[sales_aggregates]</parent-name>
+        <remote-alias>month</remote-alias>
+        <ordinal>2</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>5</width>
+        <contains-null>true</contains-null>
+        <padded-semantics>true</padded-semantics>
+        <attributes>
+          <attribute datatype="string" name="DebugRemoteType">"SQL_WCHAR"</attribute>
+          <attribute datatype="string" name="DebugWireType">"SQL_C_WCHAR"</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>sum_qtysold</remote-name>
+        <remote-type>20</remote-type>
+        <local-name>[sum_qtysold]</local-name>
+        <parent-name>[sales_aggregates]</parent-name>
+        <remote-alias>sum_qtysold</remote-alias>
+        <ordinal>3</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>19</precision>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype="string" name="DebugRemoteType">"SQL_BIGINT"</attribute>
+          <attribute datatype="string" name="DebugWireType">"SQL_C_SBIGINT"</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>sum_pricepaid</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[sum_pricepaid]</local-name>
+        <parent-name>[sales_aggregates]</parent-name>
+        <remote-alias>sum_pricepaid</remote-alias>
+        <ordinal>4</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>10</precision>
+        <scale>2</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype="string" name="DebugRemoteType">"SQL_NUMERIC"</attribute>
+          <attribute datatype="string" name="DebugWireType">"SQL_C_NUMERIC"</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>sum_commission</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[sum_commission]</local-name>
+        <parent-name>[sales_aggregates]</parent-name>
+        <remote-alias>sum_commission</remote-alias>
+        <ordinal>5</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>10</precision>
+        <scale>2</scale>
+        <contains-null>true</contains-null>
+        <attributes>
+          <attribute datatype="string" name="DebugRemoteType">"SQL_NUMERIC"</attribute>
+          <attribute datatype="string" name="DebugWireType">"SQL_C_NUMERIC"</attribute>
+        </attributes>
+      </metadata-record>
+    </metadata-records>
+  </connection>
+  <aliases enabled="yes" />
+  <column datatype="integer" name="[Number of Records]" role="measure" type="quantitative" ns0:auto-column="numrec">
+    <calculation class="tableau" formula="1" />
+  </column>
+  <column caption="Month" datatype="string" name="[month]" role="dimension" type="nominal" />
+  <column caption="Sum Commission" datatype="real" name="[sum_commission]" role="measure" type="quantitative" />
+  <column caption="Sum Pricepaid" datatype="real" name="[sum_pricepaid]" role="measure" type="quantitative" />
+  <column caption="Sum Qtysold" datatype="integer" name="[sum_qtysold]" role="measure" type="quantitative" />
+  <column caption="Year" datatype="integer" name="[year]" role="dimension" type="quantitative" />
+  <layout dim-ordering="alphabetic" dim-percentage="0.457143" measure-ordering="alphabetic" measure-percentage="0.542857" show-structure="true" />
+  <semantic-values>
+    <semantic-value key="[Country].[Name]" value="&quot;United States&quot;" />
+  </semantic-values>
+</datasource>

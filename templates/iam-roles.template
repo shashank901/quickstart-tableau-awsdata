@@ -1,0 +1,221 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Creates IAM Roles and Instance Profiles that entitle EC2 Instances and Redshift Cluster to access the specified S3 Bucket and Key Prefix.  QS(1007)",
+    "Parameters": {
+	"S3BucketName": {
+	    "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
+	    "ConstraintDescription": "Bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+	    "Description": "S3 bucket name where access should be enabled. Bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+	    "Type": "String"
+	},
+	"S3KeyPrefix": {
+	    "AllowedPattern": "^[0-9a-zA-Z-]+(/[0-9a-zA-Z-]+)*$",
+	    "ConstraintDescription": "Key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/). It cannot start or end with forward slash (/) because they are automatically appended.",
+	    "Description": "S3 key prefix where access should be enabled. Key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/). It cannot start or end with forward slash (/) because they are automatically appended.",
+	    "Type": "String"
+	}
+    },
+    "Resources": {
+	"IAMRoleRedshiftWorker": {
+	    "Type": "AWS::IAM::Role",
+	    "Properties": {
+		"Path": "/",
+		"AssumeRolePolicyDocument": {
+		    "Version": "2012-10-17",
+		    "Statement": [
+			{
+			    "Action": [
+				"sts:AssumeRole"
+			    ],
+			    "Effect": "Allow",
+			    "Principal": {
+				"Service": "redshift.amazonaws.com"
+			    }
+			}
+		    ]
+		},
+		"Policies": [
+		    {
+			"PolicyName": "QuickstartRedshiftS3Access",
+			"PolicyDocument": {
+			    "Version": "2012-10-17",
+			    "Statement": [
+				{
+				    "Action": [
+					"s3:List*"
+				    ],
+				    "Effect": "Allow",
+				    "Resource": {
+					"Fn::Join": [
+					    "",
+					    [
+						"arn:aws:s3:::",
+						{
+						    "Ref": "S3BucketName"
+						}
+					    ]
+					]
+				    }
+				},
+				{
+				    "Action": [
+					"s3:Get*",
+					"s3:List*"
+				    ],
+				    "Effect": "Allow",
+				    "Resource": {
+					"Fn::Join": [
+					    "",
+					    [
+						"arn:aws:s3:::",
+						{
+						    "Ref": "S3BucketName"
+						},
+						"/",
+						{
+						    "Ref": "S3KeyPrefix"
+						},
+						"/*"
+					    ]
+					]
+				    }
+				}
+			    ]
+			}
+		    }
+		]
+	    }
+	},
+	"IAMRoleEc2Worker": {
+	    "Type": "AWS::IAM::Role",
+	    "DependsOn": "IAMRoleRedshiftWorker",
+	    "Properties": {
+		"Path": "/",
+		"AssumeRolePolicyDocument": {
+		    "Version": "2012-10-17",
+		    "Statement": [
+			{
+			    "Action": [
+				"sts:AssumeRole"
+			    ],
+			    "Effect": "Allow",
+			    "Principal": {
+				"Service": "ec2.amazonaws.com"
+			    }
+			}
+		    ]
+		},
+		"Policies": [
+		    {
+			"PolicyName": "QuickstartEc2S3RedshiftAccess",
+			"PolicyDocument": {
+			    "Version": "2012-10-17",
+			    "Statement": [
+				{
+				    "Action": "iam:PassRole",
+				    "Effect": "Allow",
+				    "Resource": "*"
+				},
+				{
+				    "Action": "redshift:ModifyClusterIamRoles",
+				    "Effect": "Allow",
+				    "Resource": "*"
+				    
+				},
+				{
+				    "Action": "redshift:DescribeClusters",
+				    "Effect": "Allow",
+				    "Resource": "*"
+				    
+				},
+				{
+				    "Action": "s3:List*",
+				    "Effect": "Allow",
+				    "Resource": {
+					"Fn::Join": [
+					    "",
+					    [
+						"arn:aws:s3:::",
+						{
+						    "Ref": "S3BucketName"
+						}
+					    ]
+					]
+				    }
+				},
+				{
+				    "Action": [
+					"s3:Get*",
+					"s3:List*"
+				    ],
+				    "Effect": "Allow",
+				    "Resource": {
+					"Fn::Join": [
+					    "",
+					    [
+						"arn:aws:s3:::",
+						{
+						    "Ref": "S3BucketName"
+						},
+						"/",
+						{
+						    "Ref": "S3KeyPrefix"
+						},
+						"/*"
+					    ]
+					]
+				    }
+				}
+			    ]
+			}
+		    }
+		]
+	    }
+	},
+	"InstanceProfileEc2Worker": {
+	    "Type": "AWS::IAM::InstanceProfile",
+	    "Properties": {
+		"Path": "/",
+		"Roles": [
+		    {
+			"Ref": "IAMRoleEc2Worker"
+		    }
+		]
+	    }
+	}
+    },
+    "Outputs": {
+	"IAMRoleRedshiftWorker": {
+	    "Description": "IAM role that allows Amazon Redshift to read data from the specified S3 bucket and key prefix",
+	    "Value": { "Ref": "IAMRoleRedshiftWorker"}
+	},
+	"IAMRoleRedshiftWorkerArn": {
+	    "Description": "ARN of IAM role that allows Amazon Redshift to read data from the specified S3 bucket and key prefix",
+	    "Value": {
+		"Fn::GetAtt" : [ 
+                    "IAMRoleRedshiftWorker",
+                    "Arn"
+		]
+	    }
+	},
+	"IAMRoleEc2Worker": {
+	    "Description": "IAM role that allows EC2 instance to read data from the specified S3 bucket and key prefix and also to associate an IAM Role with redshift instance",
+	    "Value": { "Ref": "IAMRoleEc2Worker" }
+	},
+	"IAMRoleEc2WorkerArn": {
+	    "Description": "ARN of IAM role that allows EC2 instance to read data from the specified S3 bucket and key prefix and also to associate an IAM Role with redshift instance",
+	    "Value": {
+		"Fn::GetAtt" : [ 
+                    "IAMRoleEc2Worker", 
+                    "Arn"
+		]
+	    }
+	},
+	"InstanceProfileEc2Worker": {
+	    "Description": "IAM instance profile that allows an EC2 instance to read data from the specified S3 bucket and key prefix",
+	    "Value": {
+		"Ref": "InstanceProfileEc2Worker"
+	    }
+	}
+    }
+}
