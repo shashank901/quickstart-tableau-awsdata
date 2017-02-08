@@ -1,0 +1,1302 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.16.0520.1152                                -->
+<workbook source-build='9.3.2 (9300.16.0520.1152)' source-platform='win' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='redshift' inline='true' name='sqlproxy.13adh3s0o2q8in10b4pr40kh10l4' version='9.3'>
+      <repository-location id='redshift' path='/datasources' revision='1.0' />
+      <connection channel='http' class='sqlproxy' dbname='redshift' directory='/dataserver' port='80' server='localhost' username=''>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
+        <metadata-records>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>38</ordinal>
+            <layered>true</layered>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>buyerid</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[buyerid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>buyerid</remote-alias>
+            <ordinal>4</ordinal>
+            <layered>true</layered>
+            <caption>Buyerid</caption>
+            <family>sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>caldate</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[caldate]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>caldate</remote-alias>
+            <ordinal>26</ordinal>
+            <layered>true</layered>
+            <caption>Caldate</caption>
+            <family>date</family>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>1</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>catdesc</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[catdesc]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>catdesc</remote-alias>
+            <ordinal>37</ordinal>
+            <layered>true</layered>
+            <caption>Catdesc</caption>
+            <family>category</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>catgroup</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[catgroup]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>catgroup</remote-alias>
+            <ordinal>35</ordinal>
+            <layered>true</layered>
+            <caption>Catgroup</caption>
+            <family>category</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>catid (category)</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[catid (category)]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>catid (category)</remote-alias>
+            <ordinal>34</ordinal>
+            <layered>true</layered>
+            <caption>Catid (Category)</caption>
+            <family>category</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>catid</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[catid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>catid</remote-alias>
+            <ordinal>14</ordinal>
+            <layered>true</layered>
+            <caption>Catid</caption>
+            <family>event</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>catname</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[catname]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>catname</remote-alias>
+            <ordinal>36</ordinal>
+            <layered>true</layered>
+            <caption>Catname</caption>
+            <family>category</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>commission</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[commission]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>commission</remote-alias>
+            <ordinal>9</ordinal>
+            <layered>true</layered>
+            <caption>Commission</caption>
+            <family>sales</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>8</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>dateid (date)</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[dateid (date)]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>dateid (date)</remote-alias>
+            <ordinal>25</ordinal>
+            <layered>true</layered>
+            <caption>Dateid (Date)</caption>
+            <family>date</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>dateid (event)</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[dateid (event)]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>dateid (event)</remote-alias>
+            <ordinal>15</ordinal>
+            <layered>true</layered>
+            <caption>Dateid (Event)</caption>
+            <family>event</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>dateid</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[dateid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>dateid</remote-alias>
+            <ordinal>6</ordinal>
+            <layered>true</layered>
+            <caption>Dateid</caption>
+            <family>sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>day</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[day]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>day</remote-alias>
+            <ordinal>27</ordinal>
+            <layered>true</layered>
+            <caption>Day</caption>
+            <family>date</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>3</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>eventid (event)</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[eventid (event)]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>eventid (event)</remote-alias>
+            <ordinal>12</ordinal>
+            <layered>true</layered>
+            <caption>Eventid (Event)</caption>
+            <family>event</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>eventid</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[eventid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>eventid</remote-alias>
+            <ordinal>5</ordinal>
+            <layered>true</layered>
+            <caption>Eventid</caption>
+            <family>sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>eventname</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[eventname]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>eventname</remote-alias>
+            <ordinal>16</ordinal>
+            <layered>true</layered>
+            <caption>Eventname</caption>
+            <family>event</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>200</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>holiday</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[holiday]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>holiday</remote-alias>
+            <ordinal>32</ordinal>
+            <layered>true</layered>
+            <caption>Holiday</caption>
+            <family>date</family>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>listid</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[listid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>listid</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <caption>Listid</caption>
+            <family>sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>month</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[month]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>month</remote-alias>
+            <ordinal>29</ordinal>
+            <layered>true</layered>
+            <caption>Month</caption>
+            <family>date</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>5</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>pricepaid</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[pricepaid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>pricepaid</remote-alias>
+            <ordinal>8</ordinal>
+            <layered>true</layered>
+            <caption>Pricepaid</caption>
+            <family>sales</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>8</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>qtr</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[qtr]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>qtr</remote-alias>
+            <ordinal>30</ordinal>
+            <layered>true</layered>
+            <caption>Qtr</caption>
+            <family>date</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>5</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>qtysold</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[qtysold]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>qtysold</remote-alias>
+            <ordinal>7</ordinal>
+            <layered>true</layered>
+            <caption>Qtysold</caption>
+            <family>sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>salesid</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[salesid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>salesid</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <caption>Salesid</caption>
+            <family>sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>saletime</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[saletime]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>saletime</remote-alias>
+            <ordinal>10</ordinal>
+            <layered>true</layered>
+            <caption>Saletime</caption>
+            <family>sales</family>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>1</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>sellerid</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[sellerid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>sellerid</remote-alias>
+            <ordinal>3</ordinal>
+            <layered>true</layered>
+            <caption>Sellerid</caption>
+            <family>sales</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>starttime</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[starttime]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>starttime</remote-alias>
+            <ordinal>17</ordinal>
+            <layered>true</layered>
+            <caption>Starttime</caption>
+            <family>event</family>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>1</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>venuecity</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[venuecity]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>venuecity</remote-alias>
+            <ordinal>21</ordinal>
+            <layered>true</layered>
+            <caption>Venuecity</caption>
+            <family>venue</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>30</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>venueid (venue)</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[venueid (venue)]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>venueid (venue)</remote-alias>
+            <ordinal>19</ordinal>
+            <layered>true</layered>
+            <caption>Venueid (Venue)</caption>
+            <family>venue</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>venueid</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[venueid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>venueid</remote-alias>
+            <ordinal>13</ordinal>
+            <layered>true</layered>
+            <caption>Venueid</caption>
+            <family>event</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>venuename</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[venuename]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>venuename</remote-alias>
+            <ordinal>20</ordinal>
+            <layered>true</layered>
+            <caption>Venuename</caption>
+            <family>venue</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>venueseats</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[venueseats]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>venueseats</remote-alias>
+            <ordinal>23</ordinal>
+            <layered>true</layered>
+            <caption>Venueseats</caption>
+            <family>venue</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>venuestate</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[venuestate]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>venuestate</remote-alias>
+            <ordinal>22</ordinal>
+            <layered>true</layered>
+            <caption>Venuestate</caption>
+            <family>venue</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>week</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[week]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>week</remote-alias>
+            <ordinal>28</ordinal>
+            <layered>true</layered>
+            <caption>Week</caption>
+            <family>date</family>
+            <local-type>integer</local-type>
+            <aggregation>Count</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>31</ordinal>
+            <layered>true</layered>
+            <caption>Year</caption>
+            <family>date</family>
+            <local-type>integer</local-type>
+            <aggregation>Count</aggregation>
+            <precision>5</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_64BIT_CALCULATIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_EMPTY_DOMAIN_TOP'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='class'>&quot;redshift&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;9.3&apos; formatted-name=&apos;repoItem5063999735455539390&apos; inline=&apos;true&apos; version=&apos;9.3&apos; xml:base=&apos;http://localhost&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location id=&apos;redshift&apos; path=&apos;/datasources&apos; revision=&apos;1.0&apos; /&gt;&#10;  &lt;connection channel=&apos;http&apos; class=&apos;sqlproxy&apos; dbname=&apos;redshift&apos; directory=&apos;/dataserver&apos; port=&apos;80&apos; server=&apos;52.32.142.141&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[buyerid]&apos; value=&apos;[sqlproxy].[buyerid]&apos; /&gt;&#10;      &lt;map key=&apos;[caldate]&apos; value=&apos;[sqlproxy].[caldate]&apos; /&gt;&#10;      &lt;map key=&apos;[catdesc]&apos; value=&apos;[sqlproxy].[catdesc]&apos; /&gt;&#10;      &lt;map key=&apos;[catgroup]&apos; value=&apos;[sqlproxy].[catgroup]&apos; /&gt;&#10;      &lt;map key=&apos;[catid (category)]&apos; value=&apos;[sqlproxy].[catid (category)]&apos; /&gt;&#10;      &lt;map key=&apos;[catid]&apos; value=&apos;[sqlproxy].[catid]&apos; /&gt;&#10;      &lt;map key=&apos;[catname]&apos; value=&apos;[sqlproxy].[catname]&apos; /&gt;&#10;      &lt;map key=&apos;[commission]&apos; value=&apos;[sqlproxy].[commission]&apos; /&gt;&#10;      &lt;map key=&apos;[dateid (date)]&apos; value=&apos;[sqlproxy].[dateid (date)]&apos; /&gt;&#10;      &lt;map key=&apos;[dateid (event)]&apos; value=&apos;[sqlproxy].[dateid (event)]&apos; /&gt;&#10;      &lt;map key=&apos;[dateid]&apos; value=&apos;[sqlproxy].[dateid]&apos; /&gt;&#10;      &lt;map key=&apos;[day]&apos; value=&apos;[sqlproxy].[day]&apos; /&gt;&#10;      &lt;map key=&apos;[eventid (event)]&apos; value=&apos;[sqlproxy].[eventid (event)]&apos; /&gt;&#10;      &lt;map key=&apos;[eventid]&apos; value=&apos;[sqlproxy].[eventid]&apos; /&gt;&#10;      &lt;map key=&apos;[eventname]&apos; value=&apos;[sqlproxy].[eventname]&apos; /&gt;&#10;      &lt;map key=&apos;[holiday]&apos; value=&apos;[sqlproxy].[holiday]&apos; /&gt;&#10;      &lt;map key=&apos;[listid]&apos; value=&apos;[sqlproxy].[listid]&apos; /&gt;&#10;      &lt;map key=&apos;[month]&apos; value=&apos;[sqlproxy].[month]&apos; /&gt;&#10;      &lt;map key=&apos;[pricepaid]&apos; value=&apos;[sqlproxy].[pricepaid]&apos; /&gt;&#10;      &lt;map key=&apos;[qtr]&apos; value=&apos;[sqlproxy].[qtr]&apos; /&gt;&#10;      &lt;map key=&apos;[qtysold]&apos; value=&apos;[sqlproxy].[qtysold]&apos; /&gt;&#10;      &lt;map key=&apos;[salesid]&apos; value=&apos;[sqlproxy].[salesid]&apos; /&gt;&#10;      &lt;map key=&apos;[saletime]&apos; value=&apos;[sqlproxy].[saletime]&apos; /&gt;&#10;      &lt;map key=&apos;[sellerid]&apos; value=&apos;[sqlproxy].[sellerid]&apos; /&gt;&#10;      &lt;map key=&apos;[starttime]&apos; value=&apos;[sqlproxy].[starttime]&apos; /&gt;&#10;      &lt;map key=&apos;[venuecity]&apos; value=&apos;[sqlproxy].[venuecity]&apos; /&gt;&#10;      &lt;map key=&apos;[venueid (venue)]&apos; value=&apos;[sqlproxy].[venueid (venue)]&apos; /&gt;&#10;      &lt;map key=&apos;[venueid]&apos; value=&apos;[sqlproxy].[venueid]&apos; /&gt;&#10;      &lt;map key=&apos;[venuename]&apos; value=&apos;[sqlproxy].[venuename]&apos; /&gt;&#10;      &lt;map key=&apos;[venueseats]&apos; value=&apos;[sqlproxy].[venueseats]&apos; /&gt;&#10;      &lt;map key=&apos;[venuestate]&apos; value=&apos;[sqlproxy].[venuestate]&apos; /&gt;&#10;      &lt;map key=&apos;[week]&apos; value=&apos;[sqlproxy].[week]&apos; /&gt;&#10;      &lt;map key=&apos;[year]&apos; value=&apos;[sqlproxy].[year]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;aliases enabled=&apos;yes&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Buyerid&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[buyerid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Year&apos; caption=&apos;Caldate&apos; datatype=&apos;date&apos; default-type=&apos;ordinal&apos; name=&apos;[caldate]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;ordinal&apos; user-datatype=&apos;date&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Catdesc&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[catdesc]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Catgroup&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[catgroup]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Catid (Category)&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[catid (category)]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Catid&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[catid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Catname&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[catname]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Commission&apos; datatype=&apos;real&apos; default-type=&apos;quantitative&apos; name=&apos;[commission]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;real&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Dateid (Date)&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[dateid (date)]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Dateid (Event)&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[dateid (event)]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Dateid&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[dateid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Day&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[day]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Eventid (Event)&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[eventid (event)]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Eventid&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[eventid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Eventname&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[eventname]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Holiday&apos; datatype=&apos;boolean&apos; default-type=&apos;nominal&apos; name=&apos;[holiday]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;boolean&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Listid&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[listid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Month&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[month]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Pricepaid&apos; datatype=&apos;real&apos; default-type=&apos;quantitative&apos; name=&apos;[pricepaid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;real&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Qtr&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[qtr]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Qtysold&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[qtysold]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Salesid&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[salesid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Year&apos; caption=&apos;Saletime&apos; datatype=&apos;datetime&apos; default-type=&apos;ordinal&apos; name=&apos;[saletime]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;ordinal&apos; user-datatype=&apos;datetime&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Sellerid&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[sellerid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Year&apos; caption=&apos;Starttime&apos; datatype=&apos;datetime&apos; default-type=&apos;ordinal&apos; name=&apos;[starttime]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;ordinal&apos; user-datatype=&apos;datetime&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Venuecity&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[venuecity]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Venueid (Venue)&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[venueid (venue)]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Venueid&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[venueid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Venuename&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[venuename]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Venueseats&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[venueseats]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Venuestate&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[venuestate]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Week&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[week]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Year&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[year]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.488312&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.511688&apos; show-structure=&apos;true&apos; user-set-layout=&apos;true&apos; /&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>false</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='version'>&quot;8.0.2&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+      </overridable-settings>
+      <aliases enabled='yes' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Sum' caption='Buyerid' datatype='integer' default-type='quantitative' layered='true' name='[buyerid]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Year' caption='Caldate' datatype='date' default-type='ordinal' layered='true' name='[caldate]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+      <column aggregation='Count' caption='Catdesc' datatype='string' default-type='nominal' layered='true' name='[catdesc]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Count' caption='Catgroup' datatype='string' default-type='nominal' layered='true' name='[catgroup]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='Catid (Category)' datatype='integer' default-type='quantitative' layered='true' name='[catid (category)]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' caption='Catid' datatype='integer' default-type='quantitative' layered='true' name='[catid]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' caption='Catname' datatype='string' default-type='nominal' layered='true' name='[catname]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='Commission' datatype='real' default-type='quantitative' layered='true' name='[commission]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+      <column aggregation='Sum' caption='Dateid (Date)' datatype='integer' default-type='quantitative' layered='true' name='[dateid (date)]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' caption='Dateid (Event)' datatype='integer' default-type='quantitative' layered='true' name='[dateid (event)]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' caption='Dateid' datatype='integer' default-type='quantitative' layered='true' name='[dateid]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' caption='Day' datatype='string' default-type='nominal' layered='true' name='[day]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='Eventid (Event)' datatype='integer' default-type='quantitative' layered='true' name='[eventid (event)]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' caption='Eventid' datatype='integer' default-type='quantitative' layered='true' name='[eventid]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' caption='Eventname' datatype='string' default-type='nominal' layered='true' name='[eventname]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Count' caption='Holiday' datatype='boolean' default-type='nominal' layered='true' name='[holiday]' pivot='key' role='dimension' type='nominal' user-datatype='boolean' visual-totals='Default' />
+      <column aggregation='Sum' caption='Listid' datatype='integer' default-type='quantitative' layered='true' name='[listid]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' caption='Month' datatype='string' default-type='nominal' layered='true' name='[month]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='Pricepaid' datatype='real' default-type='quantitative' layered='true' name='[pricepaid]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+      <column aggregation='Count' caption='Qtr' datatype='string' default-type='nominal' layered='true' name='[qtr]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='Qtysold' datatype='integer' default-type='quantitative' layered='true' name='[qtysold]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' caption='Salesid' datatype='integer' default-type='quantitative' layered='true' name='[salesid]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Year' caption='Saletime' datatype='datetime' default-type='ordinal' layered='true' name='[saletime]' pivot='key' role='dimension' type='ordinal' user-datatype='datetime' visual-totals='Default' />
+      <column aggregation='Sum' caption='Sellerid' datatype='integer' default-type='quantitative' layered='true' name='[sellerid]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Year' caption='Starttime' datatype='datetime' default-type='ordinal' layered='true' name='[starttime]' pivot='key' role='dimension' type='ordinal' user-datatype='datetime' visual-totals='Default' />
+      <column aggregation='Count' caption='Venuecity' datatype='string' default-type='nominal' layered='true' name='[venuecity]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='Venueid (Venue)' datatype='integer' default-type='quantitative' layered='true' name='[venueid (venue)]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' caption='Venueid' datatype='integer' default-type='quantitative' layered='true' name='[venueid]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' caption='Venuename' datatype='string' default-type='nominal' layered='true' name='[venuename]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='Venueseats' datatype='integer' default-type='quantitative' layered='true' name='[venueseats]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' caption='Venuestate' datatype='string' default-type='nominal' layered='true' name='[venuestate]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Count' caption='Week' datatype='integer' default-type='quantitative' layered='true' name='[week]' pivot='key' role='dimension' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' caption='Year' datatype='integer' default-type='quantitative' layered='true' name='[year]' pivot='key' role='dimension' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.485531' measure-ordering='alphabetic' measure-percentage='0.514469' show-structure='true' user-set-layout='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='postgres' inline='true' name='sqlproxy.12srctu03n42ls18m9tkx1o3v9pj' version='9.3'>
+      <repository-location id='postgres' path='/datasources' revision='1.0' />
+      <connection channel='http' class='sqlproxy' dbname='postgres' directory='/dataserver' port='80' server='localhost' username=''>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
+        <metadata-records>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>7</ordinal>
+            <layered>true</layered>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>month</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[month]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>month</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <caption>Month</caption>
+            <family>sales_aggregates</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>5</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>sum_commission</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_commission]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>sum_commission</remote-alias>
+            <ordinal>5</ordinal>
+            <layered>true</layered>
+            <caption>Sum Commission</caption>
+            <family>sales_aggregates</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>sum_pricepaid</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_pricepaid]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>sum_pricepaid</remote-alias>
+            <ordinal>4</ordinal>
+            <layered>true</layered>
+            <caption>Sum Pricepaid</caption>
+            <family>sales_aggregates</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>sum_qtysold</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sum_qtysold]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>sum_qtysold</remote-alias>
+            <ordinal>3</ordinal>
+            <layered>true</layered>
+            <caption>Sum Qtysold</caption>
+            <family>sales_aggregates</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>2</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <caption>Year</caption>
+            <family>sales_aggregates</family>
+            <local-type>integer</local-type>
+            <aggregation>Count</aggregation>
+            <precision>5</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_64BIT_CALCULATIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_RIGHT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='class'>&quot;postgres&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;LEN_RUS&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;9.3&apos; formatted-name=&apos;repoItem4314270438803857092&apos; inline=&apos;true&apos; version=&apos;9.3&apos; xml:base=&apos;http://localhost&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location id=&apos;postgres&apos; path=&apos;/datasources&apos; revision=&apos;1.0&apos; /&gt;&#10;  &lt;connection channel=&apos;http&apos; class=&apos;sqlproxy&apos; dbname=&apos;postgres&apos; directory=&apos;/dataserver&apos; port=&apos;80&apos; server=&apos;52.32.142.141&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[month]&apos; value=&apos;[sqlproxy].[month]&apos; /&gt;&#10;      &lt;map key=&apos;[sum_commission]&apos; value=&apos;[sqlproxy].[sum_commission]&apos; /&gt;&#10;      &lt;map key=&apos;[sum_pricepaid]&apos; value=&apos;[sqlproxy].[sum_pricepaid]&apos; /&gt;&#10;      &lt;map key=&apos;[sum_qtysold]&apos; value=&apos;[sqlproxy].[sum_qtysold]&apos; /&gt;&#10;      &lt;map key=&apos;[year]&apos; value=&apos;[sqlproxy].[year]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;aliases enabled=&apos;yes&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Month&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[month]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Sum Commission&apos; datatype=&apos;real&apos; default-type=&apos;quantitative&apos; name=&apos;[sum_commission]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;real&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Sum Pricepaid&apos; datatype=&apos;real&apos; default-type=&apos;quantitative&apos; name=&apos;[sum_pricepaid]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;real&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;Sum Qtysold&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[sum_qtysold]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;Year&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[year]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.457143&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.542857&apos; show-structure=&apos;true&apos; /&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>false</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='version'>&quot;9.0.0&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+      </overridable-settings>
+      <aliases enabled='yes' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Count' caption='Month' datatype='string' default-type='nominal' layered='true' name='[month]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='Sum Commission' datatype='real' default-type='quantitative' layered='true' name='[sum_commission]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+      <column aggregation='Sum' caption='Sum Pricepaid' datatype='real' default-type='quantitative' layered='true' name='[sum_pricepaid]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+      <column aggregation='Sum' caption='Sum Qtysold' datatype='integer' default-type='quantitative' layered='true' name='[sum_qtysold]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' caption='Year' datatype='integer' default-type='quantitative' layered='true' name='[year]' pivot='key' role='dimension' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.472669' measure-ordering='alphabetic' measure-percentage='0.527331' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='FilteredSalesByState'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='redshift' name='sqlproxy.13adh3s0o2q8in10b4pr40kh10l4' />
+          </datasources>
+          <datasource-dependencies datasource='sqlproxy.13adh3s0o2q8in10b4pr40kh10l4'>
+            <column aggregation='Count' caption='Month' datatype='string' default-type='nominal' layered='true' name='[month]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column-instance column='[month]' derivation='None' name='[none:month:nk]' pivot='key' type='nominal' />
+            <column-instance column='[venuestate]' derivation='None' name='[none:venuestate:nk]' pivot='key' type='nominal' />
+            <column aggregation='Sum' caption='Qtysold' datatype='integer' default-type='quantitative' layered='true' name='[qtysold]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column-instance column='[qtysold]' derivation='Sum' name='[sum:qtysold:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[venueseats]' derivation='Sum' name='[sum:venueseats:qk]' pivot='key' type='quantitative' />
+            <column aggregation='Sum' caption='Venueseats' datatype='integer' default-type='quantitative' layered='true' name='[venueseats]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column aggregation='Count' caption='Venuestate' datatype='string' default-type='nominal' layered='true' name='[venuestate]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[sqlproxy.13adh3s0o2q8in10b4pr40kh10l4].[none:month:nk]'>
+            <groupfilter function='member' level='[none:month:nk]' member='&quot;JUL  &quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[sqlproxy.13adh3s0o2q8in10b4pr40kh10l4].[none:month:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[sqlproxy.13adh3s0o2q8in10b4pr40kh10l4].[sum:qtysold:qk]' />
+              <color column='[sqlproxy.13adh3s0o2q8in10b4pr40kh10l4].[sum:venueseats:qk]' />
+              <text column='[sqlproxy.13adh3s0o2q8in10b4pr40kh10l4].[none:venuestate:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='SalesByMonth'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='postgres' name='sqlproxy.12srctu03n42ls18m9tkx1o3v9pj' />
+          </datasources>
+          <datasource-dependencies datasource='sqlproxy.12srctu03n42ls18m9tkx1o3v9pj'>
+            <column aggregation='Count' caption='Month' datatype='string' default-type='nominal' layered='true' name='[month]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column-instance column='[month]' derivation='None' name='[none:month:nk]' pivot='key' type='nominal' />
+            <column-instance column='[sum_commission]' derivation='Sum' name='[sum:sum_commission:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sum_pricepaid]' derivation='Sum' name='[sum:sum_pricepaid:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sum_qtysold]' derivation='Sum' name='[sum:sum_qtysold:qk]' pivot='key' type='quantitative' />
+            <column aggregation='Sum' caption='Sum Commission' datatype='real' default-type='quantitative' layered='true' name='[sum_commission]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+            <column aggregation='Sum' caption='Sum Pricepaid' datatype='real' default-type='quantitative' layered='true' name='[sum_pricepaid]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+            <column aggregation='Sum' caption='Sum Qtysold' datatype='integer' default-type='quantitative' layered='true' name='[sum_qtysold]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[sum:sum_commission:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[sum:sum_pricepaid:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[sum:sum_qtysold:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[Multiple Values]</rows>
+        <cols>([sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[none:month:nk] / [sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[:Measure Names])</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='48'>
+    <window class='worksheet' name='FilteredSalesByState'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[sqlproxy.13adh3s0o2q8in10b4pr40kh10l4].[sum:venueseats:qk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[sqlproxy.13adh3s0o2q8in10b4pr40kh10l4].[none:month:nk]</field>
+            <field>[sqlproxy.13adh3s0o2q8in10b4pr40kh10l4].[none:venuestate:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' maximized='true' name='SalesByMonth'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+            <card pane-specification-id='0' param='[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[:Measure Names]</field>
+            <field>[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[none:month:nk]</field>
+            <field>[sqlproxy.12srctu03n42ls18m9tkx1o3v9pj].[none:year:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='FilteredSalesByState' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7EAAAOxAGVKw4b
+      AAAGG0lEQVR4nO3c3U9bdRzH8c9pe9rS0sLooENkG865TOeM7mKYXZhojEv8F/QP8a/w3/BG
+      440XU6MXZvEpynwYG2LIWHlaYTx2wBj0eGNMiA85ypmH8nm/7tr88uMb0jfngfQEURRFAkxl
+      0h4ASBMBwBoBwBoBwBoBwBoBwBoBwBoBwBoBwBoBwBoBwBoBwBoBwFouiU1WVlYUhmESWwH/
+      q0QCCMNQs0tTWtmZTWI7HELRTqj7W+tpjxFLQV06fbwea20iAUjSwtakvvjxfdVHejV/Z0Mn
+      zta01mxp8FRvUj8CKYpaPfr8xleamVhRz2C3Sr1FRUFO1Voh7dH+pKZB1SsvaHqprWJ7W1E+
+      VEltVZ58QuUw2Lc20WuAuZvzGv+moY31tsY+Gle2u5Tk9khZaaCqXCangZEeTV1vqFA5vKe9
+      m0uL+uTaDY3fnNHET1O6MX5Hxb/4c59oAMW+iqqFSJlKSdW+ivr7Du8vCP9NNp/Rg/l19Y0c
+      09LdjbTH+VuZXKhLL53SwuIDnR7IqN11XJkg+NO6IImvRLZaLX3XuKZG8OVBt8IhFa326Ou5
+      8bTHiKWmQb195bVYa7kNCmsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsE
+      AGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsE
+      AGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsE
+      AGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGsEAGu5tAdAZwgUqKbBtMeIpaJeLTa3Y60l
+      AMQSKdJqZkEbzZbCSpfU3lMYZhRlc8rlgrTH22dV9/Te1ESstQSA2FqNZS2tRdq6taytlTV1
+      5QP1j55Xf61zP0adOzlSEWQCBYFU7CtraKignbQHOiACQGzdw32K7m0oNzKkoL2nMAwUZbNp
+      j3UgBID4gkCVE9XfXxyNjw63QWGNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCN
+      AGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGDtaDzgEY9dLpPV
+      6ODFtMdIHAEgnkyk1tIvmt3s0qPGXT1SQc+MDqvVbOupC8fSnu4/IwDEttna1XxjQdu/NlUc
+      6Nfk99MqdfWnPdaBEABiK/eWdWJ1Sxo9J+0FevKJUPd3immPdSAEgNgGztQ1cKa+773636zt
+      FNwFgjUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgLVkvxAT
+      JbobDpMoSHuCxyKxABrTs7p267OktsMhM1x9VqOvnk17jMQlFsD6o0WVasOql8r6deZTvXju
+      LX383bva5qhwJHTlS5KOXgCJXgMM95zQ9YkPlSk/r2PdQ7p88rkktwcSl2gAYzPf6vLTV1UO
+      NvTB9Xc0u5VPcnsgcYleBDeXx9RcHvvj9UZz7B9Wo6NEgdrr3WlPkTgei4JY9rSn22vjaiuj
+      aHdXYTHU7sM9hcVs2qMdCAEgtnvjM5q+n9XDyTs6f/U5Td5c1ZU3R9TJN0j5Rxjiy+S0t74m
+      FUpq3F5W9kFLi8u7aU91IBwBEFvtqeMqD1QV5HNqR4GqvTlttzr7PjcBILZCd0GF7sK+90o9
+      KQ2TEE6BYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0A
+      YI0AYI0AYI0AYI0AYI2nQiCWXBDq5coraY+ROAJALEEgrc/f1vWfl1Uf7FWwua6doKgrr19U
+      voPPIzp4dPzfdrYe6plL5/WwOacNlXX58knt7nb2g7EIALFV6n2auzWpoRcu6FQt0NgPC8qH
+      nfxkUE6B8C8cGx7SG8NDv78aSHWWpHAEgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUC
+      gDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgDUCgLXEvhRfzfdrpPulpLbDIXO8cFqbK9m0x0jc
+      b6+6GCjsT7VzAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='SalesByMonth' width='192'>
+      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
+      AzIO5Oz0BgKUAAAAAElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>
+

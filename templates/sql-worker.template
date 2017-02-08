@@ -1,0 +1,601 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+
+    "Description" : "AWS Cloudformation template to create an EC2 instance, install PSQL client for connecting to Redshift cluster. It also loads the data into target Redshift cluser by loading DDL and sample data from the specified Quick Start S3 bucket.  **WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack from this template.",
+
+    "Parameters" : {
+
+	"KeyPairName": {
+	    "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instances",
+	    "Type": "AWS::EC2::KeyPair::KeyName",
+	    "ConstraintDescription" : "must be the name of an existing EC2 KeyPair."
+	},
+	
+	"IamInstanceProfile" : {
+	    "Description" : "IAM Instance profile to allow EC2 copy from S3",
+	    "Type" : "String"
+	},
+	"IAMRoleEc2Worker" : {
+	    "Description" : "IAM role to allows EC2 access to S3 and Redshift role association",
+	    "Type" : "String"
+	},
+	"IAMRoleEc2WorkerArn" : {
+	    "Description" : "ARN of IAM role to allows EC2 access to S3 and Redshift role association",
+	    "Type" : "String"
+	},
+	"IAMRoleRedshiftWorker" : {
+	    "Description" : "IAM role to allows Redshift access to S3",
+	    "Type" : "String"
+	},
+	"IAMRoleRedshiftWorkerArn" : {
+	    "Description" : "ARN of IAM role to allows Redshift access to S3",
+	    "Type" : "String"
+	},
+	"InstanceType" : {
+	    "Description" : "SQL Worker EC2 instance type",
+	    "Type" : "String",
+	    "Default" : "t2.small",
+	    "AllowedValues" : [ "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "g2.2xlarge", "g2.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "hi1.4xlarge", "hs1.8xlarge", "cr1.8xlarge", "cc2.8xlarge", "cg1.4xlarge"]
+	    ,
+	    "ConstraintDescription" : "must be a valid EC2 instance type."
+	},
+
+	"SSHLocation": {
+	    "Description": "The IP address range that can be used to SSH to the EC2 instances",
+	    "Type": "String",
+	    "MinLength": "9",
+	    "MaxLength": "18",
+	    "Default": "10.0.128.0/20",
+	    "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+	    "ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x."
+	},
+	"RedshiftClusterId" : {
+	    "Description": "Redshift ClusterId for the Redshift Cluster created",
+	    "Type": "String"
+	},
+
+	"RedshiftHost": {
+	    "Description": "Redshift host to connect to",
+	    "Type": "String"
+	},
+	"RDSHost": {
+	    "Description": "Redshift host to connect to",
+	    "Type": "String"
+	},
+
+	"RDSDBName": {
+	    "Description": "The name of the first database to be created when the redshift cluster is created",
+	    "Type": "String",
+	    "Default": "abhijeet",
+	    "AllowedPattern": "([a-z]|[A-Z]|[0-9])+",
+	    "ConstraintDescription": "must contain a-z or 0-9 only."
+	},
+	"RedshiftDBName": {
+	    "Description": "The name of the first database to be created when the redshift cluster is created",
+	    "Type": "String",
+	    "Default": "defaultdb",
+	    "AllowedPattern": "([a-z]|[A-Z]|[0-9])+",
+	    "ConstraintDescription": "must contain a-z or 0-9 only."
+	},
+
+	"RedshiftDatabasePort": {
+	    "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
+	    "Type": "String",
+	    "Default": "5439"
+	},
+	"RDSDatabasePort": {
+	    "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
+	    "Type": "String",
+	    "Default": "5432"
+	},
+
+	"RedshiftUsername" : {
+	    "Description" : "The Redshift database admin account username",
+	    "Type": "String",
+	    "MinLength": "1",
+	    "MaxLength": "16",
+	    "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
+	    "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
+	},
+	"RDSUsername" : {
+	    "Description" : "The Postgres database admin account username",
+	    "Type": "String",
+	    "MinLength": "1",
+	    "MaxLength": "16",
+	    "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
+	    "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
+	},
+	"RedshiftPassword" : {
+	    "NoEcho": "true",
+	    "Description" : "The Redshift DB Password database admin account password",
+	    "Type": "String",
+	    "MinLength": "8",
+	    "MaxLength": "41",
+	    "AllowedPattern" : "[a-zA-Z0-9]*",
+	    "ConstraintDescription" : "must contain only alphanumeric characters."
+	},
+	"RDSPassword" : {
+	    "NoEcho": "true",
+	    "Description" : "The Postgres DB Password  database admin account password",
+	    "Type": "String",
+	    "MinLength": "8",
+	    "MaxLength": "41",
+	    "AllowedPattern" : "[a-zA-Z0-9]*",
+	    "ConstraintDescription" : "must contain only alphanumeric characters."
+	},
+	"SubnetId":{
+            "Type":"String",
+            "Description":"SubnetId of an existing subnet in your Virtual Private Cloud (VPC)"
+	},
+	"VpcId": {
+            "Type":"String",
+            "Description":"SubnetId of an existing subnet in your Virtual Private Cloud (VPC)"
+	},
+	"QSS3BucketName": {
+            "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
+            "ConstraintDescription": "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Default": "quickstart-reference",
+            "Description": "S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Type": "String"
+        },
+        "QSS3KeyPrefix": {
+            "AllowedPattern": "^[0-9a-zA-Z-]+(/[0-9a-zA-Z-]+)*$",
+            "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/). It cannot start or end with forward slash (/) because they are automatically appended.",
+            "Default": "tableau/datafederation/latest",
+            "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/). It cannot start or end with forward slash (/) because they are automatically appended.",
+            "Type": "String"
+        },
+        "QuickStartS3URL" : {
+            "Type": "String",
+            "Default": "https://s3.amazonaws.com"
+        }
+    },
+
+    "Mappings" : {
+	"AWSInstanceType2Arch" : {
+	    "t1.micro"    : { "Arch" : "PV64"   },
+	    "t2.nano"     : { "Arch" : "HVM64"  },
+	    "t2.micro"    : { "Arch" : "HVM64"  },
+	    "t2.small"    : { "Arch" : "HVM64"  },
+	    "t2.medium"   : { "Arch" : "HVM64"  },
+	    "t2.large"    : { "Arch" : "HVM64"  },
+	    "m1.small"    : { "Arch" : "PV64"   },
+	    "m1.medium"   : { "Arch" : "PV64"   },
+	    "m1.large"    : { "Arch" : "PV64"   },
+	    "m1.xlarge"   : { "Arch" : "PV64"   },
+	    "m2.xlarge"   : { "Arch" : "PV64"   },
+	    "m2.2xlarge"  : { "Arch" : "PV64"   },
+	    "m2.4xlarge"  : { "Arch" : "PV64"   },
+	    "m3.medium"   : { "Arch" : "HVM64"  },
+	    "m3.large"    : { "Arch" : "HVM64"  },
+	    "m3.xlarge"   : { "Arch" : "HVM64"  },
+	    "m3.2xlarge"  : { "Arch" : "HVM64"  },
+	    "m4.large"    : { "Arch" : "HVM64"  },
+	    "m4.xlarge"   : { "Arch" : "HVM64"  },
+	    "m4.2xlarge"  : { "Arch" : "HVM64"  },
+	    "m4.4xlarge"  : { "Arch" : "HVM64"  },
+	    "m4.10xlarge" : { "Arch" : "HVM64"  },
+	    "c1.medium"   : { "Arch" : "PV64"   },
+	    "c1.xlarge"   : { "Arch" : "PV64"   },
+	    "c3.large"    : { "Arch" : "HVM64"  },
+	    "c3.xlarge"   : { "Arch" : "HVM64"  },
+	    "c3.2xlarge"  : { "Arch" : "HVM64"  },
+	    "c3.4xlarge"  : { "Arch" : "HVM64"  },
+	    "c3.8xlarge"  : { "Arch" : "HVM64"  },
+	    "c4.large"    : { "Arch" : "HVM64"  },
+	    "c4.xlarge"   : { "Arch" : "HVM64"  },
+	    "c4.2xlarge"  : { "Arch" : "HVM64"  },
+	    "c4.4xlarge"  : { "Arch" : "HVM64"  },
+	    "c4.8xlarge"  : { "Arch" : "HVM64"  },
+	    "g2.2xlarge"  : { "Arch" : "HVMG2"  },
+	    "g2.8xlarge"  : { "Arch" : "HVMG2"  },
+	    "r3.large"    : { "Arch" : "HVM64"  },
+	    "r3.xlarge"   : { "Arch" : "HVM64"  },
+	    "r3.2xlarge"  : { "Arch" : "HVM64"  },
+	    "r3.4xlarge"  : { "Arch" : "HVM64"  },
+	    "r3.8xlarge"  : { "Arch" : "HVM64"  },
+	    "i2.xlarge"   : { "Arch" : "HVM64"  },
+	    "i2.2xlarge"  : { "Arch" : "HVM64"  },
+	    "i2.4xlarge"  : { "Arch" : "HVM64"  },
+	    "i2.8xlarge"  : { "Arch" : "HVM64"  },
+	    "d2.xlarge"   : { "Arch" : "HVM64"  },
+	    "d2.2xlarge"  : { "Arch" : "HVM64"  },
+	    "d2.4xlarge"  : { "Arch" : "HVM64"  },
+	    "d2.8xlarge"  : { "Arch" : "HVM64"  },
+	    "hi1.4xlarge" : { "Arch" : "HVM64"  },
+	    "hs1.8xlarge" : { "Arch" : "HVM64"  },
+	    "cr1.8xlarge" : { "Arch" : "HVM64"  },
+	    "cc2.8xlarge" : { "Arch" : "HVM64"  }
+	},
+
+	"AWSInstanceType2NATArch" : {
+	    "t1.micro"    : { "Arch" : "NATPV64"   },
+	    "t2.nano"     : { "Arch" : "NATHVM64"  },
+	    "t2.micro"    : { "Arch" : "NATHVM64"  },
+	    "t2.small"    : { "Arch" : "NATHVM64"  },
+	    "t2.medium"   : { "Arch" : "NATHVM64"  },
+	    "t2.large"    : { "Arch" : "NATHVM64"  },
+	    "m1.small"    : { "Arch" : "NATPV64"   },
+	    "m1.medium"   : { "Arch" : "NATPV64"   },
+	    "m1.large"    : { "Arch" : "NATPV64"   },
+	    "m1.xlarge"   : { "Arch" : "NATPV64"   },
+	    "m2.xlarge"   : { "Arch" : "NATPV64"   },
+	    "m2.2xlarge"  : { "Arch" : "NATPV64"   },
+	    "m2.4xlarge"  : { "Arch" : "NATPV64"   },
+	    "m3.medium"   : { "Arch" : "NATHVM64"  },
+	    "m3.large"    : { "Arch" : "NATHVM64"  },
+	    "m3.xlarge"   : { "Arch" : "NATHVM64"  },
+	    "m3.2xlarge"  : { "Arch" : "NATHVM64"  },
+	    "m4.large"    : { "Arch" : "NATHVM64"  },
+	    "m4.xlarge"   : { "Arch" : "NATHVM64"  },
+	    "m4.2xlarge"  : { "Arch" : "NATHVM64"  },
+	    "m4.4xlarge"  : { "Arch" : "NATHVM64"  },
+	    "m4.10xlarge" : { "Arch" : "NATHVM64"  },
+	    "c1.medium"   : { "Arch" : "NATPV64"   },
+	    "c1.xlarge"   : { "Arch" : "NATPV64"   },
+	    "c3.large"    : { "Arch" : "NATHVM64"  },
+	    "c3.xlarge"   : { "Arch" : "NATHVM64"  },
+	    "c3.2xlarge"  : { "Arch" : "NATHVM64"  },
+	    "c3.4xlarge"  : { "Arch" : "NATHVM64"  },
+	    "c3.8xlarge"  : { "Arch" : "NATHVM64"  },
+	    "c4.large"    : { "Arch" : "NATHVM64"  },
+	    "c4.xlarge"   : { "Arch" : "NATHVM64"  },
+	    "c4.2xlarge"  : { "Arch" : "NATHVM64"  },
+	    "c4.4xlarge"  : { "Arch" : "NATHVM64"  },
+	    "c4.8xlarge"  : { "Arch" : "NATHVM64"  },
+	    "g2.2xlarge"  : { "Arch" : "NATHVMG2"  },
+	    "g2.8xlarge"  : { "Arch" : "NATHVMG2"  },
+	    "r3.large"    : { "Arch" : "NATHVM64"  },
+	    "r3.xlarge"   : { "Arch" : "NATHVM64"  },
+	    "r3.2xlarge"  : { "Arch" : "NATHVM64"  },
+	    "r3.4xlarge"  : { "Arch" : "NATHVM64"  },
+	    "r3.8xlarge"  : { "Arch" : "NATHVM64"  },
+	    "i2.xlarge"   : { "Arch" : "NATHVM64"  },
+	    "i2.2xlarge"  : { "Arch" : "NATHVM64"  },
+	    "i2.4xlarge"  : { "Arch" : "NATHVM64"  },
+	    "i2.8xlarge"  : { "Arch" : "NATHVM64"  },
+	    "d2.xlarge"   : { "Arch" : "NATHVM64"  },
+	    "d2.2xlarge"  : { "Arch" : "NATHVM64"  },
+	    "d2.4xlarge"  : { "Arch" : "NATHVM64"  },
+	    "d2.8xlarge"  : { "Arch" : "NATHVM64"  },
+	    "hi1.4xlarge" : { "Arch" : "NATHVM64"  },
+	    "hs1.8xlarge" : { "Arch" : "NATHVM64"  },
+	    "cr1.8xlarge" : { "Arch" : "NATHVM64"  },
+	    "cc2.8xlarge" : { "Arch" : "NATHVM64"  }
+	}
+	,
+	"AWSRegionArch2AMI" : {
+	    "us-east-1"        : {"PV64" : "ami-2a69aa47", "HVM64" : "ami-6869aa05", "HVMG2" : "ami-2e5e9c43"},
+	    "us-west-2"        : {"PV64" : "ami-7f77b31f", "HVM64" : "ami-7172b611", "HVMG2" : "ami-83b770e3"},
+	    "us-west-1"        : {"PV64" : "ami-a2490dc2", "HVM64" : "ami-31490d51", "HVMG2" : "ami-fd76329d"},
+	    "eu-west-1"        : {"PV64" : "ami-4cdd453f", "HVM64" : "ami-f9dd458a", "HVMG2" : "ami-b9bd25ca"},
+	    "eu-central-1"     : {"PV64" : "ami-6527cf0a", "HVM64" : "ami-ea26ce85", "HVMG2" : "ami-7f04ec10"},
+	    "ap-northeast-1"   : {"PV64" : "ami-3e42b65f", "HVM64" : "ami-374db956", "HVMG2" : "ami-e0ee1981"},
+	    "ap-northeast-2"   : {"PV64" : "NOT_SUPPORTED", "HVM64" : "ami-2b408b45", "HVMG2" : "NOT_SUPPORTED"},
+	    "ap-southeast-1"   : {"PV64" : "ami-df9e4cbc", "HVM64" : "ami-a59b49c6", "HVMG2" : "ami-0cb5676f"},
+	    "ap-southeast-2"   : {"PV64" : "ami-63351d00", "HVM64" : "ami-dc361ebf", "HVMG2" : "ami-a71c34c4"},
+	    "ap-south-1"       : {"PV64" : "NOT_SUPPORTED", "HVM64" : "ami-ffbdd790", "HVMG2" : "ami-f5b2d89a"},
+	    "sa-east-1"        : {"PV64" : "ami-1ad34676", "HVM64" : "ami-6dd04501", "HVMG2" : "NOT_SUPPORTED"},
+	    "cn-north-1"       : {"PV64" : "ami-77559f1a", "HVM64" : "ami-8e6aa0e3", "HVMG2" : "NOT_SUPPORTED"}
+	}
+
+    },
+
+    "Resources" : {
+	"SecurityGroup" : {
+	    "Type" : "AWS::EC2::SecurityGroup",
+	    "Properties" : {
+		"GroupDescription" : "Enable HTTP access via port 80 locked down to the load balancer + SSH access",
+		"VpcId": {
+                    "Ref": "VpcId"
+                },
+		"SecurityGroupIngress" : [
+		    {"IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : "0.0.0.0/0"},
+		    {"IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : { "Ref" : "SSHLocation"}}
+		]
+	    }
+	},
+
+	"SQLWorker": {
+	    "Type" : "AWS::EC2::Instance"  ,
+	    "Metadata" : {
+      		"AWS::CloudFormation::Authentication":{
+                    "S3Access":{
+			"type":"S3",
+			"roleName": {"Ref" : "IAMRoleEc2Worker"}
+                    }
+		},
+		"AWS::CloudFormation::Init" : {
+		    "configSets" : {
+			"install_data" : [ "localize_scripts", "install_psql","execute_scripts" ]
+		    },
+		    "localize_scripts" : {
+			"files": {
+
+			    "/home/ec2-user/.pgpass": {
+				"content": { "Fn::Join": [ "", [
+				    { "Ref": "RedshiftHost" }, ":" , { "Ref": "RedshiftDatabasePort" }, ":", { "Ref": "RedshiftDBName" }, ":", { "Ref": "RedshiftUsername" },":", { "Ref": "RedshiftPassword" },"\n"
+				]]},
+				"mode"  : "000600",
+				"owner" : "ec2-user",
+				"group" : "ec2-user"
+              		    },
+
+			    "/home/ec2-user/setup-redshift.sql" : {
+				"source": { "Fn::Join" : [ "", ["https://", 
+								{ "Ref" : "QSS3BucketName"}, 
+								".s3.amazonaws.com/",{"Ref" : "QSS3KeyPrefix" },"/dataset/sql/setup-redshift.sql"]]},
+				"mode": "000600",
+				"owner" : "ec2-user",
+				"group" : "ec2-user",
+				"authentication":"S3Access"
+			    },
+
+			    "/home/ec2-user/interpolate-setup-redshift-sql.sh" : {
+				"source": { "Fn::Join" : [ "", ["https://", 
+								{ "Ref" : "QSS3BucketName"}, 
+								".s3.amazonaws.com/",{"Ref" : "QSS3KeyPrefix" },"/scripts/interpolate-setup-redshift-sql.sh"]]},
+				"mode": "000700",
+				"owner" : "ec2-user",
+				"group" : "ec2-user",
+				"authentication":"S3Access"
+			    },
+
+			    "/home/ec2-user/runsql.sh": {
+				"content": { "Fn::Join": [ "", [
+				    "export PGPASSWORD='",{"Ref": "RedshiftPassword"},"';","psql -h ", { "Ref" : "RedshiftHost" }, " -p ", {"Ref": "RedshiftDatabasePort"} , " -U ", { "Ref": "RedshiftUsername" }, " -d ", { "Ref": "RedshiftDBName" }, "< /home/ec2-user/setup-redshift-intermediate.sql;\n"
+				]]},          
+				"mode"  : "000744",
+				"owner" : "ec2-user",
+				"group" : "ec2-user"
+              		    },
+
+			    "/home/ec2-user/create-aggregate-sql.sh": {
+				"content": { "Fn::Join": [ "", [
+				    "export PGPASSWORD='",{"Ref": "RedshiftPassword"},"';","psql -h ", { "Ref" : "RedshiftHost" }, " -p ", {"Ref": "RedshiftDatabasePort"} , " -U ", { "Ref": "RedshiftUsername" }, " -d ", { "Ref": "RedshiftDBName" }, "< /home/ec2-user/create-aggregates.sql;\n"
+				]]},          
+				"mode"  : "000744",
+				"owner" : "ec2-user",
+				"group" : "ec2-user"
+              	},
+
+              	"/home/ec2-user/setup-postgres-intermediate-sql.sh": {
+				"content": { "Fn::Join": [ "", [
+				    "export PGPASSWORD='",{"Ref": "RDSPassword"},"';","psql -h ", { "Ref" : "RDSHost" }, " -p ", {"Ref": "RDSDatabasePort"} , " -U ", { "Ref": "RDSUsername" }, " -d ", { "Ref": "RDSDBName" }, "< /home/ec2-user/setup-postgres-intermediate.sql;\n"
+				]]},          
+				"mode"  : "000744",
+				"owner" : "ec2-user",
+				"group" : "ec2-user"
+              	},
+
+              	"/home/ec2-user/publish-aggregate-sql.sh": {
+				"content": { "Fn::Join": [ "", [
+				    "export PGPASSWORD='",{"Ref": "RDSPassword"},"';","psql -h ", { "Ref" : "RDSHost" }, " -p ", {"Ref": "RDSDatabasePort"} , " -U ", { "Ref": "RDSUsername" }, " -d ", { "Ref": "RDSDBName" }, "< /home/ec2-user/publish-aggregates.sql;\n"
+				]]},          
+				"mode"  : "000744",
+				"owner" : "ec2-user",
+				"group" : "ec2-user"
+              	},	    
+
+			    "/home/ec2-user/setup-postgres.sql": {
+				"source": { "Fn::Join" : [ "", ["https://", 
+								{ "Ref" : "QSS3BucketName"}, 
+								".s3.amazonaws.com/",{"Ref" : "QSS3KeyPrefix" },"/dataset/sql/setup-postgres.sql"]]},
+				"mode": "000600",
+				"owner" : "ec2-user",
+				"group" : "ec2-user",
+				"authentication":"S3Access"
+			    },
+
+			    "/home/ec2-user/interpolate-setup-postgres-sql.sh" : {
+				"source": { "Fn::Join" : [ "", ["https://", 
+								{ "Ref" : "QSS3BucketName"}, 
+								".s3.amazonaws.com/",{"Ref" : "QSS3KeyPrefix" },"/scripts/interpolate-setup-postgres-sql.sh"]]},
+				"mode": "000700",
+				"owner" : "ec2-user",
+				"group" : "ec2-user",
+				"authentication":"S3Access"
+			    },
+
+			     "/home/ec2-user/create-aggregates.sql" : {
+				"source": { "Fn::Join" : [ "", ["https://", 
+								{ "Ref" : "QSS3BucketName"}, 
+								".s3.amazonaws.com/",{"Ref" : "QSS3KeyPrefix" },"/dataset/sql/create-aggregates.sql"]]},
+				"mode": "000700",
+				"owner" : "ec2-user",
+				"group" : "ec2-user",
+				"authentication":"S3Access"
+			    },
+
+			     "/home/ec2-user/publish-aggregates.sql" : {
+				"source": { "Fn::Join" : [ "", ["https://", 
+								{ "Ref" : "QSS3BucketName"}, 
+								".s3.amazonaws.com/",{"Ref" : "QSS3KeyPrefix" },"/dataset/sql/publish-aggregates.sql"]]},
+				"mode": "000700",
+				"owner" : "ec2-user",
+				"group" : "ec2-user",
+				"authentication":"S3Access"
+			    }
+			},
+
+			"services" : {
+			    "sysvinit" : {
+				"cfn-hup" : { "enabled" : "true", "ensureRunning" : "true",
+					      "files" : ["/etc/cfn/cfn-hup.conf", "/etc/cfn/hooks.d/cfn-auto-reloader.conf"] }
+			    }
+			}
+		    },
+
+		    "install_psql" : {
+			"packages" : {
+			    "yum" : {
+				"gcc" : [],
+				"python27-devel" : [],
+				"postgresql92-devel" : [],
+				"postgresql8.x86_64" : []
+			    }
+			}
+		    },
+
+		    "execute_scripts" : {
+			"commands" : {
+			    "00-apply-iam-role-redshift-cluster" : {
+				"command" : 
+				{ 
+				    "Fn::Join" : [
+					"" , [ 
+					    "aws",
+					    " --region ", 
+					    { "Ref" : "AWS::Region" },
+					    " redshift modify-cluster-iam-roles",
+					    " --cluster-identifier ",
+					    {"Ref" : "RedshiftClusterId"},
+					    " --add-iam-roles ",
+					    {"Ref" : "IAMRoleRedshiftWorkerArn"}
+					    
+					]
+				    ]
+				},
+				"cwd" : "/home/ec2-user"
+			    },
+			     "01-wait-for-cluster-available" : {
+				"command" : 
+				{ 
+				    "Fn::Join" : [
+					" " , [ 
+					    "aws",
+					    " --region ", 
+					    { "Ref" : "AWS::Region" },
+					    " redshift wait cluster-available",
+					    " --cluster-identifier ",
+					    {"Ref" : "RedshiftClusterId"}
+					]
+				    ]
+				},
+				"cwd" : "/home/ec2-user"
+			    },
+			    "02-pip-install-psycopg2" : {
+				"command" : "sudo pip install psycopg2",
+				"cwd" : "/home/ec2-user"
+			    },
+			    "03-interpolate-setup-redshift-sql" : {
+				"command" : { "Fn::Join" : [" ", [" sh interpolate-setup-redshift-sql.sh setup-redshift.sql ",
+								  { 
+								      "Fn::Join" : [
+									  "/" , [ 
+									      "s3:/",
+									      { "Ref": "QSS3BucketName" },
+									      { "Ref": "QSS3KeyPrefix" },
+									      "dataset/content"
+									  ]
+								      ]
+								  },
+								  {"Ref" : "IAMRoleRedshiftWorkerArn"},
+								  {"Ref" : "AWS::Region" },
+								  ">/home/ec2-user/setup-redshift-intermediate.sql"
+								 ]]},
+				"cwd" : "/home/ec2-user"
+			    },
+
+			    "04-create-tables-redshift" : {
+				"command" : { "Fn::Join" : ["", [" sh runsql.sh > /home/ec2-user/runsql.log\n"]]},
+				"cwd" : "/home/ec2-user"
+			    },
+
+			    "05-create-aggregates-redshift" : {
+				"command" : { "Fn::Join" : [" ", [" sh /home/ec2-user/create-aggregate-sql.sh > /home/ec2-user/create-aggregate-sql.log"
+								 ]]},
+				"cwd" : "/home/ec2-user"
+			    },
+
+			    "06-interpolate-setup-postgres-sql" : {
+				"command" : { "Fn::Join" : [" ", [" sh interpolate-setup-postgres-sql.sh setup-postgres.sql ",
+								  {"Ref" : "RedshiftHost"},
+								  {"Ref" : "RedshiftDatabasePort"},
+								  {"Ref" : "RedshiftDBName"},
+								  {"Ref" : "RDSUsername"},
+								  {"Ref" : "RedshiftUsername"},
+								  {"Ref" : "RedshiftPassword"},
+								  ">/home/ec2-user/setup-postgres-intermediate.sql"
+								 ]]},
+				"cwd" : "/home/ec2-user"
+			    },
+
+			    "07-setup-postgres" : {
+				"command" : { "Fn::Join" : [" ", [" sh /home/ec2-user/setup-postgres-intermediate-sql.sh > /home/ec2-user/setup-postgres-intermediate-sql.log\n"]]},
+				"cwd" : "/home/ec2-user"
+				
+			    },
+
+			    "08-publish-aggregates-to-postgres" : {
+				"command" : { "Fn::Join" : [" ", [" sh /home/ec2-user/publish-aggregate-sql.sh ",
+								  "> /home/ec2-user/publish-aggregates.log\n"]]},
+				"cwd" : "/home/ec2-user"
+				
+			    }
+			}
+		    }
+		}
+	    },
+	    "Properties": {
+		"ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
+						  { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
+		"IamInstanceProfile" : {"Ref" : "IamInstanceProfile"}, 
+		"InstanceType"   : { "Ref" : "InstanceType" },
+		"KeyName"        : { "Ref" : "KeyPairName" },
+		"NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": false,
+                        "DeleteOnTermination": "true",
+                        "DeviceIndex": 0,
+                        "SubnetId": {
+                            "Ref": "SubnetId"
+                        },
+                        "GroupSet": [
+                            {
+                                "Ref": "SecurityGroup"
+                            }
+                        ]
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "SQLWorker"
+                    }
+                ],
+
+		"UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+                    "#!/bin/bash -xe\n",
+                    "yum update -y aws-cfn-bootstrap\n",
+
+                    "/opt/aws/bin/cfn-init -v ",
+                    "         --stack ", { "Ref" : "AWS::StackName" },
+                    "         --resource SQLWorker ",
+                    "         --configsets install_data ",
+                    "         --region ", { "Ref" : "AWS::Region" }, "\n",
+
+                    "/opt/aws/bin/cfn-signal -e $? ",
+                    "         --stack ", { "Ref" : "AWS::StackName" },
+                    "         --resource SQLWorker ",
+                    "         --region ", { "Ref" : "AWS::Region" }, "\n" 
+		]]}}
+	    }
+	}
+    },
+
+    "Outputs" : {
+	"InstanceID" : {
+            "Description" : "EC2 InstanceID of the SQL Worker instance",
+            "Value" : { "Ref" : "SQLWorker" }
+	},
+	"PrivateIpAddress" : {
+            "Description" : "Private IP Address of the SQL Worker instance",
+            "Value" : { "Fn::GetAtt" : [ "SQLWorker", "PrivateIp"]}
+	},
+	"PrivateDnsName" : {
+	    "Value" :   { "Fn::GetAtt" : [ "SQLWorker", "PrivateDnsName" ]},
+	    "Description" : "Private DNS Name of SQL Worker Instance"
+	}
+    }
+}

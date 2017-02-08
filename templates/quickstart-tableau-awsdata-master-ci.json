@@ -1,0 +1,122 @@
+[
+    {
+	"ParameterKey": "KeyPairName",
+	"ParameterValue": "cikey"
+    },
+    {
+	"ParameterKey": "AvailabilityZones",
+	"ParameterValue": "$[alfred_genaz_2]"
+    },
+    {
+	"ParameterKey": "HostedZoneName",
+	"ParameterValue": "<NONE>"
+    },
+    {
+	"ParameterKey": "BastionInboundCIDR",
+	"ParameterValue": "<UPDATE_VALUE>"
+    },
+    {
+	"ParameterKey": "RDGWAdminPassword",
+	"ParameterValue": "$[alfred_genpass_8]"
+    },
+    {
+	"ParameterKey": "RedshiftPassword",
+	"ParameterValue": "$[alfred_genpass_8]"
+    },
+    {
+	"ParameterKey": "RDSPassword",
+	"ParameterValue": "$[alfred_genpass_8]"
+    },
+    {
+	"ParameterKey": "RDGWAdminUser",
+	"ParameterValue": "quickstartuser"
+    },
+    {
+	"ParameterKey": "RedshiftUsername",
+	"ParameterValue": "quickstartuser"
+    },
+    {
+	"ParameterKey": "RDSUsername",
+	"ParameterValue": "quickstartuser"
+    },
+    {
+	"ParameterKey": "RDGWInboundCIDR",
+	"ParameterValue": "<UPDATE_VALUE>"
+    },
+    {
+	"ParameterKey": "TableauServerInboundCIDR",
+	"ParameterValue": "<UPDATE_VALUE>"
+    },
+    {
+	"ParameterKey": "RDSMultiAZ",
+	"ParameterValue": "true"
+    },
+    {
+	"ParameterKey": "RedshiftNumberOfNodes",
+	"ParameterValue": "2"
+    },
+    {
+	"ParameterKey": "TableauServerInboundCIDR",
+	"ParameterValue": "<UPDATE_VALUE>"
+    },
+    {
+	"ParameterKey": "ContentAdminUser",
+	"ParameterValue": "quickstartuser"
+    },
+    {
+	"ParameterKey": "ContentAdminPassword",
+	"ParameterValue": "$[alfred_genpass_8]"
+    },
+    {
+	"ParameterKey": "TableauServerLicenseKey",
+	"ParameterValue": ""
+    },
+    {
+	"ParameterKey": "RegFirstName",
+	"ParameterValue": "Test"
+    },
+    {
+	"ParameterKey": "RegLastName",
+	"ParameterValue": "User"
+    },
+    {
+	"ParameterKey": "RegEmail",
+	"ParameterValue": "test@no-reply.com"
+    },
+    {
+	"ParameterKey": "RegCompany",
+	"ParameterValue": "TestCompany"
+    },
+    {
+	"ParameterKey": "RegTitle",
+	"ParameterValue": "TestTitle"
+    },
+    {
+	"ParameterKey": "RegDepartment",
+	"ParameterValue": "TestDepartment"
+    },
+    {
+	"ParameterKey": "RegIndustry",
+	"ParameterValue": "TestIndustry"
+    },
+    {
+	"ParameterKey": "RegPhone",
+	"ParameterValue": "TestPhone"
+    },
+    {
+	"ParameterKey": "RegCity",
+	"ParameterValue": "TestCity"
+    },
+    {
+	"ParameterKey": "RegState",
+	"ParameterValue": "TestState"
+    },
+    {
+	"ParameterKey": "RegZip",
+	"ParameterValue": "TestZip"
+    },
+    {
+	"ParameterKey": "RegCountry",
+	"ParameterValue": "TestCountry"
+    }
+]

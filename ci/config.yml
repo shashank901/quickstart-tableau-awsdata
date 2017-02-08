@@ -20,8 +20,5 @@ global:
  
 tests:
   quickstart-tableau-awsdatat1:
-    parameter_input: quickstart-tableau-awsdata-example-params1.json
-    template_file: quickstart-tableau-awsdata-example1.template
-  quickstart-tableau-awsdatat2:
-    parameter_input: quickstart-tableau-awsdata-example-params2.json
-    template_file: quickstart-tableau-awsdata-example2.template
+    parameter_input: quickstart-tableau-awsdata-master-ci.json
+    template_file: quickstart-tableau-awsdata-master.template

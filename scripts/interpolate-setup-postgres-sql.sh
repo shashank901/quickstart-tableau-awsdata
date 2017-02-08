@@ -1,0 +1,2 @@
+AfterConversion=`echo $2 | sed -e 's/\//\\\\\//g'`
+sed -e "s/<redshifthost>/$AfterConversion/g" -e "s/<RedshiftDatabasePort>/$3/g" -e "s/<RedshiftDBName>/$4/g" -e "s/<RDSDBUser>/$5/g" -e "s/<RedshiftDBUser>/$6/g" -e "s/<RedshiftUserDBPassword>/$7/g" $1
