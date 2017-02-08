@@ -9,11 +9,11 @@
                         "default": "AWS Quick Start Configuration"
                     },
                     "Parameters": [
-			"RootStackName",
+                        "RootStackName",
                         "KeyPairName",
-			"QSS3BucketName",
-			"QSS3KeyPrefix",
-			"HostedZoneName"
+                        "QSS3BucketName",
+                        "QSS3KeyPrefix",
+                        "HostedZoneName"
                     ]
                 },
                 {
@@ -23,10 +23,10 @@
                     "Parameters": [
                         "PrivateSubnet1ID",
                         "PrivateSubnet2ID",
-			"PublicSubnet1ID",
-			"PublicSubnet2ID",
-			"VPCID",
-			"VPCCIDR"
+                        "PublicSubnet1ID",
+                        "PublicSubnet2ID",
+                        "VPCID",
+                        "VPCCIDR"
                     ]
                 },
                 {
@@ -35,7 +35,7 @@
                     },
                     "Parameters": [
                         "BastionInboundCIDR",
-			"RDGWInboundCIDR",
+                        "RDGWInboundCIDR",
                         "TableauServerInboundCIDR",
                         "RDGWAdminPassword",
                         "RedshiftPassword",
@@ -72,13 +72,13 @@
                         "default": "Remote Desktop Gateway Configuration"
                     },
                     "Parameters": [
-			"RDGWAdminUser",
-			"DomainDNSName",
-			"RDGWInstanceType",
-			"RDGW1NetBIOSName",
-			"RDGW1PrivateIP",
-			"RDGW2NetBIOSName",
-			"RDGW2PrivateIP"
+                        "RDGWAdminUser",
+                        "DomainDNSName",
+                        "RDGWInstanceType",
+                        "RDGW1NetBIOSName",
+                        "RDGW1PrivateIP",
+                        "RDGW2NetBIOSName",
+                        "RDGW2PrivateIP"
                     ]
                 },
                 {
@@ -99,7 +99,7 @@
                         "default": "Postgress RDS Instance Configuration"
                     },
                     "Parameters": [
-			"RDSInstanceIdentifier",
+                        "RDSInstanceIdentifier",
                         "RDSDatabasePort",
                         "RDSDatabaseName",
                         "RDSMultiAZ",
@@ -124,11 +124,10 @@
                     "Parameters": [
                         "ContentAdminUser",
                         "TableauServerLicenseKey"
-                    ]                  
+                    ]
                 }
             ],
             "ParameterLabels": {
-
                 "RootStackName": {
                     "default": "Stack Name"
                 },
@@ -144,7 +143,6 @@
                 "HostedZoneName": {
                     "default": "Hosted Zone Name"
                 },
-
                 "PrivateSubnet1ID": {
                     "default": "Existing VPC Private Subnet 1 ID"
                 },
@@ -163,8 +161,6 @@
                 "VPCCIDR": {
                     "default": "Existing VPC CIDR"
                 },
-
-
                 "BastionInstanceType": {
                     "default": "Bastion Instance Type"
                 },
@@ -183,7 +179,6 @@
                 "BastionInboundCIDR": {
                     "default": "Bastion Inbound CIDR"
                 },
-
                 "RDGWAdminPassword": {
                     "default": "Remote Desktop Gateway Admin Password"
                 },
@@ -211,7 +206,6 @@
                 "RDGWInboundCIDR": {
                     "default": "Remote Desktop Gateway Inbound CIDR"
                 },
-
                 "RedshiftDatabasePort": {
                     "default": "Redshift Database Port"
                 },
@@ -233,102 +227,96 @@
                 "RedshiftInboundCIDR": {
                     "default": "Redshift Inbound CIDR"
                 },
-
                 "RDSInstanceIdentifier": {
                     "default": "RDS Instance Identifier"
                 },
                 "RDSDatabasePort": {
                     "default": "RDS Database Port"
                 },
-                "RDSDatabaseName" : {
-		    "default": "RDS Database Name"
-		},
-                "RDSMultiAZ" : {
-		    "default": "RDS MultiAZ"
-		},
-                "RDSInstanceClass" : {
-		    "default": "RDS Instance Class"
-		},
-                "RDSAllocatedStorage" : {
-		    "default": "RDS Allocated Storage"
-		},
-                "RDSUsername" : {
-		    "default": "RDS Username"
-		},
-                "RDSPassword" : {
-		    "default": "RDS Password"
-		},
-                "RDSInboundCIDR" : {
-		    "default": "RDS Inbound CIDR"
-		},
-
+                "RDSDatabaseName": {
+                    "default": "RDS Database Name"
+                },
+                "RDSMultiAZ": {
+                    "default": "RDS MultiAZ"
+                },
+                "RDSInstanceClass": {
+                    "default": "RDS Instance Class"
+                },
+                "RDSAllocatedStorage": {
+                    "default": "RDS Allocated Storage"
+                },
+                "RDSUsername": {
+                    "default": "RDS Username"
+                },
+                "RDSPassword": {
+                    "default": "RDS Password"
+                },
+                "RDSInboundCIDR": {
+                    "default": "RDS Inbound CIDR"
+                },
                 "SqlWorkerInstanceType": {
-		    "default": "SQL Worker Instance Type"
-		},
-
-		"TableauServerInboundCIDR": {
-		    "default": "Tableau Server Inbound CIDR"
-		},
+                    "default": "SQL Worker Instance Type"
+                },
+                "TableauServerInboundCIDR": {
+                    "default": "Tableau Server Inbound CIDR"
+                },
                 "ContentAdminUser": {
-		    "default": "Content Admin User"
-		},
+                    "default": "Content Admin User"
+                },
                 "ContentAdminPassword": {
-		    "default": "Content Admin Password"
-		},
+                    "default": "Content Admin Password"
+                },
                 "TableauServerLicenseKey": {
-		    "default": "Tableau Server License Key"
-		},
+                    "default": "Tableau Server License Key"
+                },
                 "RegFirstName": {
-		    "default": "Reg First Name"
-		},
+                    "default": "Reg First Name"
+                },
                 "RegLastName": {
-		    "default": "Reg Last Name"
-		},
+                    "default": "Reg Last Name"
+                },
                 "RegEmail": {
-		    "default": "Reg Email"
-		},
+                    "default": "Reg Email"
+                },
                 "RegCompany": {
-		    "default": "Reg Company"
-		},
+                    "default": "Reg Company"
+                },
                 "RegTitle": {
-		    "default": "Reg Title"
-		},
+                    "default": "Reg Title"
+                },
                 "RegDepartment": {
-		    "default": "Reg Department"
-		},
+                    "default": "Reg Department"
+                },
                 "RegIndustry": {
-		    "default": "Reg Industry"
-		},
+                    "default": "Reg Industry"
+                },
                 "RegPhone": {
-		    "default": "Reg Phone"
-		},
+                    "default": "Reg Phone"
+                },
                 "RegCity": {
-		    "default": "Reg City"
-		},
+                    "default": "Reg City"
+                },
                 "RegState": {
-		    "default": "Reg State"
-		},
+                    "default": "Reg State"
+                },
                 "RegZip": {
-		    "default": "Reg Zip"
-		},
+                    "default": "Reg Zip"
+                },
                 "RegCountry": {
-		    "default": "Reg Country"
-		}
+                    "default": "Reg Country"
+                }
             }
         }
     },
-
     "Parameters": {
-
         "RootStackName": {
-	    "Description" : "Name of Top-Level Stack",
-	    "Default": "<NONE>",
-	    "Type" : "String"
+            "Description": "Name of Top-Level Stack",
+            "Default": "<NONE>",
+            "Type": "String"
         },
         "KeyPairName": {
-	    "Description" : "Amazon EC2 Key Pair",
-	    "Type" : "AWS::EC2::KeyPair::KeyName",
-            "Description": "Name of existing EC2 public/private key pair, which allows you to connect securely to instances deployed with the Quick Start after they launch.  When you created an AWS account, this is the key pair you created in your preferred region.  Enter the name of the keypair."
+            "Description": "Name of existing EC2 public/private key pair, which allows you to connect securely to instances deployed with the Quick Start after they launch.  When you created an AWS account, this is the key pair you created in your preferred region.  Enter the name of the keypair.",
+            "Type": "AWS::EC2::KeyPair::KeyName"
         },
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
@@ -349,7 +337,6 @@
             "Description": "Name of Hosted Zone within which the Quick Start will create convenience DNS entries for AWS Resources created by the Quick Start.  If you do not wish to create convenience DNS entries or are not using AWS Route53 for DNS, enter '<NONE>', otherwise enter the Hosted Zone name including the trailing period, for example 'dev.example.com.'.",
             "Type": "String"
         },
-
         "PrivateSubnet1ID": {
             "Description": "ID of the private subnet 1 in Availability Zone 1 (e.g., subnet-a0246dcd)",
             "Type": "AWS::EC2::Subnet::Id"
@@ -377,7 +364,6 @@
             "Description": "CIDR block for the VPC",
             "Type": "String"
         },
-
         "BastionInstanceType": {
             "AllowedValues": [
                 "t2.nano",
@@ -404,230 +390,255 @@
             "Description": "Fixed private IP for the first bastion located in Availability Zone 1",
             "Type": "String"
         },
-	"Bastion2PrivateIP": {
+        "Bastion2PrivateIP": {
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
             "ConstraintDescription": "IP address parameter must be in the form x.x.x.x",
             "Default": "10.0.144.5",
             "Description": "Fixed private IP for the second bastion located in Availability Zone 2",
             "Type": "String"
-	},
-	"BastionAMIOS": {
+        },
+        "BastionAMIOS": {
             "AllowedValues": [
-		"AmazonLinuxHVM",
-		"CentOS7HVM",
-		"UbuntuServer1404LTSHVM"
+                "AmazonLinuxHVM",
+                "CentOS7HVM",
+                "UbuntuServer1404LTSHVM"
             ],
             "Default": "AmazonLinuxHVM",
             "Description": "The Linux distribution for the AMI to be used for the bastion instances",
             "Type": "String"
-	},
-	"BastionBanner": {
+        },
+        "BastionBanner": {
             "Default": "https://s3.amazonaws.com/quickstart-reference/linux/bastion/latest/scripts/banner_message.txt",
             "Description": "Banner text to display upon login",
             "Type": "String"
-	},
-	"BastionInboundCIDR": {
+        },
+        "BastionInboundCIDR": {
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/([0-9]|[1-2][0-9]|3[0-2]))$",
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/x",
             "Description": "Allowed CIDR block for external SSH access to the bastions",
             "Type": "String"
-	},
-
-	"RDGWAdminPassword": {
+        },
+        "RDGWAdminPassword": {
             "Description": "Password for the administrative account. Must be at least 8 characters containing letters, numbers and symbols",
             "Type": "String",
             "MinLength": "8",
             "MaxLength": "32",
             "AllowedPattern": "(?=^.{6,255}$)((?=.*\\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*",
             "NoEcho": "true"
-	},
-	"RDGWAdminUser": {
+        },
+        "RDGWAdminUser": {
             "Description": "User name for the new local administrator account",
             "Type": "String",
             "Default": "admin",
             "MinLength": "5",
             "MaxLength": "25",
             "AllowedPattern": "[a-zA-Z0-9]*"
-	},
-	"DomainDNSName": {
+        },
+        "DomainDNSName": {
             "Description": "Fully qualified domain name (FQDN) e.g. example.com",
             "Type": "String",
             "Default": "example.com",
             "MinLength": "3",
             "MaxLength": "25",
             "AllowedPattern": "[a-zA-Z0-9]+\\..+"
-	},
-	"RDGWInstanceType": {
+        },
+        "RDGWInstanceType": {
             "Description": "Amazon EC2 instance type for the Remote Desktop Gateway instances",
             "Type": "String",
             "Default": "t2.large",
             "AllowedValues": [
-		"t2.large",
-		"m3.large",
-		"m3.xlarge",
-		"m3.2xlarge",
-		"m4.large",
-		"m4.xlarge",
-		"m4.2xlarge",
-		"m4.4xlarge"
+                "t2.large",
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.2xlarge",
+                "m4.4xlarge"
             ]
-	},
-	"RDGW1NetBIOSName": {
+        },
+        "RDGW1NetBIOSName": {
             "Description": "NetBIOS name of the first Remote Desktop Gateway (up to 15 characters)",
             "Type": "String",
             "Default": "RDGW1",
             "MinLength": "1",
             "MaxLength": "15",
             "AllowedPattern": "[a-zA-Z0-9]+"
-	},
-	"RDGW1PrivateIP": {
+        },
+        "RDGW1PrivateIP": {
             "Description": "Fixed private IP for the first Remote Desktop Gateway located in Availability Zone 1",
             "Type": "String",
             "Default": "10.0.128.11"
-	},
-	"RDGW2NetBIOSName": {
+        },
+        "RDGW2NetBIOSName": {
             "Description": "NetBIOS name of the second Remote Desktop Gateway (up to 15 characters)",
             "Type": "String",
             "Default": "RDGW2",
             "MinLength": "1",
             "MaxLength": "15",
             "AllowedPattern": "[a-zA-Z0-9]+"
-	},
-	"RDGW2PrivateIP": {
+        },
+        "RDGW2PrivateIP": {
             "Description": "Fixed private IP for the second Remote Desktop Gateway located in Availability Zone 2",
             "Type": "String",
             "Default": "10.0.144.11"
-	},
-	"RDGWInboundCIDR": {
+        },
+        "RDGWInboundCIDR": {
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/([0-9]|[1-2][0-9]|3[0-2]))$|<VPCCIDR>",
             "Description": "Allowed CIDR Block for external access to the Remote Desktop Gateways. Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
             "Type": "String"
-	},
-
-	"RedshiftClusterSubnetID":{
-            "Type":"String",
-            "Description":"SubnetId of an existing subnet in your Virtual Private Cloud (VPC), where Redshift Cluster will be launched"
-	},
-	"RedshiftDatabasePort": {
-      	    "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
-      	    "Type": "String",
-      	    "Default": "5439"
-	},
-	"RedshiftDatabaseName": {
-      	    "Description": "The name of the initial database created when the redshift cluster is provisioned",
-      	    "Type": "String",
-      	    "Default": "quickstart",
-      	    "AllowedPattern": "([a-z]|[0-9])+",
-      	    "ConstraintDescription" : "must contain a-z or 0-9 only."
-	},
-	"RedshiftNumberOfNodes": {
-      	    "Description": "The number of compute nodes in the redshift cluster.",
-      	    "Type": "Number",
-      	    "Default": "2"
-	},
-	"RedshiftNodeType": {
-      	    "Description": "The node type to be provisioned for the redshift cluster",
-      	    "Type": "String",
-      	    "Default": "dc1.large",
-      	    "AllowedValues" : [ "dw1.xlarge", "dw1.8xlarge", "dw2.large", "dw2.8xlarge", "dc1.large", "dc1.8xlarge", "ds1.xlarge", "ds1.8xlarge", "ds2.xlarge", "ds2.8xlarge" ]
-	    ,
-      	    "ConstraintDescription" : "must be a valid RedShift node type."
-	},
-	"RedshiftUsername": {
-      	    "Description": "The user name associated with the master user account for the redshift cluster that is being created",
-      	    "Type": "String",
-      	    "Default": "redshift",
-      	    "AllowedPattern": "([a-z])([a-z]|[0-9])*",
-      	    "ConstraintDescription" : "must start with a-z and contain only a-z or 0-9."
-	},
-	"RedshiftPassword": {
-      	    "Description": "The password associated with the master user account for the redshift cluster that is being created.",
-      	    "Type": "String",
-      	    "NoEcho": "true",
-      	    "MinLength": "8",
-      	    "MaxLength": "64",
-      	    "AllowedPattern" : "[a-zA-Z0-9~`!#$%^&*()-_+={}|;:,.<>\\[\\]]*",
-      	    "ConstraintDescription" : "Between 8 and 64 chars in length; must contain at least one uppercase letter, one lowercase letter, and one number; can use any printable ASCII character (ASCII code 33 to 126) except ' (single quote), \" (double quote), \\, /, @, or space."
-	},
-	"RedshiftInboundCIDR" : {
-            "Description" : "Allow inbound traffic to the cluster from this CIDR range.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
-            "Type" : "String",
+        },
+        "RedshiftClusterSubnetID": {
+            "Type": "String",
+            "Description": "SubnetId of an existing subnet in your Virtual Private Cloud (VPC), where Redshift Cluster will be launched"
+        },
+        "RedshiftDatabasePort": {
+            "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
+            "Type": "String",
+            "Default": "5439"
+        },
+        "RedshiftDatabaseName": {
+            "Description": "The name of the initial database created when the redshift cluster is provisioned",
+            "Type": "String",
+            "Default": "quickstart",
+            "AllowedPattern": "([a-z]|[0-9])+",
+            "ConstraintDescription": "must contain a-z or 0-9 only."
+        },
+        "RedshiftNumberOfNodes": {
+            "Description": "The number of compute nodes in the redshift cluster.",
+            "Type": "Number",
+            "Default": "2"
+        },
+        "RedshiftNodeType": {
+            "Description": "The node type to be provisioned for the redshift cluster",
+            "Type": "String",
+            "Default": "dc1.large",
+            "AllowedValues": [
+                "dw1.xlarge",
+                "dw1.8xlarge",
+                "dw2.large",
+                "dw2.8xlarge",
+                "dc1.large",
+                "dc1.8xlarge",
+                "ds1.xlarge",
+                "ds1.8xlarge",
+                "ds2.xlarge",
+                "ds2.8xlarge"
+            ],
+            "ConstraintDescription": "must be a valid RedShift node type."
+        },
+        "RedshiftUsername": {
+            "Description": "The user name associated with the master user account for the redshift cluster that is being created",
+            "Type": "String",
+            "Default": "redshift",
+            "AllowedPattern": "([a-z])([a-z]|[0-9])*",
+            "ConstraintDescription": "must start with a-z and contain only a-z or 0-9."
+        },
+        "RedshiftPassword": {
+            "Description": "The password associated with the master user account for the redshift cluster that is being created.",
+            "Type": "String",
+            "NoEcho": "true",
+            "MinLength": "8",
+            "MaxLength": "64",
+            "AllowedPattern": "[a-zA-Z0-9~`!#$%^&*()-_+={}|;:,.<>\\[\\]]*",
+            "ConstraintDescription": "Between 8 and 64 chars in length; must contain at least one uppercase letter, one lowercase letter, and one number; can use any printable ASCII character (ASCII code 33 to 126) except ' (single quote), \" (double quote), \\, /, @, or space."
+        },
+        "RedshiftInboundCIDR": {
+            "Description": "Allow inbound traffic to the cluster from this CIDR range.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
+            "Type": "String",
             "MinLength": "9",
             "MaxLength": "18",
-            "AllowedPattern" : "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
-	    "Default": "<VPCCIDR>",
-            "ConstraintDescription" : "must be a valid CIDR range of the form x.x.x.x/x."
-	},
-	"RDSInstanceIdentifier": {
-	    "Type":"String",
-	    "Description":"The identifier to use for the RDS instance",
-	    "Default": "quickstart-tableau-awsdata"
-	},
-	"RDSDatabasePort": {
-      	    "Description": "The port that the RDS instance will listen on and that will be allowed through the Security Group. ",
-      	    "Type": "String",
-      	    "Default": "5432"
-	},
-	"RDSDatabaseName": {
-	    "Default": "quickstart",
-	    "Description" : "The name of the initial database created when the redshift cluster is provisioned",
-	    "Type": "String",
-	    "MinLength": "1",
-	    "MaxLength": "64",
-	    "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
-	    "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
-	},
-	"RDSMultiAZ": {
-	    "Default": "true",
-	    "Description" : "When true, launch a multi availability zone RDS instance.",
-	    "Type": "String",
-	    "AllowedValues" : [ "true", "false" ],
-	    "ConstraintDescription" : "true or false"
-	},
-	"RDSAllocatedStorage":{
-	    "Default":"5",
-	    "Description":"The size of the database (Gb)",
-	    "Type":"Number",
-	    "MinValue":"5",
-	    "MaxValue":"1024",
-	    "ConstraintDescription":"must be between 5 and 1024Gb"
-	},
-	"RDSInstanceClass": {
-	    "Default": "db.m4.large",
-	    "Description" : "Database instance class for the provisioned RDS instance.",
-	    "Type": "String",
-	    "AllowedValues" : [ "db.m4.large", "db.m4.xlarge", "db.m4.2xlarge", "db.m4.4xlarge", "db.m4.10xlarge", "db.r3.large", "db.r3.xlarge", "db.r3.2xlarge", "db.r3.4xlarge", "db.r3.8xlarge", "db.t2.micro", "db.t2.small", "db.t2.medium", "db.t2.large" ],
-	    "ConstraintDescription" : "Must be a valid RDS database instance type."
-	},
-	"RDSUsername": {
-	    "Default": "postgres",
-	    "NoEcho": "false",
-	    "Description" : "The user name associated with the admin account for the provisioned postgres RDS instance",
-	    "Type": "String",
-	    "MinLength": "1",
-	    "MaxLength": "16",
-	    "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
-	    "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
-	},
-	"RDSPassword": {
-	    "NoEcho": "true",
-	    "Description" : "The password associated with the admin account for the provisioned postgres RDS instance.",
-	    "Type": "String",
-	    "MinLength": "8",
-	    "MaxLength": "41",
-	    "AllowedPattern" : "[a-zA-Z0-9]*",
-	    "ConstraintDescription" : "must contain only alphanumeric characters."
-	},
-	"RDSInboundCIDR" : {
-            "Description" : "Allow inbound traffic to RDS from this CIDR range.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
-            "Type" : "String",
+            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
+            "Default": "<VPCCIDR>",
+            "ConstraintDescription": "must be a valid CIDR range of the form x.x.x.x/x."
+        },
+        "RDSInstanceIdentifier": {
+            "Type": "String",
+            "Description": "The identifier to use for the RDS instance",
+            "Default": "quickstart-tableau-awsdata"
+        },
+        "RDSDatabasePort": {
+            "Description": "The port that the RDS instance will listen on and that will be allowed through the Security Group. ",
+            "Type": "String",
+            "Default": "5432"
+        },
+        "RDSDatabaseName": {
+            "Default": "quickstart",
+            "Description": "The name of the initial database created when the redshift cluster is provisioned",
+            "Type": "String",
+            "MinLength": "1",
+            "MaxLength": "64",
+            "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
+            "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters."
+        },
+        "RDSMultiAZ": {
+            "Default": "true",
+            "Description": "When true, launch a multi availability zone RDS instance.",
+            "Type": "String",
+            "AllowedValues": [
+                "true",
+                "false"
+            ],
+            "ConstraintDescription": "true or false"
+        },
+        "RDSAllocatedStorage": {
+            "Default": "5",
+            "Description": "The size of the database (Gb)",
+            "Type": "Number",
+            "MinValue": "5",
+            "MaxValue": "1024",
+            "ConstraintDescription": "must be between 5 and 1024Gb"
+        },
+        "RDSInstanceClass": {
+            "Default": "db.m4.large",
+            "Description": "Database instance class for the provisioned RDS instance.",
+            "Type": "String",
+            "AllowedValues": [
+                "db.m4.large",
+                "db.m4.xlarge",
+                "db.m4.2xlarge",
+                "db.m4.4xlarge",
+                "db.m4.10xlarge",
+                "db.r3.large",
+                "db.r3.xlarge",
+                "db.r3.2xlarge",
+                "db.r3.4xlarge",
+                "db.r3.8xlarge",
+                "db.t2.micro",
+                "db.t2.small",
+                "db.t2.medium",
+                "db.t2.large"
+            ],
+            "ConstraintDescription": "Must be a valid RDS database instance type."
+        },
+        "RDSUsername": {
+            "Default": "postgres",
+            "NoEcho": "false",
+            "Description": "The user name associated with the admin account for the provisioned postgres RDS instance",
+            "Type": "String",
+            "MinLength": "1",
+            "MaxLength": "16",
+            "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
+            "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters."
+        },
+        "RDSPassword": {
+            "NoEcho": "true",
+            "Description": "The password associated with the admin account for the provisioned postgres RDS instance.",
+            "Type": "String",
+            "MinLength": "8",
+            "MaxLength": "41",
+            "AllowedPattern": "[a-zA-Z0-9]*",
+            "ConstraintDescription": "must contain only alphanumeric characters."
+        },
+        "RDSInboundCIDR": {
+            "Description": "Allow inbound traffic to RDS from this CIDR range.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
+            "Type": "String",
             "MinLength": "9",
             "MaxLength": "18",
-            "AllowedPattern" : "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
-	    "Default": "<VPCCIDR>",
-            "ConstraintDescription" : "must be a valid CIDR range of the form x.x.x.x/x."
-	},
-
+            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
+            "Default": "<VPCCIDR>",
+            "ConstraintDescription": "must be a valid CIDR range of the form x.x.x.x/x."
+        },
         "SqlWorkerInstanceType": {
             "AllowedValues": [
                 "t2.nano",
@@ -647,132 +658,141 @@
             "Description": "Amazon EC2 instance type for the SQL Worker instance",
             "Type": "String"
         },
-
-	"TableauServerInboundCIDR" : {
-	    "Description" : "CIDR from which you may connect to web interface or bastion host (e.g., 1.1.1.1/32)",
-	    "Type" : "String",
-	    "MinLength" : "9",
-	    "MaxLength" : "18",
-	    "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
-	    "ConstraintDescription": "Must be a valid IP CIDR range of the form x.x.x.x/x."
-	},
-	"ContentAdminUser" : {
-	    "Description" : "The name of the initial Admin user for Tableau server",
-	    "Type" : "String",
-	    "Default" : "admin",
-	    "MinLength" : "1"
-	},
-	"ContentAdminPassword" : {
-	    "Description" : "The password for the initial Admin user for Tableau server",
-	    "Type" : "String",
-	    "MinLength" : "1",
-	    "NoEcho" : "true"
-	},
-	"TableauServerLicenseKey" : {
-	    "Description" : "License Key (leave blank for trial)",
-	    "Type" : "String",
-	    "Default" : ""
-	},
-	"RegFirstName" : {
-	    "Description" : "First Name",
-	    "Type" : "String",
-	    "MinLength" : "1"
-	},
-	"RegLastName" : {
-	    "Description" : "Last Name",
-	    "Type" : "String",
-	    "MinLength" : "1"
-	},
-	"RegEmail" : {
-	    "Description" : "Email",
-	    "Type" : "String",
-	    "MinLength" : "1"
-	},
-	"RegCompany" : {
-	    "Description" : "Company",
-	    "Type" : "String"
-	},
-	"RegTitle" : {
-	    "Description" : "Title",
-	    "Type" : "String"
-	},
-	"RegDepartment" : {
-	    "Description" : "Department",
-	    "Type" : "String"
-	},
-	"RegIndustry" : {
-	    "Description" : "Industry",
-	    "Type" : "String"
-	},
-	"RegPhone" : {
-	    "Description" : "Phone",
-	    "Type" : "String"
-	},
-	"RegCity" : {
-	    "Description" : "City",
-	    "Type" : "String"
-	},
-	"RegState" : {
-	    "Description" : "State",
-	    "Type" : "String"
-	},
-	"RegZip" : {
-	    "Description" : "ZIP/Postal Code",
-	    "Type" : "String"
-	},
-	"RegCountry" : {
-	    "Description" : "Country",
-	    "Type" : "String"
-	}
+        "TableauServerInboundCIDR": {
+            "Description": "CIDR from which you may connect to web interface or bastion host (e.g., 1.1.1.1/32)",
+            "Type": "String",
+            "MinLength": "9",
+            "MaxLength": "18",
+            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+            "ConstraintDescription": "Must be a valid IP CIDR range of the form x.x.x.x/x."
+        },
+        "ContentAdminUser": {
+            "Description": "The name of the initial Admin user for Tableau server",
+            "Type": "String",
+            "Default": "admin",
+            "MinLength": "1"
+        },
+        "ContentAdminPassword": {
+            "Description": "The password for the initial Admin user for Tableau server",
+            "Type": "String",
+            "MinLength": "1",
+            "NoEcho": "true"
+        },
+        "TableauServerLicenseKey": {
+            "Description": "License Key (leave blank for trial)",
+            "Type": "String",
+            "Default": ""
+        },
+        "RegFirstName": {
+            "Description": "First Name",
+            "Type": "String",
+            "MinLength": "1"
+        },
+        "RegLastName": {
+            "Description": "Last Name",
+            "Type": "String",
+            "MinLength": "1"
+        },
+        "RegEmail": {
+            "Description": "Email",
+            "Type": "String",
+            "MinLength": "1"
+        },
+        "RegCompany": {
+            "Description": "Company",
+            "Type": "String"
+        },
+        "RegTitle": {
+            "Description": "Title",
+            "Type": "String"
+        },
+        "RegDepartment": {
+            "Description": "Department",
+            "Type": "String"
+        },
+        "RegIndustry": {
+            "Description": "Industry",
+            "Type": "String"
+        },
+        "RegPhone": {
+            "Description": "Phone",
+            "Type": "String"
+        },
+        "RegCity": {
+            "Description": "City",
+            "Type": "String"
+        },
+        "RegState": {
+            "Description": "State",
+            "Type": "String"
+        },
+        "RegZip": {
+            "Description": "ZIP/Postal Code",
+            "Type": "String"
+        },
+        "RegCountry": {
+            "Description": "Country",
+            "Type": "String"
+        }
     },
-
     "Conditions": {
-	"NoRDGWInboundCIDRCondition" : {
+        "NoRDGWInboundCIDRCondition": {
             "Fn::Equals": [
-		{ "Ref": "RDGWInboundCIDR" },
-		"<VPCCIDR>"
-	    ]
-	},
-	"NoRedshiftInboundCIDRCondition" : {
+                {
+                    "Ref": "RDGWInboundCIDR"
+                },
+                "<VPCCIDR>"
+            ]
+        },
+        "NoRedshiftInboundCIDRCondition": {
             "Fn::Equals": [
-		{ "Ref": "RedshiftInboundCIDR" },
-		"<VPCCIDR>"
-	    ]
-	},
-	"NoRDSInboundCIDRCondition" : {
+                {
+                    "Ref": "RedshiftInboundCIDR"
+                },
+                "<VPCCIDR>"
+            ]
+        },
+        "NoRDSInboundCIDRCondition": {
             "Fn::Equals": [
-		{ "Ref": "RDSInboundCIDR" },
-		"<VPCCIDR>"
-	    ]
-	},
-	"RedshiftSingleNodeClusterCondition" : {
+                {
+                    "Ref": "RDSInboundCIDR"
+                },
+                "<VPCCIDR>"
+            ]
+        },
+        "RedshiftSingleNodeClusterCondition": {
             "Fn::Equals": [
-		{ "Ref": "RedshiftNumberOfNodes" },
-		"1"
-	    ]
-	},
-	"HostedZoneIsSpecifiedCondition" : {
+                {
+                    "Ref": "RedshiftNumberOfNodes"
+                },
+                "1"
+            ]
+        },
+        "HostedZoneIsSpecifiedCondition": {
             "Fn::Not": [
-		{
-		    "Fn::Equals": [
-			{ "Ref": "HostedZoneName" },
-			"<NONE>"
-		    ]
-		}
-	    ]
-	},
-	"RootStackNameIsSpecifiedCondition" : {
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "HostedZoneName"
+                        },
+                        "<NONE>"
+                    ]
+                }
+            ]
+        },
+        "RootStackNameIsSpecifiedCondition": {
             "Fn::Not": [
-		{
-		    "Fn::Equals": [
-			{ "Ref": "RootStackName" },
-			"<NONE>"
-		    ]
-		}
-	    ]
-	}
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "RootStackName"
+                        },
+                        "<NONE>"
+                    ]
+                }
+            ]
+        }
     },
-
     "Mappings": {
         "AWSInfoRegionMap": {
             "ap-northeast-1": {
@@ -837,747 +857,970 @@
             }
         }
     },
-
     "Resources": {
-
         "IAMRolesStack": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
+                    "Fn::Join": [
+                        "/",
+                        [
                             {
                                 "Fn::FindInMap": [
                                     "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
                                     "QuickStartS3URL"
                                 ]
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "templates/iam-roles.template"
-			]
-		    ]
-		},
-                "Parameters": {
-                    "S3BucketName" : { "Ref": "QSS3BucketName" },
-		    "S3KeyPrefix" : { "Ref": "QSS3KeyPrefix" }
-                }
-            }
-        },
-
-        "LinuxBastionStack" : {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-                "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
                             {
-                                "Fn::FindInMap": [
-                                    "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
-                                    "QuickStartS3URL"
-                                ]
+                                "Ref": "QSS3BucketName"
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "submodules/quickstart-linux-bastion",
-			    "templates/linux-bastion.template"
-			]
-		    ]
-		},
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "templates/iam-roles.template"
+                        ]
+                    ]
+                },
                 "Parameters": {
-                    "PublicSubnet1ID": { "Ref": "PublicSubnet1ID" },
-                    "PublicSubnet2ID": { "Ref": "PublicSubnet2ID" },
-                    "KeyPairName" : { "Ref" : "KeyPairName" },
-                    "VPCID" : { "Ref": "VPCID" },
-                    "RemoteAccessCIDR": { "Ref": "BastionInboundCIDR" },
-                    "BastionAMIOS": { "Ref": "BastionAMIOS" },
-                    "Bastion1InstanceType": { "Ref": "BastionInstanceType" },
-                    "Bastion2InstanceType": { "Ref": "BastionInstanceType" },
-                    "Bastion1PrivateIP": { "Ref": "Bastion1PrivateIP" },
-                    "Bastion2PrivateIP": { "Ref": "Bastion2PrivateIP" },
-                    "EnableBanner": "true",
-                    "BastionBanner": { "Ref": "BastionBanner" }
-                }
-            }
-
-        },
-
-        "RDGWStack" : {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-                "TemplateURL": {
-		    "Fn::Join" : [
-			"/" ,
-			[ 
-			    {
-				"Fn::FindInMap": [
-				    "AWSInfoRegionMap",
-				    { "Ref": "AWS::Region" },
-				    "QuickStartS3URL"
-				]
-			    },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "submodules/quickstart-microsoft-rdgateway",
-			    "templates/rdgw-standalone.template"
-			]
-		    ]
-		},
-                "Parameters": {
-		    "AdminPassword" : { "Ref": "RDGWAdminPassword" },
-                    "AdminUser" : { "Ref": "RDGWAdminUser" },
-                    "KeyPairName" : { "Ref": "KeyPairName" },
-		    "DomainDNSName" : { "Ref": "DomainDNSName" },
-                    "PublicSubnet1ID": { "Ref": "PublicSubnet1ID" },
-                    "PublicSubnet2ID": { "Ref": "PublicSubnet2ID" },
-		    "QSS3BucketName": "quickstart-reference",
-		    "QSS3KeyPrefix": "microsoft/rdgateway/latest",
-		    "RDGW1InstanceType": { "Ref": "RDGWInstanceType" },
-		    "RDGW1NetBIOSName": { "Ref": "RDGW1NetBIOSName" },
-		    "RDGW1PrivateIP": { "Ref": "RDGW1PrivateIP" },
-		    "RDGW2InstanceType": { "Ref": "RDGWInstanceType" },
-		    "RDGW2NetBIOSName": { "Ref": "RDGW2NetBIOSName" },
-		    "RDGW2PrivateIP": { "Ref": "RDGW2PrivateIP" },
-                    "RDGWCIDR" : {
-			"Fn::If": [
-                            "NoRDGWInboundCIDRCondition",
-                            { "Ref": "VPCCIDR" },
-                            { "Ref": "RDGWInboundCIDR" }
-			]
+                    "S3BucketName": {
+                        "Ref": "QSS3BucketName"
                     },
-                    "VPCID" : { "Ref": "VPCID" }
+                    "S3KeyPrefix": {
+                        "Ref": "QSS3KeyPrefix"
+                    }
                 }
             }
         },
-
+        "LinuxBastionStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL": {
+                    "Fn::Join": [
+                        "/",
+                        [
+                            {
+                                "Fn::FindInMap": [
+                                    "AWSInfoRegionMap",
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
+                                    "QuickStartS3URL"
+                                ]
+                            },
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "submodules/quickstart-linux-bastion",
+                            "templates/linux-bastion.template"
+                        ]
+                    ]
+                },
+                "Parameters": {
+                    "PublicSubnet1ID": {
+                        "Ref": "PublicSubnet1ID"
+                    },
+                    "PublicSubnet2ID": {
+                        "Ref": "PublicSubnet2ID"
+                    },
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
+                    },
+                    "VPCID": {
+                        "Ref": "VPCID"
+                    },
+                    "RemoteAccessCIDR": {
+                        "Ref": "BastionInboundCIDR"
+                    },
+                    "BastionAMIOS": {
+                        "Ref": "BastionAMIOS"
+                    },
+                    "Bastion1InstanceType": {
+                        "Ref": "BastionInstanceType"
+                    },
+                    "Bastion2InstanceType": {
+                        "Ref": "BastionInstanceType"
+                    },
+                    "Bastion1PrivateIP": {
+                        "Ref": "Bastion1PrivateIP"
+                    },
+                    "Bastion2PrivateIP": {
+                        "Ref": "Bastion2PrivateIP"
+                    },
+                    "EnableBanner": "true",
+                    "BastionBanner": {
+                        "Ref": "BastionBanner"
+                    }
+                }
+            }
+        },
+        "RDGWStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL": {
+                    "Fn::Join": [
+                        "/",
+                        [
+                            {
+                                "Fn::FindInMap": [
+                                    "AWSInfoRegionMap",
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
+                                    "QuickStartS3URL"
+                                ]
+                            },
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "submodules/quickstart-microsoft-rdgateway",
+                            "templates/rdgw-standalone.template"
+                        ]
+                    ]
+                },
+                "Parameters": {
+                    "AdminPassword": {
+                        "Ref": "RDGWAdminPassword"
+                    },
+                    "AdminUser": {
+                        "Ref": "RDGWAdminUser"
+                    },
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
+                    },
+                    "DomainDNSName": {
+                        "Ref": "DomainDNSName"
+                    },
+                    "PublicSubnet1ID": {
+                        "Ref": "PublicSubnet1ID"
+                    },
+                    "PublicSubnet2ID": {
+                        "Ref": "PublicSubnet2ID"
+                    },
+                    "QSS3BucketName": "quickstart-reference",
+                    "QSS3KeyPrefix": "microsoft/rdgateway/latest",
+                    "RDGW1InstanceType": {
+                        "Ref": "RDGWInstanceType"
+                    },
+                    "RDGW1NetBIOSName": {
+                        "Ref": "RDGW1NetBIOSName"
+                    },
+                    "RDGW1PrivateIP": {
+                        "Ref": "RDGW1PrivateIP"
+                    },
+                    "RDGW2InstanceType": {
+                        "Ref": "RDGWInstanceType"
+                    },
+                    "RDGW2NetBIOSName": {
+                        "Ref": "RDGW2NetBIOSName"
+                    },
+                    "RDGW2PrivateIP": {
+                        "Ref": "RDGW2PrivateIP"
+                    },
+                    "RDGWCIDR": {
+                        "Fn::If": [
+                            "NoRDGWInboundCIDRCondition",
+                            {
+                                "Ref": "VPCCIDR"
+                            },
+                            {
+                                "Ref": "RDGWInboundCIDR"
+                            }
+                        ]
+                    },
+                    "VPCID": {
+                        "Ref": "VPCID"
+                    }
+                }
+            }
+        },
         "RedshiftClusterStack": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
+                    "Fn::Join": [
+                        "/",
+                        [
                             {
                                 "Fn::FindInMap": [
                                     "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
                                     "QuickStartS3URL"
                                 ]
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "templates/redshift-cluster.template"
-			]
-		    ]
-		},
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "templates/redshift-cluster.template"
+                        ]
+                    ]
+                },
                 "Parameters": {
-                    "VPC" : { "Ref": "VPCID" },
-                    "ClusterSubnetID": { "Ref": "PrivateSubnet1ID" },
-                    "DatabaseName": { "Ref": "RedshiftDatabaseName" },
+                    "VPC": {
+                        "Ref": "VPCID"
+                    },
+                    "ClusterSubnetID": {
+                        "Ref": "PrivateSubnet1ID"
+                    },
+                    "DatabaseName": {
+                        "Ref": "RedshiftDatabaseName"
+                    },
                     "ClusterType": {
-			"Fn::If": [
+                        "Fn::If": [
                             "RedshiftSingleNodeClusterCondition",
                             "single-node",
                             "multi-node"
-			]
+                        ]
                     },
-                    "NumberOfNodes" : { "Ref": "RedshiftNumberOfNodes" },
-                    "NodeType" : { "Ref": "RedshiftNodeType" },
-                    "MasterUsername" : { "Ref": "RedshiftUsername" },
-                    "MasterUserPassword" : { "Ref": "RedshiftPassword" },
-                    "InboundTraffic" : {
-			"Fn::If": [
+                    "NumberOfNodes": {
+                        "Ref": "RedshiftNumberOfNodes"
+                    },
+                    "NodeType": {
+                        "Ref": "RedshiftNodeType"
+                    },
+                    "MasterUsername": {
+                        "Ref": "RedshiftUsername"
+                    },
+                    "MasterUserPassword": {
+                        "Ref": "RedshiftPassword"
+                    },
+                    "InboundTraffic": {
+                        "Fn::If": [
                             "NoRedshiftInboundCIDRCondition",
-                            { "Ref": "VPCCIDR" },
-                            { "Ref": "RedshiftInboundCIDR" }
-			]
+                            {
+                                "Ref": "VPCCIDR"
+                            },
+                            {
+                                "Ref": "RedshiftInboundCIDR"
+                            }
+                        ]
                     },
-                    "DatabasePort" : { "Ref": "RedshiftDatabasePort" }
+                    "DatabasePort": {
+                        "Ref": "RedshiftDatabasePort"
+                    }
                 }
             }
         },
-
-	"RDSInstanceStack": {
+        "RDSInstanceStack": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
+                    "Fn::Join": [
+                        "/",
+                        [
                             {
                                 "Fn::FindInMap": [
                                     "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
                                     "QuickStartS3URL"
                                 ]
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "templates/rds-instance.template"
-			]
-		    ]
-		},
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "templates/rds-instance.template"
+                        ]
+                    ]
+                },
                 "Parameters": {
-                    "VpcId" : { "Ref": "VPCID" },
-                    "Subnets": {
-			"Fn::Join" : [
-			    ",",
-			    [ 
-				{ "Ref": "PrivateSubnet1ID" },
-				{ "Ref": "PrivateSubnet2ID" }
-			    ]
-			]
-		    },
-		    "DBIdentifier": { "Ref" : "RDSInstanceIdentifier" },
-		    "DatabasePort" : { "Ref" : "RDSDatabasePort" },
-		    "DBName" : { "Ref" : "RDSDatabaseName" },
-		    "DBUser" : { "Ref" : "RDSUsername" },
-		    "DBPassword" : { "Ref" : "RDSPassword" },
-                    "InboundTraffic" : {
-			"Fn::If": [
-                            "NoRDSInboundCIDRCondition",
-                            { "Ref": "VPCCIDR" },
-                            { "Ref": "RedshiftInboundCIDR" }
-			]
+                    "VpcId": {
+                        "Ref": "VPCID"
                     },
-
-		    "DBAllocatedStorage" : { "Ref" : "RDSAllocatedStorage" },
-		    "DBInstanceClass" : { "Ref" : "RDSInstanceClass" },
-		    "MultiAZDatabase" : { "Ref" : "RDSMultiAZ" }
+                    "Subnets": {
+                        "Fn::Join": [
+                            ",",
+                            [
+                                {
+                                    "Ref": "PrivateSubnet1ID"
+                                },
+                                {
+                                    "Ref": "PrivateSubnet2ID"
+                                }
+                            ]
+                        ]
+                    },
+                    "DBIdentifier": {
+                        "Ref": "RDSInstanceIdentifier"
+                    },
+                    "DatabasePort": {
+                        "Ref": "RDSDatabasePort"
+                    },
+                    "DBName": {
+                        "Ref": "RDSDatabaseName"
+                    },
+                    "DBUser": {
+                        "Ref": "RDSUsername"
+                    },
+                    "DBPassword": {
+                        "Ref": "RDSPassword"
+                    },
+                    "InboundTraffic": {
+                        "Fn::If": [
+                            "NoRDSInboundCIDRCondition",
+                            {
+                                "Ref": "VPCCIDR"
+                            },
+                            {
+                                "Ref": "RedshiftInboundCIDR"
+                            }
+                        ]
+                    },
+                    "DBAllocatedStorage": {
+                        "Ref": "RDSAllocatedStorage"
+                    },
+                    "DBInstanceClass": {
+                        "Ref": "RDSInstanceClass"
+                    },
+                    "MultiAZDatabase": {
+                        "Ref": "RDSMultiAZ"
+                    }
                 }
             }
         },
-
         "SQLWorkerStack": {
             "Type": "AWS::CloudFormation::Stack",
-            "DependsOn": ["RedshiftClusterStack", "RDSInstanceStack"],
+            "DependsOn": [
+                "RedshiftClusterStack",
+                "RDSInstanceStack"
+            ],
             "Properties": {
                 "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
+                    "Fn::Join": [
+                        "/",
+                        [
                             {
                                 "Fn::FindInMap": [
                                     "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
                                     "QuickStartS3URL"
                                 ]
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "templates/sql-worker.template"
-			]
-		    ]
-		},
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "templates/sql-worker.template"
+                        ]
+                    ]
+                },
                 "Parameters": {
-                    "KeyPairName" : { "Ref": "KeyPairName" },
-                    "InstanceType" : { "Ref": "SqlWorkerInstanceType" },
-                    "RedshiftClusterId" : { "Fn::GetAtt": [
-                        "RedshiftClusterStack",
-                        "Outputs.RedshiftClusterId"
-                    ]
-					  },
-                    "RedshiftHost": { "Fn::GetAtt": [
-                        "RedshiftClusterStack",
-                        "Outputs.RedshiftHost"
-                    ]
-				    },
-                    "RDSHost" : { "Fn::GetAtt": [
-                        "RDSInstanceStack",
-                        "Outputs.DBAddress"
-                    ]
-				},
-                    "RDSDBName" :  { "Fn::GetAtt": [
-                        "RDSInstanceStack",
-                        "Outputs.DBName"
-                    ]
-				   },
-                    "RedshiftDBName" : {
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
+                    },
+                    "InstanceType": {
+                        "Ref": "SqlWorkerInstanceType"
+                    },
+                    "RedshiftClusterId": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftClusterId"
+                        ]
+                    },
+                    "RedshiftHost": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftHost"
+                        ]
+                    },
+                    "RDSHost": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBAddress"
+                        ]
+                    },
+                    "RDSDBName": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBName"
+                        ]
+                    },
+                    "RedshiftDBName": {
                         "Fn::GetAtt": [
                             "RedshiftClusterStack",
                             "Outputs.RedshiftDatabaseName"
                         ]
                     },
-                    "RedshiftDatabasePort" : {
+                    "RedshiftDatabasePort": {
                         "Fn::GetAtt": [
                             "RedshiftClusterStack",
                             "Outputs.RedshiftPort"
                         ]
                     },
-                    "RDSDatabasePort" : {
-			"Fn::GetAtt": [
+                    "RDSDatabasePort": {
+                        "Fn::GetAtt": [
                             "RDSInstanceStack",
                             "Outputs.Port"
-                        ] 
+                        ]
                     },
-                    "RedshiftUsername" : {
+                    "RedshiftUsername": {
                         "Fn::GetAtt": [
                             "RedshiftClusterStack",
                             "Outputs.RedshiftUsername"
                         ]
                     },
-                    "RDSUsername" : {
+                    "RDSUsername": {
                         "Fn::GetAtt": [
                             "RDSInstanceStack",
                             "Outputs.DBUser"
-                        ] 
+                        ]
                     },
-                    "RedshiftPassword" : {
+                    "RedshiftPassword": {
                         "Fn::GetAtt": [
                             "RedshiftClusterStack",
                             "Outputs.RedshiftPassword"
                         ]
                     },
-                    "RDSPassword" : {
+                    "RDSPassword": {
                         "Fn::GetAtt": [
                             "RDSInstanceStack",
                             "Outputs.DBPassword"
-                        ] 
+                        ]
                     },
-                    "IamInstanceProfile" : {
+                    "IamInstanceProfile": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
                             "Outputs.InstanceProfileEc2Worker"
                         ]
                     },
-                    "IAMRoleEc2Worker" : {
+                    "IAMRoleEc2Worker": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
                             "Outputs.IAMRoleEc2Worker"
                         ]
                     },
-                    "IAMRoleEc2WorkerArn" : {
+                    "IAMRoleEc2WorkerArn": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
                             "Outputs.IAMRoleEc2WorkerArn"
                         ]
                     },
-                    "IAMRoleRedshiftWorker" : {
+                    "IAMRoleRedshiftWorker": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
                             "Outputs.IAMRoleRedshiftWorker"
                         ]
                     },
-                    "IAMRoleRedshiftWorkerArn" : {
+                    "IAMRoleRedshiftWorkerArn": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
                             "Outputs.IAMRoleRedshiftWorkerArn"
                         ]
                     },
-                    "SubnetId":{ "Ref": "PrivateSubnet1ID" },
-                    "VpcId": { "Ref": "VPCID" },
-                    "QSS3BucketName" : { "Ref": "QSS3BucketName" },
-                    "QSS3KeyPrefix" : { "Ref": "QSS3KeyPrefix" },
-                    "QuickStartS3URL" : {
-		        "Fn::FindInMap": [
+                    "SubnetId": {
+                        "Ref": "PrivateSubnet1ID"
+                    },
+                    "VpcId": {
+                        "Ref": "VPCID"
+                    },
+                    "QSS3BucketName": {
+                        "Ref": "QSS3BucketName"
+                    },
+                    "QSS3KeyPrefix": {
+                        "Ref": "QSS3KeyPrefix"
+                    },
+                    "QuickStartS3URL": {
+                        "Fn::FindInMap": [
                             "AWSInfoRegionMap",
-                            { "Ref": "AWS::Region" },
+                            {
+                                "Ref": "AWS::Region"
+                            },
                             "QuickStartS3URL"
                         ]
                     }
                 }
             }
         },
-
-        "TableauServerStack" : {
+        "TableauServerStack": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
+                    "Fn::Join": [
+                        "/",
+                        [
                             {
                                 "Fn::FindInMap": [
                                     "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
                                     "QuickStartS3URL"
                                 ]
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "templates/tableau-server-single-server.template"
-			]
-		    ]
-		},
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "templates/tableau-server-single-server.template"
+                        ]
+                    ]
+                },
                 "Parameters": {
-                    "KeyPairName" : { "Ref": "KeyPairName" },
-                    "QSS3BucketName" : { "Ref": "QSS3BucketName" },
-                    "QSS3KeyPrefix" : { "Ref": "QSS3KeyPrefix" },
-                    "ContentAdminUser": { "Ref": "ContentAdminUser" },
-                    "ContentAdminPassword": { "Ref": "ContentAdminPassword" },
-                    "RegFirstName": { "Ref": "RegFirstName" },
-                    "RegLastName": { "Ref": "RegLastName" },
-                    "RegEmail": { "Ref": "RegEmail" },
-                    "RegCompany": { "Ref": "RegCompany" },
-                    "RegTitle": { "Ref": "RegTitle" },
-                    "RegDepartment": { "Ref": "RegDepartment" },
-                    "RegIndustry": { "Ref": "RegIndustry" },
-                    "RegPhone": { "Ref": "RegPhone" },
-                    "RegCity": { "Ref": "RegCity" },
-                    "RegState": { "Ref": "RegState" },
-                    "RegZip": { "Ref": "RegZip" },
-                    "RegCountry": { "Ref": "RegCountry" },
-                    "TableauServerLicenseKey": { "Ref": "TableauServerLicenseKey" },
-                    "IamInstanceProfile" : {
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
+                    },
+                    "QSS3BucketName": {
+                        "Ref": "QSS3BucketName"
+                    },
+                    "QSS3KeyPrefix": {
+                        "Ref": "QSS3KeyPrefix"
+                    },
+                    "ContentAdminUser": {
+                        "Ref": "ContentAdminUser"
+                    },
+                    "ContentAdminPassword": {
+                        "Ref": "ContentAdminPassword"
+                    },
+                    "RegFirstName": {
+                        "Ref": "RegFirstName"
+                    },
+                    "RegLastName": {
+                        "Ref": "RegLastName"
+                    },
+                    "RegEmail": {
+                        "Ref": "RegEmail"
+                    },
+                    "RegCompany": {
+                        "Ref": "RegCompany"
+                    },
+                    "RegTitle": {
+                        "Ref": "RegTitle"
+                    },
+                    "RegDepartment": {
+                        "Ref": "RegDepartment"
+                    },
+                    "RegIndustry": {
+                        "Ref": "RegIndustry"
+                    },
+                    "RegPhone": {
+                        "Ref": "RegPhone"
+                    },
+                    "RegCity": {
+                        "Ref": "RegCity"
+                    },
+                    "RegState": {
+                        "Ref": "RegState"
+                    },
+                    "RegZip": {
+                        "Ref": "RegZip"
+                    },
+                    "RegCountry": {
+                        "Ref": "RegCountry"
+                    },
+                    "TableauServerLicenseKey": {
+                        "Ref": "TableauServerLicenseKey"
+                    },
+                    "IamInstanceProfile": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
                             "Outputs.InstanceProfileEc2Worker"
                         ]
                     },
-		    "IAMRoleEc2Worker" : {
+                    "IAMRoleEc2Worker": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
                             "Outputs.IAMRoleEc2Worker"
                         ]
                     },
-                    "VpcId" : { "Ref": "VPCID" }, 
-                    "SubnetID" : { "Ref": "PublicSubnet1ID" },
-                    "RedshiftHost" :{
+                    "VpcId": {
+                        "Ref": "VPCID"
+                    },
+                    "SubnetID": {
+                        "Ref": "PublicSubnet1ID"
+                    },
+                    "RedshiftHost": {
                         "Fn::GetAtt": [
                             "RedshiftClusterStack",
                             "Outputs.RedshiftHost"
                         ]
                     },
-                    "RedshiftDatabasePort" :{
+                    "RedshiftDatabasePort": {
                         "Fn::GetAtt": [
                             "RedshiftClusterStack",
                             "Outputs.RedshiftPort"
                         ]
                     },
-		    "RedshiftUsername" : {
-			"Ref" : "RedshiftUsername"
-		    },
-		    "RedshiftPassword" : {
-			"Ref" : "RedshiftPassword"
-		    },
-		    "RedshiftDatabaseName" : {
-			"Ref" : "RedshiftDatabaseName"
-		    },
-                    "RDSHost" :{
+                    "RedshiftUsername": {
+                        "Ref": "RedshiftUsername"
+                    },
+                    "RedshiftPassword": {
+                        "Ref": "RedshiftPassword"
+                    },
+                    "RedshiftDatabaseName": {
+                        "Ref": "RedshiftDatabaseName"
+                    },
+                    "RDSHost": {
                         "Fn::GetAtt": [
                             "RDSInstanceStack",
                             "Outputs.DBAddress"
                         ]
                     },
-                    "RDSDatabasePort" :{
+                    "RDSDatabasePort": {
                         "Fn::GetAtt": [
                             "RDSInstanceStack",
                             "Outputs.DBPort"
                         ]
                     },
-		    "RDSUsername" : {
-			"Ref" : "RDSUsername"
-		    },
-		    "RDSPassword" : {
-			"Ref" : "RDSPassword"
-		    },
-		    "RDSDatabaseName" : {
-			"Ref" : "RDSDatabaseName"
-		    }
+                    "RDSUsername": {
+                        "Ref": "RDSUsername"
+                    },
+                    "RDSPassword": {
+                        "Ref": "RDSPassword"
+                    },
+                    "RDSDatabaseName": {
+                        "Ref": "RDSDatabaseName"
+                    }
                 }
             }
         },
-
-        "DnsRecordSetStack" : {
+        "DnsRecordSetStack": {
             "Type": "AWS::CloudFormation::Stack",
-	    "DependsOn": [
-		"LinuxBastionStack",
-		"RDGWStack",
-		"RedshiftClusterStack",
-		"RDSInstanceStack",
-		"SQLWorkerStack",
-		"TableauServerStack"
-	    ],
-	    "Condition": "HostedZoneIsSpecifiedCondition",
+            "DependsOn": [
+                "LinuxBastionStack",
+                "RDGWStack",
+                "RedshiftClusterStack",
+                "RDSInstanceStack",
+                "SQLWorkerStack",
+                "TableauServerStack"
+            ],
+            "Condition": "HostedZoneIsSpecifiedCondition",
             "Properties": {
                 "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
+                    "Fn::Join": [
+                        "/",
+                        [
                             {
                                 "Fn::FindInMap": [
                                     "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
                                     "QuickStartS3URL"
                                 ]
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "templates/route53-recordsets.template"
-			]
-		    ]
-		},
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "templates/route53-recordsets.template"
+                        ]
+                    ]
+                },
                 "Parameters": {
-		    "RootStackName" : {
-			"Fn::If": [
+                    "RootStackName": {
+                        "Fn::If": [
                             "RootStackNameIsSpecifiedCondition",
-                            { "Ref": "RootStackName" },
-                            { "Ref": "AWS::StackName" }
-			]
+                            {
+                                "Ref": "RootStackName"
+                            },
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
                     },
-		    "HostedZoneName": { "Ref": "HostedZoneName" },
-		    "Bastion1PublicDnsName": {
-			"Fn::GetAtt": [
-			    "LinuxBastionStack",
-			    "Outputs.LinuxBastion1PublicDNSName"
-			]
-		    },
-		    "Bastion2PublicDnsName": {
-			"Fn::GetAtt": [
-			    "LinuxBastionStack",
-			    "Outputs.LinuxBastion2PublicDNSName"
-			]
-		    },
-		    "RDGW1PublicIP": {
-			"Fn::GetAtt": [
-			    "RDGWStack",
-			    "Outputs.RDGW1ElasticIP"
-			]
-		    },
-		    "RDGW2PublicIP": {
-			"Fn::GetAtt": [
-			    "RDGWStack",
-			    "Outputs.RDGW2ElasticIP"
-			]
-		    },
-		    "TableauServerPublicDnsName": {
-			"Fn::GetAtt": [
-			    "TableauServerStack",
-			    "Outputs.PublicDnsName"
-			]
-		    },
-		    "TableauServerPrivateDnsName": {
-			"Fn::GetAtt": [
-			    "TableauServerStack",
-			    "Outputs.PrivateDnsName"
-			]
-		    },
-		    "SqlWorkerPrivateDnsName": {
-			"Fn::GetAtt": [
-			    "SQLWorkerStack",
-			    "Outputs.PrivateDnsName"
-			]
-		    },
-		    "RedshiftPrivateDnsName": {
-			"Fn::GetAtt": [
-			    "RedshiftClusterStack",
-			    "Outputs.RedshiftHost"
-			]
-		    },
-		    "RDSPrivateDnsName": {
-			"Fn::GetAtt": [
-			    "RDSInstanceStack",
-			    "Outputs.DBAddress"
-			]
-		    }
+                    "HostedZoneName": {
+                        "Ref": "HostedZoneName"
+                    },
+                    "Bastion1PublicDnsName": {
+                        "Fn::GetAtt": [
+                            "LinuxBastionStack",
+                            "Outputs.LinuxBastion1PublicDNSName"
+                        ]
+                    },
+                    "Bastion2PublicDnsName": {
+                        "Fn::GetAtt": [
+                            "LinuxBastionStack",
+                            "Outputs.LinuxBastion2PublicDNSName"
+                        ]
+                    },
+                    "RDGW1PublicIP": {
+                        "Fn::GetAtt": [
+                            "RDGWStack",
+                            "Outputs.RDGW1ElasticIP"
+                        ]
+                    },
+                    "RDGW2PublicIP": {
+                        "Fn::GetAtt": [
+                            "RDGWStack",
+                            "Outputs.RDGW2ElasticIP"
+                        ]
+                    },
+                    "TableauServerPublicDnsName": {
+                        "Fn::GetAtt": [
+                            "TableauServerStack",
+                            "Outputs.PublicDnsName"
+                        ]
+                    },
+                    "TableauServerPrivateDnsName": {
+                        "Fn::GetAtt": [
+                            "TableauServerStack",
+                            "Outputs.PrivateDnsName"
+                        ]
+                    },
+                    "SqlWorkerPrivateDnsName": {
+                        "Fn::GetAtt": [
+                            "SQLWorkerStack",
+                            "Outputs.PrivateDnsName"
+                        ]
+                    },
+                    "RedshiftPrivateDnsName": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftHost"
+                        ]
+                    },
+                    "RDSPrivateDnsName": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBAddress"
+                        ]
+                    }
                 }
             }
         }
     },
     "Outputs": {
-	"TableauServerURL": {
-	    "Description": "URL through which Tableau Server can be accessed.",
-	    "Value": {
-		"Fn::Join": [
-		    "",
-		    [
-			"http://",
-			{
-			    "Fn::If": [
-				"HostedZoneIsSpecifiedCondition",
-				{
-				    "Fn::GetAtt": [
-					"DnsRecordSetStack",
-					"Outputs.TableauServerPublicName"
-				    ]
-				},
-				{ "Fn::GetAtt": [ "TableauServerStack", "Outputs.PublicDnsName" ] }
-			    ]
-			},
-			":",
-			{ "Fn::GetAtt": [ "TableauServerStack", "Outputs.PublicGatewayPort" ] },
-			"/"
-		    ]
-		]
-	    }
-	},
-	"Bastion1PublicName": {
-	    "Description": "Convenient Name for Bastion1 Public Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.Bastion1PublicName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "LinuxBastionStack",
-			    "Outputs.LinuxBastion1PublicDNSName"
-			]
-		    }
-		]
-	    }
-	},
-	"Bastion2PublicName": {
-	    "Description": "Convenient Name for Bastion2 Public Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.Bastion2PublicName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "LinuxBastionStack",
-			    "Outputs.LinuxBastion2PublicDNSName"
-			]
-		    }
-		]
-	    }
-	},
-	"RDGW1PublicName": {
-	    "Condition": "HostedZoneIsSpecifiedCondition",
-	    "Description": "Convenient Name for RDGW1 Public Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.RDGW1PublicName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "RDGWStack",
-			    "Outputs.RDGW1ElasticIP"
-			]
-		    }
-		]
-	    }
-	},
-	"RDGW2PublicName": {
-	    "Description": "Convenient Name for RDGW2 Public Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.RDGW2PublicName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "RDGWStack",
-			    "Outputs.RDGW2ElasticIP"
-			]
-		    }
-		]
-	    }
-	},
-	"TableauServerPublicName": {
-	    "Description": "Convenient Name for TableauServer Public Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.TableauServerPublicName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "TableauServerStack",
-			    "Outputs.PublicDnsName"
-			]
-		    }
-		]
-	    }
-	},
-	"TableauServerPrivateName": {
-	    "Description": "Convenient Name for TableauServer Private Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.TableauServerPrivateName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "TableauServerStack",
-			    "Outputs.PrivateDnsName"
-			]
-		    }
-		]
-	    }
-	},
-	"SqlWorkerPrivateName": {
-	    "Description": "Convenient Name for SQL Worker Private Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.SqlWorkerPrivateName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "SQLWorkerStack",
-			    "Outputs.PrivateDnsName"
-			]
-		    }
-		]
-	    }
-	},
-	"RedshiftPrivateName": {
-	    "Description": "Convenient Name for Redshift Private Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.RedshiftPrivateName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "RedshiftClusterStack",
-			    "Outputs.RedshiftHost"
-			]
-		    }
-		]
-	    }
-	},
-	"RDSPrivateName": {
-	    "Description": "Convenient Name for Postgres RDS Private Access",
-	    "Value": {
-		"Fn::If": [
-		    "HostedZoneIsSpecifiedCondition",
-		    {
-			"Fn::GetAtt": [
-			    "DnsRecordSetStack",
-			    "Outputs.RDSPrivateName"
-			]
-		    },
-		    {
-			"Fn::GetAtt": [
-			    "RDSInstanceStack",
-			    "Outputs.DBAddress"
-			]
-		    }
-		]
-	    }
-	}
+        "TableauServerURL": {
+            "Description": "URL through which Tableau Server can be accessed.",
+            "Value": {
+                "Fn::Join": [
+                    "",
+                    [
+                        "http://",
+                        {
+                            "Fn::If": [
+                                "HostedZoneIsSpecifiedCondition",
+                                {
+                                    "Fn::GetAtt": [
+                                        "DnsRecordSetStack",
+                                        "Outputs.TableauServerPublicName"
+                                    ]
+                                },
+                                {
+                                    "Fn::GetAtt": [
+                                        "TableauServerStack",
+                                        "Outputs.PublicDnsName"
+                                    ]
+                                }
+                            ]
+                        },
+                        ":",
+                        {
+                            "Fn::GetAtt": [
+                                "TableauServerStack",
+                                "Outputs.PublicGatewayPort"
+                            ]
+                        },
+                        "/"
+                    ]
+                ]
+            }
+        },
+        "Bastion1PublicName": {
+            "Description": "Convenient Name for Bastion1 Public Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.Bastion1PublicName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "LinuxBastionStack",
+                            "Outputs.LinuxBastion1PublicDNSName"
+                        ]
+                    }
+                ]
+            }
+        },
+        "Bastion2PublicName": {
+            "Description": "Convenient Name for Bastion2 Public Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.Bastion2PublicName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "LinuxBastionStack",
+                            "Outputs.LinuxBastion2PublicDNSName"
+                        ]
+                    }
+                ]
+            }
+        },
+        "RDGW1PublicName": {
+            "Condition": "HostedZoneIsSpecifiedCondition",
+            "Description": "Convenient Name for RDGW1 Public Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.RDGW1PublicName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "RDGWStack",
+                            "Outputs.RDGW1ElasticIP"
+                        ]
+                    }
+                ]
+            }
+        },
+        "RDGW2PublicName": {
+            "Description": "Convenient Name for RDGW2 Public Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.RDGW2PublicName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "RDGWStack",
+                            "Outputs.RDGW2ElasticIP"
+                        ]
+                    }
+                ]
+            }
+        },
+        "TableauServerPublicName": {
+            "Description": "Convenient Name for TableauServer Public Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.TableauServerPublicName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "TableauServerStack",
+                            "Outputs.PublicDnsName"
+                        ]
+                    }
+                ]
+            }
+        },
+        "TableauServerPrivateName": {
+            "Description": "Convenient Name for TableauServer Private Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.TableauServerPrivateName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "TableauServerStack",
+                            "Outputs.PrivateDnsName"
+                        ]
+                    }
+                ]
+            }
+        },
+        "SqlWorkerPrivateName": {
+            "Description": "Convenient Name for SQL Worker Private Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.SqlWorkerPrivateName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "SQLWorkerStack",
+                            "Outputs.PrivateDnsName"
+                        ]
+                    }
+                ]
+            }
+        },
+        "RedshiftPrivateName": {
+            "Description": "Convenient Name for Redshift Private Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.RedshiftPrivateName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftHost"
+                        ]
+                    }
+                ]
+            }
+        },
+        "RDSPrivateName": {
+            "Description": "Convenient Name for Postgres RDS Private Access",
+            "Value": {
+                "Fn::If": [
+                    "HostedZoneIsSpecifiedCondition",
+                    {
+                        "Fn::GetAtt": [
+                            "DnsRecordSetStack",
+                            "Outputs.RDSPrivateName"
+                        ]
+                    },
+                    {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBAddress"
+                        ]
+                    }
+                ]
+            }
+        }
     }
 }

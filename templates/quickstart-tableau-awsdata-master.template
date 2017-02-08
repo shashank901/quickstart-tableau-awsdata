@@ -12,7 +12,7 @@
                         "KeyPairName",
                         "QSS3BucketName",
                         "QSS3KeyPrefix",
-			"HostedZoneName"
+                        "HostedZoneName"
                     ]
                 },
                 {
@@ -22,7 +22,7 @@
                     "Parameters": [
                         "AvailabilityZones",
                         "BastionInboundCIDR",
-			"RDGWInboundCIDR",
+                        "RDGWInboundCIDR",
                         "TableauServerInboundCIDR",
                         "RDGWAdminPassword",
                         "RedshiftPassword",
@@ -67,13 +67,13 @@
                         "default": "Remote Desktop Gateway Configuration"
                     },
                     "Parameters": [
-			"RDGWAdminUser",
-			"DomainDNSName",
-			"RDGWInstanceType",
-			"RDGW1NetBIOSName",
-			"RDGW1PrivateIP",
-			"RDGW2NetBIOSName",
-			"RDGW2PrivateIP"
+                        "RDGWAdminUser",
+                        "DomainDNSName",
+                        "RDGWInstanceType",
+                        "RDGW1NetBIOSName",
+                        "RDGW1PrivateIP",
+                        "RDGW2NetBIOSName",
+                        "RDGW2PrivateIP"
                     ]
                 },
                 {
@@ -94,7 +94,7 @@
                         "default": "Postgress RDS Instance Configuration"
                     },
                     "Parameters": [
-			"RDSInstanceIdentifier",
+                        "RDSInstanceIdentifier",
                         "RDSDatabasePort",
                         "RDSDatabaseName",
                         "RDSMultiAZ",
@@ -119,7 +119,7 @@
                     "Parameters": [
                         "ContentAdminUser",
                         "TableauServerLicenseKey"
-                        ]                  
+                    ]
                 }
             ],
             "ParameterLabels": {
@@ -135,14 +135,12 @@
                 "HostedZoneName": {
                     "default": "Hosted Zone Name"
                 },
-
                 "AvailabilityZones": {
                     "default": "Availability Zones"
                 },
                 "VPCDefinition": {
                     "default": "VPC Definition"
                 },
-
                 "BastionInstanceType": {
                     "default": "Bastion Instance Type"
                 },
@@ -161,7 +159,6 @@
                 "BastionInboundCIDR": {
                     "default": "Bastion Inbound CIDR"
                 },
-
                 "RDGWAdminPassword": {
                     "default": "Remote Desktop Gateway Admin Password"
                 },
@@ -189,7 +186,6 @@
                 "RDGWInboundCIDR": {
                     "default": "Remote Desktop Gateway Inbound CIDR"
                 },
-
                 "RedshiftDatabasePort": {
                     "default": "Redshift Database Port"
                 },
@@ -211,96 +207,91 @@
                 "RedshiftInboundCIDR": {
                     "default": "Redshift Inbound CIDR"
                 },
-
                 "RDSInstanceIdentifier": {
                     "default": "RDS Instance Identifier"
                 },
                 "RDSDatabasePort": {
                     "default": "RDS Database Port"
                 },
-                "RDSDatabaseName" : {
-		    "default": "RDS Database Name"
-		},
-                "RDSMultiAZ" : {
-		    "default": "RDS MultiAZ"
-		},
-                "RDSInstanceClass" : {
-		    "default": "RDS Instance Class"
-		},
-                "RDSAllocatedStorage" : {
-		    "default": "RDS Allocated Storage"
-		},
-                "RDSUsername" : {
-		    "default": "RDS Username"
-		},
-                "RDSPassword" : {
-		    "default": "RDS Password"
-		},
-                "RDSInboundCIDR" : {
-		    "default": "RDS Inbound CIDR"
-		},
-
+                "RDSDatabaseName": {
+                    "default": "RDS Database Name"
+                },
+                "RDSMultiAZ": {
+                    "default": "RDS MultiAZ"
+                },
+                "RDSInstanceClass": {
+                    "default": "RDS Instance Class"
+                },
+                "RDSAllocatedStorage": {
+                    "default": "RDS Allocated Storage"
+                },
+                "RDSUsername": {
+                    "default": "RDS Username"
+                },
+                "RDSPassword": {
+                    "default": "RDS Password"
+                },
+                "RDSInboundCIDR": {
+                    "default": "RDS Inbound CIDR"
+                },
                 "SqlWorkerInstanceType": {
-		    "default": "SQL Worker Instance Type"
-		},
-
-		"TableauServerInboundCIDR": {
-		    "default": "Tableau Server Inbound CIDR"
-		},
+                    "default": "SQL Worker Instance Type"
+                },
+                "TableauServerInboundCIDR": {
+                    "default": "Tableau Server Inbound CIDR"
+                },
                 "ContentAdminUser": {
-		    "default": "Content Admin User"
-		},
+                    "default": "Content Admin User"
+                },
                 "ContentAdminPassword": {
-		    "default": "Content Admin Password"
-		},
+                    "default": "Content Admin Password"
+                },
                 "TableauServerLicenseKey": {
-		    "default": "Tableau Server License Key"
-		},
+                    "default": "Tableau Server License Key"
+                },
                 "RegFirstName": {
-		    "default": "Reg First Name"
-		},
+                    "default": "Reg First Name"
+                },
                 "RegLastName": {
-		    "default": "Reg Last Name"
-		},
+                    "default": "Reg Last Name"
+                },
                 "RegEmail": {
-		    "default": "Reg Email"
-		},
+                    "default": "Reg Email"
+                },
                 "RegCompany": {
-		    "default": "Reg Company"
-		},
+                    "default": "Reg Company"
+                },
                 "RegTitle": {
-		    "default": "Reg Title"
-		},
+                    "default": "Reg Title"
+                },
                 "RegDepartment": {
-		    "default": "Reg Department"
-		},
+                    "default": "Reg Department"
+                },
                 "RegIndustry": {
-		    "default": "Reg Industry"
-		},
+                    "default": "Reg Industry"
+                },
                 "RegPhone": {
-		    "default": "Reg Phone"
-		},
+                    "default": "Reg Phone"
+                },
                 "RegCity": {
-		    "default": "Reg City"
-		},
+                    "default": "Reg City"
+                },
                 "RegState": {
-		    "default": "Reg State"
-		},
+                    "default": "Reg State"
+                },
                 "RegZip": {
-		    "default": "Reg Zip"
-		},
+                    "default": "Reg Zip"
+                },
                 "RegCountry": {
-		    "default": "Reg Country"
-		}
+                    "default": "Reg Country"
+                }
             }
         }
     },
-
     "Parameters": {
-
         "KeyPairName": {
-	    "Description" : "Amazon EC2 Key Pair",
-	    "Type" : "AWS::EC2::KeyPair::KeyName"
+            "Description": "Amazon EC2 Key Pair",
+            "Type": "AWS::EC2::KeyPair::KeyName"
         },
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
@@ -321,7 +312,6 @@
             "Description": "Name of Hosted Zone within which the Quick Start will create convenience DNS entries for AWS Resources created by the Quick Start.  If you do not wish to create convenience DNS entries or are not using AWS Route53 for DNS, enter '<NONE>', otherwise enter the Hosted Zone name including the trailing period, for example 'dev.example.com.'.",
             "Type": "String"
         },
-
         "AvailabilityZones": {
             "Description": "List of Availability Zones to use for the subnets in the VPC. Note: The logical order is preserved.",
             "Type": "List<AWS::EC2::AvailabilityZone::Name>"
@@ -329,9 +319,8 @@
         "VPCDefinition": {
             "Description": "VPC Definition name from Map maintained in this Quick Start's master template.  You can support multiple VPC Definitions by extending this Map and choosing the appropriate name.  If you do not need to change the VPC Definition, simply choose the default.",
             "Type": "String",
-	    "Default": "QuickstartDefault"
+            "Default": "QuickstartDefault"
         },
-
         "BastionInstanceType": {
             "AllowedValues": [
                 "t2.nano",
@@ -386,7 +375,6 @@
             "Description": "Allowed CIDR block for external SSH access to the bastions",
             "Type": "String"
         },
-
         "RDGWAdminPassword": {
             "Description": "Password for the administrative account. Must be at least 8 characters containing letters, numbers and symbols",
             "Type": "String",
@@ -457,247 +445,275 @@
             "Description": "Allowed CIDR Block for external access to the Remote Desktop Gateways. Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
             "Type": "String"
         },
-
-	"SqlWorkerInstanceType": {
-	    "AllowedValues": [
-		"t2.nano",
-		"t2.micro",
-		"t2.small",
-		"t2.medium",
-		"t2.large",
-		"m3.large",
-		"m3.xlarge",
-		"m3.2xlarge",
-		"m4.large",
-		"m4.xlarge",
-		"m4.2xlarge",
-		"m4.4xlarge"
-	    ],
-	    "Default": "t2.micro",
-	    "Description": "Amazon EC2 instance type for the SQL Worker instance",
-	    "Type": "String"
-	},
-
-	"RedshiftDatabaseName": {
-      	    "Description": "The name of the first database to be created when the redshift cluster is created",
-      	    "Type": "String",
-      	    "Default": "quickstart",
-      	    "AllowedPattern": "([a-z]|[0-9])+",
-      	    "ConstraintDescription" : "must contain a-z or 0-9 only."
-    	},
-    	"RedshiftNumberOfNodes": {
-      	    "Description": "The number of compute nodes in the redshift cluster.  When cluster type is specified as single-node, the NumberOfNodes parameter should be specified as 1.  When cluster type is specified as multi-node, the NumberOfNodes parameter should be greater than 1",
-      	    "Type": "Number",
-      	    "Default": "2"
-    	},
-	"RedshiftNodeType": {
-      	    "Description": "The node type to be provisioned for the redshift cluster",
-      	    "Type": "String",
-      	    "Default": "dc1.large",
-      	    "AllowedValues" : [ "dw1.xlarge", "dw1.8xlarge", "dw2.large", "dw2.8xlarge", "dc1.large", "dc1.8xlarge", "ds1.xlarge", "ds1.8xlarge", "ds2.xlarge", "ds2.8xlarge" ]
-	    ,
-      	    "ConstraintDescription" : "must be a valid RedShift node type."
-    	},
-    	"RedshiftUsername": {
-      	    "Description": "The user name associated with the master user account for the redshift cluster that is being created",
-      	    "Type": "String",
-      	    "Default": "redshift",
-      	    "AllowedPattern": "([a-z])([a-z]|[0-9])*",
-      	    "ConstraintDescription" : "must start with a-z and contain only a-z or 0-9."
-    	},
-   	"RedshiftPassword": {
-      	    "Description": "The password associated with the master user account for the redshift cluster that is being created. ",
-      	    "Type": "String",
-      	    "NoEcho": "true",
-      	    "MinLength": "8",
-      	    "MaxLength": "64",
-      	    "AllowedPattern" : "[a-zA-Z0-9~`!#$%^&*()-_+={}|;:,.<>\\[\\]]*",
-      	    "ConstraintDescription" : "Between 8 and 64 chars in length; must contain at least one uppercase letter, one lowercase letter, and one number; can use any printable ASCII character (ASCII code 33 to 126) except ' (single quote), \" (double quote), \\, /, @, or space."
-    	},
-        "RedshiftInboundCIDR" : {
-            "Description" : "Allow inbound traffic to the cluster from this CIDR range.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
-            "Type" : "String",
+        "SqlWorkerInstanceType": {
+            "AllowedValues": [
+                "t2.nano",
+                "t2.micro",
+                "t2.small",
+                "t2.medium",
+                "t2.large",
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.2xlarge",
+                "m4.4xlarge"
+            ],
+            "Default": "t2.micro",
+            "Description": "Amazon EC2 instance type for the SQL Worker instance",
+            "Type": "String"
+        },
+        "RedshiftDatabaseName": {
+            "Description": "The name of the first database to be created when the redshift cluster is created",
+            "Type": "String",
+            "Default": "quickstart",
+            "AllowedPattern": "([a-z]|[0-9])+",
+            "ConstraintDescription": "must contain a-z or 0-9 only."
+        },
+        "RedshiftNumberOfNodes": {
+            "Description": "The number of compute nodes in the redshift cluster.  When cluster type is specified as single-node, the NumberOfNodes parameter should be specified as 1.  When cluster type is specified as multi-node, the NumberOfNodes parameter should be greater than 1",
+            "Type": "Number",
+            "Default": "2"
+        },
+        "RedshiftNodeType": {
+            "Description": "The node type to be provisioned for the redshift cluster",
+            "Type": "String",
+            "Default": "dc1.large",
+            "AllowedValues": [
+                "dw1.xlarge",
+                "dw1.8xlarge",
+                "dw2.large",
+                "dw2.8xlarge",
+                "dc1.large",
+                "dc1.8xlarge",
+                "ds1.xlarge",
+                "ds1.8xlarge",
+                "ds2.xlarge",
+                "ds2.8xlarge"
+            ],
+            "ConstraintDescription": "must be a valid RedShift node type."
+        },
+        "RedshiftUsername": {
+            "Description": "The user name associated with the master user account for the redshift cluster that is being created",
+            "Type": "String",
+            "Default": "redshift",
+            "AllowedPattern": "([a-z])([a-z]|[0-9])*",
+            "ConstraintDescription": "must start with a-z and contain only a-z or 0-9."
+        },
+        "RedshiftPassword": {
+            "Description": "The password associated with the master user account for the redshift cluster that is being created. ",
+            "Type": "String",
+            "NoEcho": "true",
+            "MinLength": "8",
+            "MaxLength": "64",
+            "AllowedPattern": "[a-zA-Z0-9~`!#$%^&*()-_+={}|;:,.<>\\[\\]]*",
+            "ConstraintDescription": "Between 8 and 64 chars in length; must contain at least one uppercase letter, one lowercase letter, and one number; can use any printable ASCII character (ASCII code 33 to 126) except ' (single quote), \" (double quote), \\, /, @, or space."
+        },
+        "RedshiftInboundCIDR": {
+            "Description": "Allow inbound traffic to the cluster from this CIDR range.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
+            "Type": "String",
             "MinLength": "9",
             "MaxLength": "18",
-            "AllowedPattern" : "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
-	    "Default": "<VPCCIDR>",
-            "ConstraintDescription" : "must be a valid CIDR range of the form x.x.x.x/x."
+            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
+            "Default": "<VPCCIDR>",
+            "ConstraintDescription": "must be a valid CIDR range of the form x.x.x.x/x."
         },
-    	"RedshiftDatabasePort": {
-      	    "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
-      	    "Type": "String",
-      	    "Default": "5439"
-    	},
-
-	"RDSInstanceIdentifier": {
-	    "Type":"String",
-	    "Description":"The identifier to use for the RDS instance",
-	    "Default": "quickstart-tableau-awsdata"
-	},
-    	"RDSDatabasePort": {
-      	    "Description": "The port that the RDS instance will listen on and that will be allowed through the Security Group. ",
-      	    "Type": "String",
-      	    "Default": "5432"
-    	},
-	"RDSDatabaseName": {
-	    "Default": "quickstart",
-	    "Description" : "The name of the initial database created when the redshift cluster is provisioned",
-	    "Type": "String",
-	    "MinLength": "1",
-	    "MaxLength": "64",
-	    "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
-	    "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
-	},
-	"RDSMultiAZ": {
-	    "Default": "true",
-	    "Description" : "When true, launch a multi availability zone RDS instance.",
-	    "Type": "String",
-	    "AllowedValues" : [ "true", "false" ],
-	    "ConstraintDescription" : "true or false"
-	},
-	"RDSAllocatedStorage":{
-	    "Default":"5",
-	    "Description":"The size of the database (Gb)",
-	    "Type":"Number",
-	    "MinValue":"5",
-	    "MaxValue":"1024",
-	    "ConstraintDescription":"must be between 5 and 1024Gb"
-	},
-	"RDSInstanceClass": {
-	    "Default": "db.m4.large",
-	    "Description" : "Database instance class for the provisioned RDS instance.",
-	    "Type": "String",
-	    "AllowedValues" : [ "db.m4.large", "db.m4.xlarge", "db.m4.2xlarge", "db.m4.4xlarge", "db.m4.10xlarge", "db.r3.large", "db.r3.xlarge", "db.r3.2xlarge", "db.r3.4xlarge", "db.r3.8xlarge", "db.t2.micro", "db.t2.small", "db.t2.medium", "db.t2.large" ],
-	    "ConstraintDescription" : "Must be a valid RDS database instance type."
-	},
-	"RDSUsername": {
-	    "Default": "postgres",
-	    "NoEcho": "false",
-	    "Description" : "The user name associated with the admin account for the provisioned postgres RDS instance",
-	    "Type": "String",
-	    "MinLength": "1",
-	    "MaxLength": "16",
-	    "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
-	    "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
-	},
-	"RDSPassword": {
-	    "NoEcho": "true",
-	    "Description" : "The password associated with the admin account for the provisioned postgres RDS instance.",
-	    "Type": "String",
-	    "MinLength": "8",
-	    "MaxLength": "41",
-	    "AllowedPattern" : "[a-zA-Z0-9]*",
-	    "ConstraintDescription" : "must contain only alphanumeric characters."
-	},
-        "RDSInboundCIDR" : {
-            "Description" : "Allow inbound traffic to RDS from this CIDR range.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
-            "Type" : "String",
+        "RedshiftDatabasePort": {
+            "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
+            "Type": "String",
+            "Default": "5439"
+        },
+        "RDSInstanceIdentifier": {
+            "Type": "String",
+            "Description": "The identifier to use for the RDS instance",
+            "Default": "quickstart-tableau-awsdata"
+        },
+        "RDSDatabasePort": {
+            "Description": "The port that the RDS instance will listen on and that will be allowed through the Security Group. ",
+            "Type": "String",
+            "Default": "5432"
+        },
+        "RDSDatabaseName": {
+            "Default": "quickstart",
+            "Description": "The name of the initial database created when the redshift cluster is provisioned",
+            "Type": "String",
+            "MinLength": "1",
+            "MaxLength": "64",
+            "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
+            "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters."
+        },
+        "RDSMultiAZ": {
+            "Default": "true",
+            "Description": "When true, launch a multi availability zone RDS instance.",
+            "Type": "String",
+            "AllowedValues": [
+                "true",
+                "false"
+            ],
+            "ConstraintDescription": "true or false"
+        },
+        "RDSAllocatedStorage": {
+            "Default": "5",
+            "Description": "The size of the database (Gb)",
+            "Type": "Number",
+            "MinValue": "5",
+            "MaxValue": "1024",
+            "ConstraintDescription": "must be between 5 and 1024Gb"
+        },
+        "RDSInstanceClass": {
+            "Default": "db.m4.large",
+            "Description": "Database instance class for the provisioned RDS instance.",
+            "Type": "String",
+            "AllowedValues": [
+                "db.m4.large",
+                "db.m4.xlarge",
+                "db.m4.2xlarge",
+                "db.m4.4xlarge",
+                "db.m4.10xlarge",
+                "db.r3.large",
+                "db.r3.xlarge",
+                "db.r3.2xlarge",
+                "db.r3.4xlarge",
+                "db.r3.8xlarge",
+                "db.t2.micro",
+                "db.t2.small",
+                "db.t2.medium",
+                "db.t2.large"
+            ],
+            "ConstraintDescription": "Must be a valid RDS database instance type."
+        },
+        "RDSUsername": {
+            "Default": "postgres",
+            "NoEcho": "false",
+            "Description": "The user name associated with the admin account for the provisioned postgres RDS instance",
+            "Type": "String",
+            "MinLength": "1",
+            "MaxLength": "16",
+            "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
+            "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters."
+        },
+        "RDSPassword": {
+            "NoEcho": "true",
+            "Description": "The password associated with the admin account for the provisioned postgres RDS instance.",
+            "Type": "String",
+            "MinLength": "8",
+            "MaxLength": "41",
+            "AllowedPattern": "[a-zA-Z0-9]*",
+            "ConstraintDescription": "must contain only alphanumeric characters."
+        },
+        "RDSInboundCIDR": {
+            "Description": "Allow inbound traffic to RDS from this CIDR range.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
+            "Type": "String",
             "MinLength": "9",
             "MaxLength": "18",
-            "AllowedPattern" : "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
-	    "Default": "<VPCCIDR>",
-            "ConstraintDescription" : "must be a valid CIDR range of the form x.x.x.x/x."
+            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
+            "Default": "<VPCCIDR>",
+            "ConstraintDescription": "must be a valid CIDR range of the form x.x.x.x/x."
         },
-
-	"TableauServerInboundCIDR" : {
-	    "Description" : "CIDR from which you may connect to web interface or bastion host (e.g., 1.1.1.1/32)",
-	    "Type" : "String",
-	    "MinLength" : "9",
-	    "MaxLength" : "18",
-	    "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
-	    "ConstraintDescription": "Must be a valid IP CIDR range of the form x.x.x.x/x."
-	},
-	"ContentAdminUser" : {
-	    "Description" : "The name of the initial Admin user for Tableau server",
-	    "Type" : "String",
-	    "Default" : "admin",
-	    "MinLength" : "1"
-	},
-	"ContentAdminPassword" : {
-	    "Description" : "The password for the initial Admin user for Tableau server",
-	    "Type" : "String",
-	    "MinLength" : "1",
-	    "NoEcho" : "true"
-	},
-	"TableauServerLicenseKey" : {
-	    "Description" : "License Key (leave blank for trial)",
-	    "Type" : "String",
-	    "Default" : ""
-	},
-	"RegFirstName" : {
-	    "Description" : "First Name",
-	    "Type" : "String",
-	    "MinLength" : "1"
-	},
-	"RegLastName" : {
-	    "Description" : "Last Name",
-	    "Type" : "String",
-	    "MinLength" : "1"
-	},
-	"RegEmail" : {
-	    "Description" : "Email",
-	    "Type" : "String",
-	    "MinLength" : "1"
-	},
-	"RegCompany" : {
-	    "Description" : "Company",
-	    "Type" : "String"
-	},
-	"RegTitle" : {
-	    "Description" : "Title",
-	    "Type" : "String"
-	},
-	"RegDepartment" : {
-	    "Description" : "Department",
-	    "Type" : "String"
-	},
-	"RegIndustry" : {
-	    "Description" : "Industry",
-	    "Type" : "String"
-	},
-	"RegPhone" : {
-	    "Description" : "Phone",
-	    "Type" : "String"
-	},
-	"RegCity" : {
-	    "Description" : "City",
-	    "Type" : "String"
-	},
-	"RegState" : {
-	    "Description" : "State",
-	    "Type" : "String"
-	},
-	"RegZip" : {
-	    "Description" : "ZIP/Postal Code",
-	    "Type" : "String"
-	},
-	"RegCountry" : {
-	    "Description" : "Country",
-	    "Type" : "String"
-	}
+        "TableauServerInboundCIDR": {
+            "Description": "CIDR from which you may connect to web interface or bastion host (e.g., 1.1.1.1/32)",
+            "Type": "String",
+            "MinLength": "9",
+            "MaxLength": "18",
+            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+            "ConstraintDescription": "Must be a valid IP CIDR range of the form x.x.x.x/x."
+        },
+        "ContentAdminUser": {
+            "Description": "The name of the initial Admin user for Tableau server",
+            "Type": "String",
+            "Default": "admin",
+            "MinLength": "1"
+        },
+        "ContentAdminPassword": {
+            "Description": "The password for the initial Admin user for Tableau server",
+            "Type": "String",
+            "MinLength": "1",
+            "NoEcho": "true"
+        },
+        "TableauServerLicenseKey": {
+            "Description": "License Key (leave blank for trial)",
+            "Type": "String",
+            "Default": ""
+        },
+        "RegFirstName": {
+            "Description": "First Name",
+            "Type": "String",
+            "MinLength": "1"
+        },
+        "RegLastName": {
+            "Description": "Last Name",
+            "Type": "String",
+            "MinLength": "1"
+        },
+        "RegEmail": {
+            "Description": "Email",
+            "Type": "String",
+            "MinLength": "1"
+        },
+        "RegCompany": {
+            "Description": "Company",
+            "Type": "String"
+        },
+        "RegTitle": {
+            "Description": "Title",
+            "Type": "String"
+        },
+        "RegDepartment": {
+            "Description": "Department",
+            "Type": "String"
+        },
+        "RegIndustry": {
+            "Description": "Industry",
+            "Type": "String"
+        },
+        "RegPhone": {
+            "Description": "Phone",
+            "Type": "String"
+        },
+        "RegCity": {
+            "Description": "City",
+            "Type": "String"
+        },
+        "RegState": {
+            "Description": "State",
+            "Type": "String"
+        },
+        "RegZip": {
+            "Description": "ZIP/Postal Code",
+            "Type": "String"
+        },
+        "RegCountry": {
+            "Description": "Country",
+            "Type": "String"
+        }
     },
-
     "Conditions": {
-	"NoRDGWInboundCIDRCondition" : {
+        "NoRDGWInboundCIDRCondition": {
             "Fn::Equals": [
-		{ "Ref": "RDGWInboundCIDR" },
-		"<VPCCIDR>"
-	    ]
-	},
-	"NoRedshiftInboundCIDRCondition" : {
+                {
+                    "Ref": "RDGWInboundCIDR"
+                },
+                "<VPCCIDR>"
+            ]
+        },
+        "NoRedshiftInboundCIDRCondition": {
             "Fn::Equals": [
-		{ "Ref": "RedshiftInboundCIDR" },
-		"<VPCCIDR>"
-	    ]
-	},
-	"NoRDSInboundCIDRCondition" : {
+                {
+                    "Ref": "RedshiftInboundCIDR"
+                },
+                "<VPCCIDR>"
+            ]
+        },
+        "NoRDSInboundCIDRCondition": {
             "Fn::Equals": [
-		{ "Ref": "RDSInboundCIDR" },
-		"<VPCCIDR>"
-	    ]
-	}
+                {
+                    "Ref": "RDSInboundCIDR"
+                },
+                "<VPCCIDR>"
+            ]
+        }
     },
-
     "Mappings": {
         "AWSInfoRegionMap": {
             "ap-northeast-1": {
@@ -761,328 +777,564 @@
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             }
         },
-	"VPCDefinitions": {
-	    "QuickstartDefault": {
-		"CreateAdditionalPrivateSubnets": "false",
-		"NATInstanceType": "t2.small",
-		"NumberOfAZs": "2",
-		"PrivateSubnet1ACIDR": "10.0.0.0/19",
-		"PrivateSubnet1BCIDR": "10.0.192.0/21",
-		"PrivateSubnet2ACIDR": "10.0.32.0/19",
-		"PrivateSubnet2BCIDR": "10.0.200.0/21",
-		"PrivateSubnet3ACIDR": "10.0.64.0/19",
-		"PrivateSubnet3BCIDR": "10.0.208.0/21",
-		"PrivateSubnet4ACIDR": "10.0.96.0/19",
-		"PrivateSubnet4BCIDR": "10.0.216.0/21",
-		"PublicSubnet1CIDR": "10.0.128.0/20",
-		"PublicSubnet2CIDR": "10.0.144.0/20",
-		"PublicSubnet3CIDR": "10.0.160.0/20",
-		"PublicSubnet4CIDR": "10.0.176.0/20",
-		"VPCCIDR": "10.0.0.0/16"
-	    }
-	}
+        "VPCDefinitions": {
+            "QuickstartDefault": {
+                "CreateAdditionalPrivateSubnets": "false",
+                "NATInstanceType": "t2.small",
+                "NumberOfAZs": "2",
+                "PrivateSubnet1ACIDR": "10.0.0.0/19",
+                "PrivateSubnet1BCIDR": "10.0.192.0/21",
+                "PrivateSubnet2ACIDR": "10.0.32.0/19",
+                "PrivateSubnet2BCIDR": "10.0.200.0/21",
+                "PrivateSubnet3ACIDR": "10.0.64.0/19",
+                "PrivateSubnet3BCIDR": "10.0.208.0/21",
+                "PrivateSubnet4ACIDR": "10.0.96.0/19",
+                "PrivateSubnet4BCIDR": "10.0.216.0/21",
+                "PublicSubnet1CIDR": "10.0.128.0/20",
+                "PublicSubnet2CIDR": "10.0.144.0/20",
+                "PublicSubnet3CIDR": "10.0.160.0/20",
+                "PublicSubnet4CIDR": "10.0.176.0/20",
+                "VPCCIDR": "10.0.0.0/16"
+            }
+        }
     },
-
     "Resources": {
-
-        "VPCStack" : {
+        "VPCStack": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
+                    "Fn::Join": [
+                        "/",
+                        [
                             {
                                 "Fn::FindInMap": [
                                     "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
                                     "QuickStartS3URL"
                                 ]
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "submodules/quickstart-aws-vpc",
-			    "templates/aws-vpc.template"
-			]
-		    ]
-		},
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "submodules/quickstart-aws-vpc",
+                            "templates/aws-vpc.template"
+                        ]
+                    ]
+                },
                 "Parameters": {
-                    "KeyPairName" : { "Ref" : "KeyPairName" },
-                    "AvailabilityZones" : {
-			"Fn::Join": [
-                            ",",
-                            { "Ref": "AvailabilityZones" }
-			]
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
                     },
-                    "NumberOfAZs" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "NumberOfAZs" ] },
-                    "PrivateSubnet1ACIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PrivateSubnet1ACIDR" ] },
-                    "PrivateSubnet2ACIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PrivateSubnet2ACIDR" ] },
-                    "PrivateSubnet3ACIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PrivateSubnet3ACIDR" ] },
-                    "PrivateSubnet4ACIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PrivateSubnet4ACIDR" ] },
-                    "PublicSubnet1CIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PublicSubnet1CIDR" ] }, 
-                    "PublicSubnet2CIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PublicSubnet2CIDR" ] }, 
-                    "PublicSubnet3CIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PublicSubnet3CIDR" ] }, 
-                    "PublicSubnet4CIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PublicSubnet4CIDR" ] }, 
-                    "CreateAdditionalPrivateSubnets" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "CreateAdditionalPrivateSubnets" ] },
-                    "PrivateSubnet1BCIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PrivateSubnet1BCIDR" ] },
-                    "PrivateSubnet2BCIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PrivateSubnet2BCIDR" ] },
-                    "PrivateSubnet3BCIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PrivateSubnet3BCIDR" ] },
-                    "PrivateSubnet4BCIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "PrivateSubnet4BCIDR" ] },
-                    "NATInstanceType" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "NATInstanceType" ] },
-                    "VPCCIDR" : { "Fn::FindInMap" : ["VPCDefinitions", { "Ref": "VPCDefinition" }, "VPCCIDR" ] }
+                    "AvailabilityZones": {
+                        "Fn::Join": [
+                            ",",
+                            {
+                                "Ref": "AvailabilityZones"
+                            }
+                        ]
+                    },
+                    "NumberOfAZs": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "NumberOfAZs"
+                        ]
+                    },
+                    "PrivateSubnet1ACIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PrivateSubnet1ACIDR"
+                        ]
+                    },
+                    "PrivateSubnet2ACIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PrivateSubnet2ACIDR"
+                        ]
+                    },
+                    "PrivateSubnet3ACIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PrivateSubnet3ACIDR"
+                        ]
+                    },
+                    "PrivateSubnet4ACIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PrivateSubnet4ACIDR"
+                        ]
+                    },
+                    "PublicSubnet1CIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PublicSubnet1CIDR"
+                        ]
+                    },
+                    "PublicSubnet2CIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PublicSubnet2CIDR"
+                        ]
+                    },
+                    "PublicSubnet3CIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PublicSubnet3CIDR"
+                        ]
+                    },
+                    "PublicSubnet4CIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PublicSubnet4CIDR"
+                        ]
+                    },
+                    "CreateAdditionalPrivateSubnets": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "CreateAdditionalPrivateSubnets"
+                        ]
+                    },
+                    "PrivateSubnet1BCIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PrivateSubnet1BCIDR"
+                        ]
+                    },
+                    "PrivateSubnet2BCIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PrivateSubnet2BCIDR"
+                        ]
+                    },
+                    "PrivateSubnet3BCIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PrivateSubnet3BCIDR"
+                        ]
+                    },
+                    "PrivateSubnet4BCIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "PrivateSubnet4BCIDR"
+                        ]
+                    },
+                    "NATInstanceType": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "NATInstanceType"
+                        ]
+                    },
+                    "VPCCIDR": {
+                        "Fn::FindInMap": [
+                            "VPCDefinitions",
+                            {
+                                "Ref": "VPCDefinition"
+                            },
+                            "VPCCIDR"
+                        ]
+                    }
                 }
             }
         },
-
-        "TableauAwsdataStack" : {
-	    "DependsOn" : "VPCStack",
+        "TableauAwsdataStack": {
+            "DependsOn": "VPCStack",
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "TemplateURL": {
-		    "Fn::Join" : [
-			"/" , [ 
+                    "Fn::Join": [
+                        "/",
+                        [
                             {
                                 "Fn::FindInMap": [
                                     "AWSInfoRegionMap",
-                                    { "Ref": "AWS::Region" },
+                                    {
+                                        "Ref": "AWS::Region"
+                                    },
                                     "QuickStartS3URL"
                                 ]
                             },
-			    { "Ref": "QSS3BucketName" },
-			    { "Ref": "QSS3KeyPrefix" },
-			    "templates/quickstart-tableau-awsdata.template"
-			]
-		    ]
-		},
+                            {
+                                "Ref": "QSS3BucketName"
+                            },
+                            {
+                                "Ref": "QSS3KeyPrefix"
+                            },
+                            "templates/quickstart-tableau-awsdata.template"
+                        ]
+                    ]
+                },
                 "Parameters": {
-
-		    "RootStackName": { "Ref": "AWS::StackName" },
-
-                    "KeyPairName" : { "Ref" : "KeyPairName" },
-                    "QSS3BucketName" : { "Ref" : "QSS3BucketName" },
-                    "QSS3KeyPrefix" : { "Ref" : "QSS3KeyPrefix" },
-                    "HostedZoneName" : { "Ref" : "HostedZoneName" },
-
-		    "PrivateSubnet1ID" : {
+                    "RootStackName": {
+                        "Ref": "AWS::StackName"
+                    },
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
+                    },
+                    "QSS3BucketName": {
+                        "Ref": "QSS3BucketName"
+                    },
+                    "QSS3KeyPrefix": {
+                        "Ref": "QSS3KeyPrefix"
+                    },
+                    "HostedZoneName": {
+                        "Ref": "HostedZoneName"
+                    },
+                    "PrivateSubnet1ID": {
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.PrivateSubnet1AID"
                         ]
-		    },
-		    "PrivateSubnet2ID" : {
+                    },
+                    "PrivateSubnet2ID": {
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.PrivateSubnet2AID"
                         ]
-		    },
-		    "PublicSubnet1ID" : {
+                    },
+                    "PublicSubnet1ID": {
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.PublicSubnet1ID"
                         ]
-		    },
-		    "PublicSubnet2ID" : {
+                    },
+                    "PublicSubnet2ID": {
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.PublicSubnet2ID"
                         ]
-		    },
-		    "VPCID" : {
+                    },
+                    "VPCID": {
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.VPCID"
                         ]
-		    },
-		    "VPCCIDR" : {
+                    },
+                    "VPCCIDR": {
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.VPCCIDR"
                         ]
-		    },
-		    "RedshiftClusterSubnetID" : {
+                    },
+                    "RedshiftClusterSubnetID": {
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.PrivateSubnet1AID"
                         ]
-		    },
-
-                    "BastionInboundCIDR": { "Ref": "BastionInboundCIDR" },
-                    "BastionAMIOS": { "Ref": "BastionAMIOS" },
-                    "BastionInstanceType": { "Ref": "BastionInstanceType" },
-                    "Bastion1PrivateIP": { "Ref": "Bastion1PrivateIP" },
-                    "Bastion2PrivateIP": { "Ref": "Bastion2PrivateIP" },
-                    "BastionBanner": { "Ref": "BastionBanner" },
-
-		    "RDGWAdminPassword" : { "Ref": "RDGWAdminPassword" },
-                    "RDGWAdminUser" : { "Ref": "RDGWAdminUser" },
-		    "RDGWInstanceType": { "Ref": "RDGWInstanceType" },
-		    "RDGW1NetBIOSName": { "Ref": "RDGW1NetBIOSName" },
-		    "RDGW1PrivateIP": { "Ref": "RDGW1PrivateIP" },
-		    "RDGW2NetBIOSName": { "Ref": "RDGW2NetBIOSName" },
-		    "RDGW2PrivateIP": { "Ref": "RDGW2PrivateIP" },
-		    "RDGWInboundCIDR" : {
-			"Fn::If": [
+                    },
+                    "BastionInboundCIDR": {
+                        "Ref": "BastionInboundCIDR"
+                    },
+                    "BastionAMIOS": {
+                        "Ref": "BastionAMIOS"
+                    },
+                    "BastionInstanceType": {
+                        "Ref": "BastionInstanceType"
+                    },
+                    "Bastion1PrivateIP": {
+                        "Ref": "Bastion1PrivateIP"
+                    },
+                    "Bastion2PrivateIP": {
+                        "Ref": "Bastion2PrivateIP"
+                    },
+                    "BastionBanner": {
+                        "Ref": "BastionBanner"
+                    },
+                    "RDGWAdminPassword": {
+                        "Ref": "RDGWAdminPassword"
+                    },
+                    "RDGWAdminUser": {
+                        "Ref": "RDGWAdminUser"
+                    },
+                    "RDGWInstanceType": {
+                        "Ref": "RDGWInstanceType"
+                    },
+                    "RDGW1NetBIOSName": {
+                        "Ref": "RDGW1NetBIOSName"
+                    },
+                    "RDGW1PrivateIP": {
+                        "Ref": "RDGW1PrivateIP"
+                    },
+                    "RDGW2NetBIOSName": {
+                        "Ref": "RDGW2NetBIOSName"
+                    },
+                    "RDGW2PrivateIP": {
+                        "Ref": "RDGW2PrivateIP"
+                    },
+                    "RDGWInboundCIDR": {
+                        "Fn::If": [
                             "NoRDGWInboundCIDRCondition",
                             {
-				"Fn::GetAtt": [
-				    "VPCStack",
-				    "Outputs.VPCCIDR"
-				]
-			    },
-                            { "Ref": "RDGWInboundCIDR" }
-			]
+                                "Fn::GetAtt": [
+                                    "VPCStack",
+                                    "Outputs.VPCCIDR"
+                                ]
+                            },
+                            {
+                                "Ref": "RDGWInboundCIDR"
+                            }
+                        ]
                     },
-
-		    "RedshiftDatabasePort" : { "Ref" : "RedshiftDatabasePort"},
-		    "RedshiftDatabaseName" : { "Ref" : "RedshiftDatabaseName"},
-    		    "RedshiftNumberOfNodes" : { "Ref" : "RedshiftNumberOfNodes"},
-		    "RedshiftNodeType" : { "Ref" : "RedshiftNodeType"},
-    		    "RedshiftUsername" : { "Ref" : "RedshiftUsername"},
-   		    "RedshiftPassword" : { "Ref" : "RedshiftPassword"},
-		    "RedshiftInboundCIDR" : {
-			"Fn::If": [
+                    "RedshiftDatabasePort": {
+                        "Ref": "RedshiftDatabasePort"
+                    },
+                    "RedshiftDatabaseName": {
+                        "Ref": "RedshiftDatabaseName"
+                    },
+                    "RedshiftNumberOfNodes": {
+                        "Ref": "RedshiftNumberOfNodes"
+                    },
+                    "RedshiftNodeType": {
+                        "Ref": "RedshiftNodeType"
+                    },
+                    "RedshiftUsername": {
+                        "Ref": "RedshiftUsername"
+                    },
+                    "RedshiftPassword": {
+                        "Ref": "RedshiftPassword"
+                    },
+                    "RedshiftInboundCIDR": {
+                        "Fn::If": [
                             "NoRedshiftInboundCIDRCondition",
                             {
-				"Fn::GetAtt": [
-				    "VPCStack",
-				    "Outputs.VPCCIDR"
-				]
-			    },
-                            { "Ref": "RedshiftInboundCIDR" }
-			]
+                                "Fn::GetAtt": [
+                                    "VPCStack",
+                                    "Outputs.VPCCIDR"
+                                ]
+                            },
+                            {
+                                "Ref": "RedshiftInboundCIDR"
+                            }
+                        ]
                     },
-
-		    "RDSInstanceIdentifier" : { "Ref" : "RDSInstanceIdentifier"},
-		    "RDSDatabasePort" : { "Ref" : "RDSDatabasePort"},
-		    "RDSDatabaseName" : { "Ref" : "RDSDatabaseName"},
-		    "RDSMultiAZ" : { "Ref" : "RDSMultiAZ"},
-		    "RDSAllocatedStorage" : { "Ref" : "RDSAllocatedStorage"},
-		    "RDSInstanceClass" : { "Ref" : "RDSInstanceClass"},
-    		    "RDSUsername" : { "Ref" : "RDSUsername"},
-   		    "RDSPassword" : { "Ref" : "RDSPassword"},
-		    "RDSInboundCIDR" : {
-			"Fn::If": [
+                    "RDSInstanceIdentifier": {
+                        "Ref": "RDSInstanceIdentifier"
+                    },
+                    "RDSDatabasePort": {
+                        "Ref": "RDSDatabasePort"
+                    },
+                    "RDSDatabaseName": {
+                        "Ref": "RDSDatabaseName"
+                    },
+                    "RDSMultiAZ": {
+                        "Ref": "RDSMultiAZ"
+                    },
+                    "RDSAllocatedStorage": {
+                        "Ref": "RDSAllocatedStorage"
+                    },
+                    "RDSInstanceClass": {
+                        "Ref": "RDSInstanceClass"
+                    },
+                    "RDSUsername": {
+                        "Ref": "RDSUsername"
+                    },
+                    "RDSPassword": {
+                        "Ref": "RDSPassword"
+                    },
+                    "RDSInboundCIDR": {
+                        "Fn::If": [
                             "NoRDSInboundCIDRCondition",
                             {
-				"Fn::GetAtt": [
-				    "VPCStack",
-				    "Outputs.VPCCIDR"
-				]
-			    },
-                            { "Ref": "RDSInboundCIDR" }
-			]
+                                "Fn::GetAtt": [
+                                    "VPCStack",
+                                    "Outputs.VPCCIDR"
+                                ]
+                            },
+                            {
+                                "Ref": "RDSInboundCIDR"
+                            }
+                        ]
                     },
-
-                    "TableauServerInboundCIDR": { "Ref": "TableauServerInboundCIDR" },
-                    "ContentAdminUser": { "Ref": "ContentAdminUser" },
-                    "ContentAdminPassword": { "Ref": "ContentAdminPassword" },
-                    "TableauServerLicenseKey": { "Ref": "TableauServerLicenseKey" },
-                    "RegFirstName": { "Ref": "RegFirstName" },
-                    "RegLastName": { "Ref": "RegLastName" },
-                    "RegEmail": { "Ref": "RegEmail" },
-                    "RegCompany": { "Ref": "RegCompany" },
-                    "RegTitle": { "Ref": "RegTitle" },
-                    "RegDepartment": { "Ref": "RegDepartment" },
-                    "RegIndustry": { "Ref": "RegIndustry" },
-                    "RegPhone": { "Ref": "RegPhone" },
-                    "RegCity": { "Ref": "RegCity" },
-                    "RegState": { "Ref": "RegState" },
-                    "RegZip": { "Ref": "RegZip" },
-                    "RegCountry": { "Ref": "RegCountry" }  
-		}
+                    "TableauServerInboundCIDR": {
+                        "Ref": "TableauServerInboundCIDR"
+                    },
+                    "ContentAdminUser": {
+                        "Ref": "ContentAdminUser"
+                    },
+                    "ContentAdminPassword": {
+                        "Ref": "ContentAdminPassword"
+                    },
+                    "TableauServerLicenseKey": {
+                        "Ref": "TableauServerLicenseKey"
+                    },
+                    "RegFirstName": {
+                        "Ref": "RegFirstName"
+                    },
+                    "RegLastName": {
+                        "Ref": "RegLastName"
+                    },
+                    "RegEmail": {
+                        "Ref": "RegEmail"
+                    },
+                    "RegCompany": {
+                        "Ref": "RegCompany"
+                    },
+                    "RegTitle": {
+                        "Ref": "RegTitle"
+                    },
+                    "RegDepartment": {
+                        "Ref": "RegDepartment"
+                    },
+                    "RegIndustry": {
+                        "Ref": "RegIndustry"
+                    },
+                    "RegPhone": {
+                        "Ref": "RegPhone"
+                    },
+                    "RegCity": {
+                        "Ref": "RegCity"
+                    },
+                    "RegState": {
+                        "Ref": "RegState"
+                    },
+                    "RegZip": {
+                        "Ref": "RegZip"
+                    },
+                    "RegCountry": {
+                        "Ref": "RegCountry"
+                    }
+                }
             }
-	}
+        }
     },
     "Outputs": {
-	"TableauServerURL": {
-	    "Description": "URL through which Tableau Server can be accessed.",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.TableauServerURL"
-		]
-	    }
-	},
-	"Bastion1PublicName": {
-	    "Description": "Convenient Name for Bastion1 Public Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.Bastion1PublicName"
-		]
-	    }
-	},
-	"Bastion2PublicName": {
-	    "Description": "Convenient Name for Bastion2 Public Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.Bastion2PublicName"
-		]
-	    }
-	},
-	"RDGW1PublicName": {
-	    "Description": "Convenient Name for RDGW1 Public Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.RDGW1PublicName"
-		]
-	    }
-	},
-	"RDGW2PublicName": {
-	    "Description": "Convenient Name for RDGW2 Public Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.RDGW2PublicName"
-		]
-	    }
-	},
-	"TableauServerPublicName": {
-	    "Description": "Convenient Name for TableauServer Public Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.TableauServerPublicName"
-		]
-	    }
-	},
-	"TableauServerPrivateName": {
-	    "Description": "Convenient Name for TableauServer Private Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.TableauServerPrivateName"
-		]
-	    }
-	},
-	"SqlWorkerPrivateName": {
-	    "Description": "Convenient Name for SqlWorker Private Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.SqlWorkerPrivateName"
-		]
-	    }
-	},
-	"RedshiftPrivateName": {
-	    "Description": "Convenient Name for Redshift Private Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.RedshiftPrivateName"
-		]
-	    }
-	},
-	"RDSPrivateName": {
-	    "Description": "Convenient Name for Postgres RDS Private Access",
-	    "Value": {
-		"Fn::GetAtt": [
-		    "TableauAwsdataStack",
-		    "Outputs.RDSPrivateName"
-		]
-	    }
-	}
+        "TableauServerURL": {
+            "Description": "URL through which Tableau Server can be accessed.",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.TableauServerURL"
+                ]
+            }
+        },
+        "Bastion1PublicName": {
+            "Description": "Convenient Name for Bastion1 Public Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.Bastion1PublicName"
+                ]
+            }
+        },
+        "Bastion2PublicName": {
+            "Description": "Convenient Name for Bastion2 Public Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.Bastion2PublicName"
+                ]
+            }
+        },
+        "RDGW1PublicName": {
+            "Description": "Convenient Name for RDGW1 Public Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.RDGW1PublicName"
+                ]
+            }
+        },
+        "RDGW2PublicName": {
+            "Description": "Convenient Name for RDGW2 Public Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.RDGW2PublicName"
+                ]
+            }
+        },
+        "TableauServerPublicName": {
+            "Description": "Convenient Name for TableauServer Public Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.TableauServerPublicName"
+                ]
+            }
+        },
+        "TableauServerPrivateName": {
+            "Description": "Convenient Name for TableauServer Private Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.TableauServerPrivateName"
+                ]
+            }
+        },
+        "SqlWorkerPrivateName": {
+            "Description": "Convenient Name for SqlWorker Private Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.SqlWorkerPrivateName"
+                ]
+            }
+        },
+        "RedshiftPrivateName": {
+            "Description": "Convenient Name for Redshift Private Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.RedshiftPrivateName"
+                ]
+            }
+        },
+        "RDSPrivateName": {
+            "Description": "Convenient Name for Postgres RDS Private Access",
+            "Value": {
+                "Fn::GetAtt": [
+                    "TableauAwsdataStack",
+                    "Outputs.RDSPrivateName"
+                ]
+            }
+        }
     }
 }
-
