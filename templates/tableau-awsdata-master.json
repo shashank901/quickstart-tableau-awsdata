@@ -1,0 +1,210 @@
+[
+    {
+        "ParameterKey": "AvailabilityZones",
+        "ParameterValue": "$[alfred_getaz_2]"
+    },
+    {
+        "ParameterKey": "Bastion1PrivateIP",
+        "ParameterValue": "10.0.128.5"
+    },
+    {
+        "ParameterKey": "Bastion2PrivateIP",
+        "ParameterValue": "10.0.144.5"
+    },
+    {
+        "ParameterKey": "BastionAMIOS",
+        "ParameterValue": "AmazonLinuxHVM"
+    },
+    {
+        "ParameterKey": "BastionBanner",
+        "ParameterValue": "https://s3.amazonaws.com/quickstart-reference/linux/bastion/latest/scripts/banner_message.txt"
+    },
+    {
+        "ParameterKey": "BastionInboundCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    },
+    {
+        "ParameterKey": "BastionInstanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "ContentAdminPassword",
+        "ParameterValue": "$[alfred_genpass_16]"
+    },
+    {
+        "ParameterKey": "ContentAdminUser",
+        "ParameterValue": "admin"
+    },
+    {
+        "ParameterKey": "DomainDNSName",
+        "ParameterValue": "example.com"
+    },
+    {
+        "ParameterKey": "HostedZoneName",
+        "ParameterValue": "<NONE>"
+    },
+    {
+        "ParameterKey": "KeyPairName",
+        "ParameterValue": "$[alfred_getkeypair]"
+    },
+    {
+        "ParameterKey": "RDGW1NetBIOSName",
+        "ParameterValue": "RDGW1"
+    },
+    {
+        "ParameterKey": "RDGW1PrivateIP",
+        "ParameterValue": "10.0.128.11"
+    },
+    {
+        "ParameterKey": "RDGW2NetBIOSName",
+        "ParameterValue": "RDGW2"
+    },
+    {
+        "ParameterKey": "RDGW2PrivateIP",
+        "ParameterValue": "10.0.144.11"
+    },
+    {
+        "ParameterKey": "RDGWAdminPassword",
+        "ParameterValue": "$[alfred_genpass_16]"
+    },
+    {
+        "ParameterKey": "RDGWAdminUser",
+        "ParameterValue": "admin"
+    },
+    {
+        "ParameterKey": "RDGWInboundCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    },
+    {
+        "ParameterKey": "RDGWInstanceType",
+        "ParameterValue": "t2.large"
+    },
+    {
+        "ParameterKey": "RDSAllocatedStorage",
+        "ParameterValue": "5"
+    },
+    {
+        "ParameterKey": "RDSDatabaseName",
+        "ParameterValue": "quickstart"
+    },
+    {
+        "ParameterKey": "RDSDatabasePort",
+        "ParameterValue": "5432"
+    },
+    {
+        "ParameterKey": "RDSInboundCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    },
+    {
+        "ParameterKey": "RDSInstanceClass",
+        "ParameterValue": "db.m4.large"
+    },
+    {
+        "ParameterKey": "RDSInstanceIdentifier",
+        "ParameterValue": "quickstart-tableau-awsdata"
+    },
+    {
+        "ParameterKey": "RDSMultiAZ",
+        "ParameterValue": "true"
+    },
+    {
+        "ParameterKey": "RDSPassword",
+        "ParameterValue": "$[alfred_genpass_16]"
+    },
+    {
+        "ParameterKey": "RDSUsername",
+        "ParameterValue": "postgres"
+    },
+    {
+        "ParameterKey": "RedshiftDatabaseName",
+        "ParameterValue": "quickstart"
+    },
+    {
+        "ParameterKey": "RedshiftDatabasePort",
+        "ParameterValue": "5439"
+    },
+    {
+        "ParameterKey": "RedshiftInboundCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    },
+    {
+        "ParameterKey": "RedshiftNodeType",
+        "ParameterValue": "dc1.large"
+    },
+    {
+        "ParameterKey": "RedshiftNumberOfNodes",
+        "ParameterValue": "2"
+    },
+    {
+        "ParameterKey": "RedshiftPassword",
+        "ParameterValue": "$[alfred_genpass_16]"
+    },
+    {
+        "ParameterKey": "RedshiftUsername",
+        "ParameterValue": "redshift"
+    },
+    {
+        "ParameterKey": "RegCity",
+        "ParameterValue": "TestCity"
+    },
+    {
+        "ParameterKey": "RegCompany",
+        "ParameterValue": "TestCompany"
+    },
+    {
+        "ParameterKey": "RegCountry",
+        "ParameterValue": "TestCountry"
+    },
+    {
+        "ParameterKey": "RegDepartment",
+        "ParameterValue": "TestDepartment"
+    },
+    {
+        "ParameterKey": "RegEmail",
+        "ParameterValue": "test@example.com"
+    },
+    {
+        "ParameterKey": "RegFirstName",
+        "ParameterValue": "TestFirstName"
+    },
+    {
+        "ParameterKey": "RegIndustry",
+        "ParameterValue": "TestIndustry"
+    },
+    {
+        "ParameterKey": "RegLastName",
+        "ParameterValue": "TestLastName"
+    },
+    {
+        "ParameterKey": "RegPhone",
+        "ParameterValue": "TestPhone"
+    },
+    {
+        "ParameterKey": "RegState",
+        "ParameterValue": "TestState"
+    },
+    {
+        "ParameterKey": "RegTitle",
+        "ParameterValue": "TestTitle"
+    },
+    {
+        "ParameterKey": "RegZip",
+        "ParameterValue": "TestZip"
+    },
+    {
+        "ParameterKey": "SqlWorkerInstanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "TableauServerInboundCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    },
+    {
+        "ParameterKey": "TableauServerLicenseKey",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "VPCDefinition",
+        "ParameterValue": "QuickstartDefault"
+    }
+]
