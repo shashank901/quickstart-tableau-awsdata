@@ -199,73 +199,109 @@
                 }
             ],
             "ParameterLabels": {
-                "KeyPairName": {
-                    "default": "EC2 keypair"
-                },
-                "SubnetID": {
-                    "default": "ID of the subnet within which Tableau Server will be launched"
-                },
-                "SourceCidr": {
-                    "default": "Source CIDR for access"
+                "ContentAdminPassword": {
+                    "default": "Portal admin password"
                 },
                 "ContentAdminUser": {
                     "default": "Portal admin username"
                 },
-                "ContentAdminPassword": {
-                    "default": "Portal admin password"
-                },
-                "TableauServerLicenseKey": {
-                    "default": "Tableau Activation Key"
-                },
-                "RegFirstName": {
-                    "default": "First Name"
-                },
-                "RegLastName": {
-                    "default": "Last name"
-                },
-                "RegEmail": {
-                    "default": "Email Address"
-                },
-                "RegCompany": {
-                    "default": "Company"
-                },
-                "RegTitle": {
-                    "default": "Title"
-                },
-                "RegDepartment": {
-                    "default": "Department"
-                },
-                "RegIndustry": {
-                    "default": "Industry"
-                },
-                "RegPhone": {
-                    "default": "Phone"
+                "KeyPairName": {
+                    "default": "EC2 keypair"
                 },
                 "RegCity": {
                     "default": "City"
                 },
+                "RegCompany": {
+                    "default": "Company"
+                },
+                "RegCountry": {
+                    "default": "Country"
+                },
+                "RegDepartment": {
+                    "default": "Department"
+                },
+                "RegEmail": {
+                    "default": "Email Address"
+                },
+                "RegFirstName": {
+                    "default": "First Name"
+                },
+                "RegIndustry": {
+                    "default": "Industry"
+                },
+                "RegLastName": {
+                    "default": "Last name"
+                },
+                "RegPhone": {
+                    "default": "Phone"
+                },
                 "RegState": {
                     "default": "State"
+                },
+                "RegTitle": {
+                    "default": "Title"
                 },
                 "RegZip": {
                     "default": "Zip/Postal Code"
                 },
-                "RegCountry": {
-                    "default": "Country"
+                "SourceCidr": {
+                    "default": "Source CIDR for access"
+                },
+                "SubnetID": {
+                    "default": "ID of the subnet within which Tableau Server will be launched"
+                },
+                "TableauServerLicenseKey": {
+                    "default": "Tableau Activation Key"
                 }
             }
         }
     },
     "Mappings": {
-        "AWSRegion2AMI": {
-            "us-east-1": {
-                "Windows2012r2": "ami-ee7805f9"
+        "AWSAMIRegionMap": {
+            "AMI": {
+                "WS2012R2": "Windows_Server-2012-R2_RTM-English-64Bit-Base-2017.01.11"
             },
-            "us-west-2": {
-                "Windows2012r2": "ami-9d79d4fd"
+            "ap-northeast-1": {
+                "WS2012R2": "ami-7accbe1d"
+            },
+            "ap-northeast-2": {
+                "WS2012R2": "ami-e979af87"
+            },
+            "ap-south-1": {
+                "WS2012R2": "ami-31a6d05e"
+            },
+            "ap-southeast-1": {
+                "WS2012R2": "ami-89e74cea"
+            },
+            "ap-southeast-2": {
+                "WS2012R2": "ami-059d9866"
+            },
+            "ca-central-1": {
+                "WS2012R2": "ami-7805b71c"
+            },
+            "eu-central-1": {
+                "WS2012R2": "ami-6f559800"
+            },
+            "eu-west-1": {
+                "WS2012R2": "ami-dd9eb6ae"
+            },
+            "eu-west-2": {
+                "WS2012R2": "ami-738a8017"
+            },
+            "sa-east-1": {
+                "WS2012R2": "ami-f4d84298"
+            },
+            "us-east-1": {
+                "WS2012R2": "ami-abf616bd"
+            },
+            "us-east-2": {
+                "WS2012R2": "ami-c06d48a5"
             },
             "us-west-1": {
-                "Windows2012r2": "ami-c06b24a0"
+                "WS2012R2": "ami-76227116"
+            },
+            "us-west-2": {
+                "WS2012R2": "ami-1562d075"
             }
         },
         "DefaultConfiguration": {
@@ -285,7 +321,7 @@
             "MachineConfiguration": {
                 "InstanceType": "m4.4xlarge",
                 "VolumeSize": 100,
-                "WindowsVersion": "Windows2012r2"
+                "WindowsVersion": "WS2012R2"
             }
         }
     },
@@ -956,7 +992,7 @@
                 },
                 "ImageId": {
                     "Fn::FindInMap": [
-                        "AWSRegion2AMI",
+                        "AWSAMIRegionMap",
                         {
                             "Ref": "AWS::Region"
                         },
