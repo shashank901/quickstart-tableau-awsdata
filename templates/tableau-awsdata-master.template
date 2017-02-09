@@ -1008,7 +1008,7 @@
                             {
                                 "Ref": "QSS3KeyPrefix"
                             },
-                            "templates/quickstart-tableau-awsdata.template"
+                            "templates/tableau-awsdata.template"
                         ]
                     ]
                 },
