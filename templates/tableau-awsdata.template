@@ -1682,7 +1682,6 @@
             }
         },
         "RDGW1PublicName": {
-            "Condition": "HostedZoneIsSpecifiedCondition",
             "Description": "Convenient Name for RDGW1 Public Access",
             "Value": {
                 "Fn::If": [
