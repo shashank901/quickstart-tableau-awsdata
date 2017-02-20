@@ -411,7 +411,7 @@
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
             "ConstraintDescription": "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
-            "Default": "quickstart-reference-47lining",
+            "Default": "quickstart-reference",
             "Description": "S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
             "Type": "String"
         },
@@ -922,39 +922,53 @@
                     ]
                 },
                 "Parameters": {
+                    "Bastion1InstanceType": {
+                        "Ref": "BastionInstanceType"
+                    },
+                    "Bastion1PrivateIP": {
+                        "Ref": "Bastion1PrivateIP"
+                    },
+                    "Bastion2InstanceType": {
+                        "Ref": "BastionInstanceType"
+                    },
+                    "Bastion2PrivateIP": {
+                        "Ref": "Bastion2PrivateIP"
+                    },
+                    "BastionAMIOS": {
+                        "Ref": "BastionAMIOS"
+                    },
+                    "BastionBanner": {
+                        "Ref": "BastionBanner"
+                    },
+                    "EnableBanner": "true",
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
+                    },
                     "PublicSubnet1ID": {
                         "Ref": "PublicSubnet1ID"
                     },
                     "PublicSubnet2ID": {
                         "Ref": "PublicSubnet2ID"
                     },
-                    "KeyPairName": {
-                        "Ref": "KeyPairName"
+                    "QSS3BucketName": {
+                        "Ref": "QSS3BucketName"
                     },
-                    "VPCID": {
-                        "Ref": "VPCID"
+                    "QSS3KeyPrefix": {
+                        "Fn::Join": [
+                            "/",
+                            [
+                                {
+                                    "Ref": "QSS3KeyPrefix"
+                                },
+                                "submodules/quickstart-linux-bastion"
+                            ]
+                        ]
                     },
                     "RemoteAccessCIDR": {
                         "Ref": "BastionInboundCIDR"
                     },
-                    "BastionAMIOS": {
-                        "Ref": "BastionAMIOS"
-                    },
-                    "Bastion1InstanceType": {
-                        "Ref": "BastionInstanceType"
-                    },
-                    "Bastion2InstanceType": {
-                        "Ref": "BastionInstanceType"
-                    },
-                    "Bastion1PrivateIP": {
-                        "Ref": "Bastion1PrivateIP"
-                    },
-                    "Bastion2PrivateIP": {
-                        "Ref": "Bastion2PrivateIP"
-                    },
-                    "EnableBanner": "true",
-                    "BastionBanner": {
-                        "Ref": "BastionBanner"
+                    "VPCID": {
+                        "Ref": "VPCID"
                     }
                 }
             }
@@ -1005,8 +1019,20 @@
                     "PublicSubnet2ID": {
                         "Ref": "PublicSubnet2ID"
                     },
-                    "QSS3BucketName": "quickstart-reference",
-                    "QSS3KeyPrefix": "microsoft/rdgateway/latest",
+                    "QSS3BucketName": {
+                        "Ref": "QSS3BucketName"
+                    },
+                    "QSS3KeyPrefix": {
+                        "Fn::Join": [
+                            "/",
+                            [
+                                {
+                                    "Ref": "QSS3KeyPrefix"
+                                },
+                                "submodules/quickstart-microsoft-rdgateway"
+                            ]
+                        ]
+                    },
                     "RDGW1InstanceType": {
                         "Ref": "RDGWInstanceType"
                     },
