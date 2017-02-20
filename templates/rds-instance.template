@@ -7,7 +7,7 @@
             "Description": "VpcId of your existing Virtual Private Cloud(VPC)"
         },
         "Subnets": {
-            "Type": "List<String>",
+            "Type": "List<AWS::EC2::Subnet::Id>",
             "Description": "Subnets in the VPC"
         },
         "InboundTraffic": {
@@ -65,7 +65,7 @@
             "ConstraintDescription": "must be between 5 and 1024Gb"
         },
         "DBInstanceClass": {
-            "Default": "db.t2.medium",
+            "Default": "db.t2.large",
             "Description": "The database instance type",
             "Type": "String",
             "ConstraintDescription": "must select a valid database instance type"

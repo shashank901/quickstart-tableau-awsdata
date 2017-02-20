@@ -501,7 +501,7 @@
                 "db.t2.large"
             ],
             "ConstraintDescription": "Must be a valid RDS database instance type.",
-            "Default": "db.m4.large",
+            "Default": "db.t2.large",
             "Description": "Database instance class for the provisioned RDS instance.",
             "Type": "String"
         },

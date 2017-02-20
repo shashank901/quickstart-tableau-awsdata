@@ -97,7 +97,7 @@
     },
     {
         "ParameterKey": "RDSInstanceClass",
-        "ParameterValue": "db.m4.large"
+        "ParameterValue": "db.t2.large"
     },
     {
         "ParameterKey": "RDSInstanceIdentifier",
