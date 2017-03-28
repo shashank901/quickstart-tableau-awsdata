@@ -179,7 +179,7 @@
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
             "ConstraintDescription": "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
-            "Default": "quickstart-reference",
+            "Default": "quickstart-development-ianhill",
             "Description": "S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
             "Type": "String"
         },
@@ -198,49 +198,49 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "AMZNLINUXHVM": "amzn-ami-hvm-2016.09.1.20170119-x86_64-gp2"
+                "Amazon-Linux-HVM": "amzn-ami-hvm-2016.09.1.20170119-x86_64-gp2"
             },
             "ap-northeast-1": {
-                "AMZNLINUXHVM": "ami-56d4ad31"
+                "Amazon-Linux-HVM": "ami-56d4ad31"
             },
             "ap-northeast-2": {
-                "AMZNLINUXHVM": "ami-dac312b4"
+                "Amazon-Linux-HVM": "ami-dac312b4"
             },
             "ap-south-1": {
-                "AMZNLINUXHVM": "ami-f9daac96"
+                "Amazon-Linux-HVM": "ami-f9daac96"
             },
             "ap-southeast-1": {
-                "AMZNLINUXHVM": "ami-dc9339bf"
+                "Amazon-Linux-HVM": "ami-dc9339bf"
             },
             "ap-southeast-2": {
-                "AMZNLINUXHVM": "ami-1c47407f"
+                "Amazon-Linux-HVM": "ami-1c47407f"
             },
             "ca-central-1": {
-                "AMZNLINUXHVM": "ami-ebed508f"
+                "Amazon-Linux-HVM": "ami-ebed508f"
             },
             "eu-central-1": {
-                "AMZNLINUXHVM": "ami-af0fc0c0"
+                "Amazon-Linux-HVM": "ami-af0fc0c0"
             },
             "eu-west-1": {
-                "AMZNLINUXHVM": "ami-70edb016"
+                "Amazon-Linux-HVM": "ami-70edb016"
             },
             "eu-west-2": {
-                "AMZNLINUXHVM": "ami-f1949e95"
+                "Amazon-Linux-HVM": "ami-f1949e95"
             },
             "sa-east-1": {
-                "AMZNLINUXHVM": "ami-80086dec"
+                "Amazon-Linux-HVM": "ami-80086dec"
             },
             "us-east-1": {
-                "AMZNLINUXHVM": "ami-0b33d91d"
+                "Amazon-Linux-HVM": "ami-0b33d91d"
             },
             "us-east-2": {
-                "AMZNLINUXHVM": "ami-c55673a0"
+                "Amazon-Linux-HVM": "ami-c55673a0"
             },
             "us-west-1": {
-                "AMZNLINUXHVM": "ami-165a0876"
+                "Amazon-Linux-HVM": "ami-165a0876"
             },
             "us-west-2": {
-                "AMZNLINUXHVM": "ami-f173cc91"
+                "Amazon-Linux-HVM": "ami-f173cc91"
             }
         }
     },
@@ -784,7 +784,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "AMZNLINUXHVM"
+                        "Amazon-Linux-HVM"
                     ]
                 },
                 "IamInstanceProfile": {

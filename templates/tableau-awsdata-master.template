@@ -57,8 +57,6 @@
                     "Parameters": [
                         "BastionAMIOS",
                         "BastionInstanceType",
-                        "Bastion1PrivateIP",
-                        "Bastion2PrivateIP",
                         "BastionBanner"
                     ]
                 },
@@ -125,12 +123,6 @@
             "ParameterLabels": {
                 "AvailabilityZones": {
                     "default": "Availability Zones"
-                },
-                "Bastion1PrivateIP": {
-                    "default": "Bastion 1 Private IP Address"
-                },
-                "Bastion2PrivateIP": {
-                    "default": "Bastion 2 Private IP Address"
                 },
                 "BastionAMIOS": {
                     "default": "Bastion AMI Operating System"
@@ -293,27 +285,14 @@
             "Description": "List of Availability Zones to use for the subnets in the VPC. Note: The logical order is preserved.",
             "Type": "List<AWS::EC2::AvailabilityZone::Name>"
         },
-        "Bastion1PrivateIP": {
-            "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
-            "ConstraintDescription": "IP address parameter must be in the form x.x.x.x",
-            "Default": "10.0.128.5",
-            "Description": "Fixed private IP for the first bastion located in Availability Zone 1",
-            "Type": "String"
-        },
-        "Bastion2PrivateIP": {
-            "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
-            "ConstraintDescription": "IP address parameter must be in the form x.x.x.x",
-            "Default": "10.0.144.5",
-            "Description": "Fixed private IP for the second bastion located in Availability Zone 2",
-            "Type": "String"
-        },
         "BastionAMIOS": {
             "AllowedValues": [
-                "AmazonLinuxHVM",
-                "CentOS7HVM",
-                "UbuntuServer1404LTSHVM"
+                "Amazon-Linux-HVM",
+                "CentOS-7-HVM",
+                "UbuntuServer-1404-LTS-HVM",
+                "UbuntuServer-1604-LTS-HVM"
             ],
-            "Default": "AmazonLinuxHVM",
+            "Default": "Amazon-Linux-HVM",
             "Description": "The Linux distribution for the AMI to be used for the bastion instances",
             "Type": "String"
         },
@@ -379,7 +358,7 @@
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
             "ConstraintDescription": "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
-            "Default": "quickstart-reference",
+            "Default": "quickstart-development-ianhill",
             "Description": "S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
             "Type": "String"
         },
@@ -1079,12 +1058,6 @@
                     "BastionInstanceType": {
                         "Ref": "BastionInstanceType"
                     },
-                    "Bastion1PrivateIP": {
-                        "Ref": "Bastion1PrivateIP"
-                    },
-                    "Bastion2PrivateIP": {
-                        "Ref": "Bastion2PrivateIP"
-                    },
                     "BastionBanner": {
                         "Ref": "BastionBanner"
                     },
@@ -1255,21 +1228,12 @@
                 ]
             }
         },
-        "Bastion1PublicName": {
-            "Description": "Convenient Name for Bastion1 Public Access",
+        "BastionPublicName": {
+            "Description": "Convenient Name for Bastion Public Access",
             "Value": {
                 "Fn::GetAtt": [
                     "TableauAwsdataStack",
-                    "Outputs.Bastion1PublicName"
-                ]
-            }
-        },
-        "Bastion2PublicName": {
-            "Description": "Convenient Name for Bastion2 Public Access",
-            "Value": {
-                "Fn::GetAtt": [
-                    "TableauAwsdataStack",
-                    "Outputs.Bastion2PublicName"
+                    "Outputs.BastionPublicName"
                 ]
             }
         },

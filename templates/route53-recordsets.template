@@ -10,12 +10,8 @@
             "Description": "Root Stack Name",
             "Type": "String"
         },
-        "Bastion1PublicDnsName": {
-            "Description": "Bastion 1 Public DNS Name",
-            "Type": "String"
-        },
-        "Bastion2PublicDnsName": {
-            "Description": "Bastion 2 Public DNS Name",
+        "BastionEIP": {
+            "Description": "Bastion Elastic IP Address.",
             "Type": "String"
         },
         "RDGW1PublicIP": {
@@ -48,10 +44,10 @@
         }
     },
     "Resources": {
-        "Bastion1PublicRecordSet": {
+        "BastionPublicRecordSet": {
             "Type": "AWS::Route53::RecordSet",
             "Properties": {
-                "Comment": "Convenience DNS Entry for Bastion1",
+                "Comment": "Convenience DNS Entry for Bastion",
                 "HostedZoneName": {
                     "Ref": "HostedZoneName"
                 },
@@ -59,7 +55,7 @@
                     "Fn::Join": [
                         ".",
                         [
-                            "bastion1",
+                            "bastion",
                             {
                                 "Ref": "RootStackName"
                             },
@@ -71,41 +67,11 @@
                 },
                 "ResourceRecords": [
                     {
-                        "Ref": "Bastion1PublicDnsName"
+                        "Ref": "BastionEIP"
                     }
                 ],
                 "TTL": "300",
-                "Type": "CNAME"
-            }
-        },
-        "Bastion2PublicRecordSet": {
-            "Type": "AWS::Route53::RecordSet",
-            "Properties": {
-                "Comment": "Convenience DNS Entry for Bastion2",
-                "HostedZoneName": {
-                    "Ref": "HostedZoneName"
-                },
-                "Name": {
-                    "Fn::Join": [
-                        ".",
-                        [
-                            "bastion2",
-                            {
-                                "Ref": "RootStackName"
-                            },
-                            {
-                                "Ref": "HostedZoneName"
-                            }
-                        ]
-                    ]
-                },
-                "ResourceRecords": [
-                    {
-                        "Ref": "Bastion2PublicDnsName"
-                    }
-                ],
-                "TTL": "300",
-                "Type": "CNAME"
+                "Type": "A"
             }
         },
         "RDGW1PublicRecordSet": {
@@ -320,16 +286,10 @@
         }
     },
     "Outputs": {
-        "Bastion1PublicName": {
+        "BastionPublicName": {
             "Description": "Convenient Name for Bastion1 Public Access",
             "Value": {
-                "Ref": "Bastion1PublicRecordSet"
-            }
-        },
-        "Bastion2PublicName": {
-            "Description": "Convenient Name for Bastion2 Public Access",
-            "Value": {
-                "Ref": "Bastion2PublicRecordSet"
+                "Ref": "BastionPublicRecordSet"
             }
         },
         "RDGW1PublicName": {
