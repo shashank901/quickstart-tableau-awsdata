@@ -287,7 +287,7 @@
     },
     "Outputs": {
         "BastionPublicName": {
-            "Description": "Convenient Name for Bastion1 Public Access",
+            "Description": "Convenient Name for Bastion Public Access",
             "Value": {
                 "Ref": "BastionPublicRecordSet"
             }

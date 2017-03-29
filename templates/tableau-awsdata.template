@@ -305,7 +305,8 @@
             "AllowedValues": [
                 "Amazon-Linux-HVM",
                 "CentOS-7-HVM",
-                "UbuntuServer-1404-LTS-HVM"
+                "UbuntuServer-1404-LTS-HVM",
+                "UbuntuServer-1604-LTS-HVM"
             ],
             "Default": "Amazon-Linux-HVM",
             "Description": "The Linux distribution for the AMI to be used for the bastion instances",
