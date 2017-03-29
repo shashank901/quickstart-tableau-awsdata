@@ -4,16 +4,8 @@
         "ParameterValue": "$[alfred_getaz_2]"
     },
     {
-        "ParameterKey": "Bastion1PrivateIP",
-        "ParameterValue": "10.0.128.5"
-    },
-    {
-        "ParameterKey": "Bastion2PrivateIP",
-        "ParameterValue": "10.0.144.5"
-    },
-    {
         "ParameterKey": "BastionAMIOS",
-        "ParameterValue": "AmazonLinuxHVM"
+        "ParameterValue": "Amazon-Linux-HVM"
     },
     {
         "ParameterKey": "BastionBanner",
