@@ -27,9 +27,9 @@
                         "PublicSubnet2ID",
                         "VPCID",
                         "VPCCIDR",
-			"BastionEIP",
-			"RDGW1ElasticIP",
-			"RDGW2ElasticIP"
+                        "BastionEIP",
+                        "RDGW1ElasticIP",
+                        "RDGW2ElasticIP"
                     ]
                 },
                 {
@@ -264,7 +264,7 @@
             "Description": "Name of Hosted Zone within which the Quick Start will create convenience DNS entries for AWS Resources created by the Quick Start.  If you do not wish to create convenience DNS entries or are not using AWS Route53 for DNS, enter '<NONE>', otherwise enter the Hosted Zone name including the trailing period, for example 'dev.example.com.'.",
             "Type": "String"
         },
-	"BastionEIP": {
+        "BastionEIP": {
             "Default": "169.254.169.254",
             "Description": "Public IP of Bastion IP for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
             "Type": "String"
@@ -1308,9 +1308,9 @@
                             "Outputs.BastionPublicName"
                         ]
                     },
-		    {
-			"Ref": "BastionEIP"
-		    }
+                    {
+                        "Ref": "BastionEIP"
+                    }
                 ]
             }
         },
@@ -1325,9 +1325,9 @@
                             "Outputs.RDGW1PublicName"
                         ]
                     },
-		    {
-			"Ref": "RDGW1ElasticIP"
-		    }
+                    {
+                        "Ref": "RDGW1ElasticIP"
+                    }
                 ]
             }
         },
@@ -1342,9 +1342,9 @@
                             "Outputs.RDGW2PublicName"
                         ]
                     },
-		    {
-			"Ref": "RDGW2ElasticIP"
-		    }
+                    {
+                        "Ref": "RDGW2ElasticIP"
+                    }
                 ]
             }
         },

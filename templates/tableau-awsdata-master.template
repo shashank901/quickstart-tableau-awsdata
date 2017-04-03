@@ -1133,10 +1133,10 @@
                         "Fn::If": [
                             "NoRDGWInboundCIDRCondition",
                             {
-			        "Fn::GetAtt": [
-				    "VPCStack",
-				    "Outputs.VPCCIDR"
-				]
+                                "Fn::GetAtt": [
+                                    "VPCStack",
+                                    "Outputs.VPCCIDR"
+                                ]
                             },
                             {
                                 "Ref": "RDGWInboundCIDR"
