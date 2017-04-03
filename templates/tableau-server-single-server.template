@@ -368,18 +368,6 @@
                         "CidrIp": {
                             "Ref": "SourceCidr"
                         }
-                    },
-                    {
-                        "IpProtocol": "tcp",
-                        "FromPort": "80",
-                        "ToPort": "80",
-                        "CidrIp": "0.0.0.0/0"
-                    }
-                ],
-                "Tags": [
-                    {
-                        "Key": "Name",
-                        "Value": "SecurityGroup-Abhijeet"
                     }
                 ],
                 "VpcId": {
