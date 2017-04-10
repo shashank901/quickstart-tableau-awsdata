@@ -184,10 +184,10 @@
             "Type": "String"
         },
         "QSS3KeyPrefix": {
-            "AllowedPattern": "^[0-9a-zA-Z-]+(/[0-9a-zA-Z-]+)*$",
-            "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/). It cannot start or end with forward slash (/) because they are automatically appended.",
-            "Default": "tableau/awsdata/latest",
-            "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/). It cannot start or end with forward slash (/) because they are automatically appended.",
+            "AllowedPattern": "^[0-9a-zA-Z-/]*$",
+            "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Default": "tableau/awsdata/latest/",
+            "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Type": "String"
         },
         "QuickStartS3URL": {
@@ -198,49 +198,49 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "AMZNLINUXHVM": "amzn-ami-hvm-2017.03.0.20170401-x86_64-gp2"
+                "AMZNLINUXHVM": "amzn-ami-hvm-2016.09.1.20170119-x86_64-gp2"
             },
             "ap-northeast-1": {
-                "AMZNLINUXHVM": "ami-859bbfe2"
+                "AMZNLINUXHVM": "ami-56d4ad31"
             },
             "ap-northeast-2": {
-                "AMZNLINUXHVM": "ami-8369baed"
+                "AMZNLINUXHVM": "ami-dac312b4"
             },
             "ap-south-1": {
-                "AMZNLINUXHVM": "ami-815625ee"
+                "AMZNLINUXHVM": "ami-f9daac96"
             },
             "ap-southeast-1": {
-                "AMZNLINUXHVM": "ami-a2bc03c1"
+                "AMZNLINUXHVM": "ami-dc9339bf"
             },
             "ap-southeast-2": {
-                "AMZNLINUXHVM": "ami-8bf2fde8"
+                "AMZNLINUXHVM": "ami-1c47407f"
             },
             "ca-central-1": {
-                "AMZNLINUXHVM": "ami-8601bce2"
+                "AMZNLINUXHVM": "ami-ebed508f"
             },
             "eu-central-1": {
-                "AMZNLINUXHVM": "ami-5b06d634"
+                "AMZNLINUXHVM": "ami-af0fc0c0"
             },
             "eu-west-1": {
-                "AMZNLINUXHVM": "ami-e5083683"
+                "AMZNLINUXHVM": "ami-70edb016"
             },
             "eu-west-2": {
-                "AMZNLINUXHVM": "ami-11130775"
+                "AMZNLINUXHVM": "ami-f1949e95"
             },
             "sa-east-1": {
-                "AMZNLINUXHVM": "ami-a97013c5"
+                "AMZNLINUXHVM": "ami-80086dec"
             },
             "us-east-1": {
-                "AMZNLINUXHVM": "ami-22ce4934"
+                "AMZNLINUXHVM": "ami-0b33d91d"
             },
             "us-east-2": {
-                "AMZNLINUXHVM": "ami-7bfcd81e"
+                "AMZNLINUXHVM": "ami-c55673a0"
             },
             "us-west-1": {
-                "AMZNLINUXHVM": "ami-9e247efe"
+                "AMZNLINUXHVM": "ami-165a0876"
             },
             "us-west-2": {
-                "AMZNLINUXHVM": "ami-8ca83fec"
+                "AMZNLINUXHVM": "ami-f173cc91"
             }
         }
     },
@@ -325,19 +325,17 @@
                             },
                             "/home/ec2-user/setup-redshift.sql": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/dataset/sql/setup-redshift.sql"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-redshift.sql",
+                                        {
+                                            "S3Region": {
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "mode": "000600",
@@ -347,19 +345,17 @@
                             },
                             "/home/ec2-user/interpolate-setup-redshift-sql.sh": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/scripts/interpolate-setup-redshift-sql.sh"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-redshift-sql.sh",
+                                        {
+                                            "S3Region": {
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "mode": "000700",
@@ -505,19 +501,17 @@
                             },
                             "/home/ec2-user/setup-postgres.sql": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/dataset/sql/setup-postgres.sql"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-postgres.sql",
+                                        {
+                                            "S3Region": {
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "mode": "000600",
@@ -527,19 +521,17 @@
                             },
                             "/home/ec2-user/interpolate-setup-postgres-sql.sh": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/scripts/interpolate-setup-postgres-sql.sh"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-postgres-sql.sh",
+                                        {
+                                            "S3Region": {
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "mode": "000700",
@@ -549,19 +541,17 @@
                             },
                             "/home/ec2-user/create-aggregates.sql": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/dataset/sql/create-aggregates.sql"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/create-aggregates.sql",
+                                        {
+                                            "S3Region": {
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "mode": "000700",
@@ -571,19 +561,17 @@
                             },
                             "/home/ec2-user/publish-aggregates.sql": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/dataset/sql/publish-aggregates.sql"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/publish-aggregates.sql",
+                                        {
+                                            "S3Region": {
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "mode": "000700",
@@ -672,18 +660,17 @@
                                         [
                                             " sh interpolate-setup-redshift-sql.sh setup-redshift.sql ",
                                             {
-                                                "Fn::Join": [
-                                                    "/",
-                                                    [
-                                                        "s3:/",
-                                                        {
-                                                            "Ref": "QSS3BucketName"
-                                                        },
-                                                        {
-                                                            "Ref": "QSS3KeyPrefix"
-                                                        },
-                                                        "dataset/content"
-                                                    ]
+                                                "Fn::Sub": [
+                                                    "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/content",
+                                                    {
+                                                        "S3Region": {
+                                                            "Fn::If": [
+                                                                "GovCloudCondition",
+                                                                "s3-us-gov-west-1",
+                                                                "s3"
+                                                            ]
+                                                        }
+                                                    }
                                                 ]
                                             },
                                             {
