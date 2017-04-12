@@ -35,10 +35,10 @@
             "Type": "String"
         },
         "QSS3KeyPrefix": {
-            "AllowedPattern": "^[0-9a-zA-Z-]+(/[0-9a-zA-Z-]+)*$",
-            "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/). It cannot start or end with forward slash (/) because they are automatically appended.",
-            "Default": "tableau/awsdata/latest",
-            "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/). It cannot start or end with forward slash (/) because they are automatically appended.",
+            "AllowedPattern": "^[0-9a-zA-Z-/]*$",
+            "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Default": "tableau/awsdata/latest/",
+            "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Type": "String"
         },
         "RDSDatabaseName": {
@@ -332,6 +332,14 @@
                 {
                     "Ref": "TableauServerLicenseKey"
                 }
+            ]
+        },
+        "GovCloudCondition": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AWS::Region"
+                },
+                "us-gov-west-1"
             ]
         }
     },
@@ -628,76 +636,68 @@
                             },
                             "c:\\tabsetup\\update-datasource.py": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/scripts/update-datasource.py"
-                                        ]
-                                    ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/update-datasource.py",
+                                        {
+                                            "S3Region": {
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                 ]
+                                             }
+                                        }
+                                     ]
                                 },
                                 "authentication": "S3Access"
                             },
                             "c:\\tabsetup\\redshift.tds": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/dataset/dashboard/redshift.tds"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/redshift.tds",
+                                        {   
+                                            "S3Region": { 
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "authentication": "S3Access"
                             },
                             "c:\\tabsetup\\postgres.tds": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/dataset/dashboard/postgres.tds"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/postgres.tds",
+                                        {   
+                                            "S3Region": { 
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "authentication": "S3Access"
                             },
                             "c:\\tabsetup\\quickstart.twb": {
                                 "source": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "https://",
-                                            {
-                                                "Ref": "QSS3BucketName"
-                                            },
-                                            ".s3.amazonaws.com/",
-                                            {
-                                                "Ref": "QSS3KeyPrefix"
-                                            },
-                                            "/dataset/dashboard/quickstart.twb"
-                                        ]
+                                    "Fn::Sub": [
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/quickstart.twb",
+                                        {   
+                                            "S3Region": { 
+                                                "Fn::If": [
+                                                    "GovCloudCondition",
+                                                    "s3-us-gov-west-1",
+                                                    "s3"
+                                                ]
+                                            }
+                                        }
                                     ]
                                 },
                                 "authentication": "S3Access"
