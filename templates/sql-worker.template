@@ -244,6 +244,16 @@
             }
         }
     },
+    "Conditions": {
+        "GovCloudCondition": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AWS::Region"
+                },
+                "us-gov-west-1"
+            ]
+        }
+    },
     "Resources": {
         "SecurityGroup": {
             "Type": "AWS::EC2::SecurityGroup",
