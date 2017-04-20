@@ -186,13 +186,23 @@
         "QSS3KeyPrefix": {
             "AllowedPattern": "^[0-9a-zA-Z-/]*$",
             "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
-            "Default": "tableau/awsdata/latest/",
+            "Default": "tableau/awsdata/latest",
             "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Type": "String"
         },
         "QuickStartS3URL": {
             "Type": "String",
             "Default": "https://s3.amazonaws.com"
+        }
+    },
+    "Conditions": {
+        "GovCloudCondition": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AWS::Region"
+                },
+                "us-gov-west-1"
+            ]
         }
     },
     "Mappings": {
@@ -242,16 +252,6 @@
             "us-west-2": {
                 "AMZNLINUXHVM": "ami-8ca83fec"
             }
-        }
-    },
-    "Conditions": {
-        "GovCloudCondition": {
-            "Fn::Equals": [
-                {
-                    "Ref": "AWS::Region"
-                },
-                "us-gov-west-1"
-            ]
         }
     },
     "Resources": {
@@ -336,7 +336,7 @@
                             "/home/ec2-user/setup-redshift.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-redshift.sql",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/dataset/sql/setup-redshift.sql",
                                         {
                                             "S3Region": {
                                                 "Fn::If": [
@@ -356,7 +356,7 @@
                             "/home/ec2-user/interpolate-setup-redshift-sql.sh": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-redshift-sql.sh",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/scripts/interpolate-setup-redshift-sql.sh",
                                         {
                                             "S3Region": {
                                                 "Fn::If": [
@@ -512,7 +512,7 @@
                             "/home/ec2-user/setup-postgres.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-postgres.sql",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/dataset/sql/setup-postgres.sql",
                                         {
                                             "S3Region": {
                                                 "Fn::If": [
@@ -532,7 +532,7 @@
                             "/home/ec2-user/interpolate-setup-postgres-sql.sh": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-postgres-sql.sh",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/scripts/interpolate-setup-postgres-sql.sh",
                                         {
                                             "S3Region": {
                                                 "Fn::If": [
@@ -552,7 +552,7 @@
                             "/home/ec2-user/create-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/create-aggregates.sql",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/dataset/sql/create-aggregates.sql",
                                         {
                                             "S3Region": {
                                                 "Fn::If": [
@@ -572,7 +572,7 @@
                             "/home/ec2-user/publish-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/publish-aggregates.sql",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/dataset/sql/publish-aggregates.sql",
                                         {
                                             "S3Region": {
                                                 "Fn::If": [
@@ -671,7 +671,7 @@
                                             " sh interpolate-setup-redshift-sql.sh setup-redshift.sql ",
                                             {
                                                 "Fn::Sub": [
-                                                    "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/content",
+                                                    "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/dataset/content",
                                                     {
                                                         "S3Region": {
                                                             "Fn::If": [

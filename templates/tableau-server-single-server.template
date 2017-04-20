@@ -37,7 +37,7 @@
         "QSS3KeyPrefix": {
             "AllowedPattern": "^[0-9a-zA-Z-/]*$",
             "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
-            "Default": "tableau/awsdata/latest/",
+            "Default": "tableau/awsdata/latest",
             "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Type": "String"
         },
@@ -637,7 +637,7 @@
                             "c:\\tabsetup\\update-datasource.py": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/update-datasource.py",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/update-datasource.py",
                                         {
                                             "S3Region": {
                                                 "Fn::If": [
@@ -654,7 +654,7 @@
                             "c:\\tabsetup\\redshift.tds": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/redshift.tds",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/dataset/dashboard/redshift.tds",
                                         {   
                                             "S3Region": { 
                                                 "Fn::If": [
@@ -671,7 +671,7 @@
                             "c:\\tabsetup\\postgres.tds": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/postgres.tds",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/dataset/dashboard/postgres.tds",
                                         {   
                                             "S3Region": { 
                                                 "Fn::If": [
@@ -688,7 +688,7 @@
                             "c:\\tabsetup\\quickstart.twb": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/quickstart.twb",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}/dataset/dashboard/quickstart.twb",
                                         {   
                                             "S3Region": { 
                                                 "Fn::If": [
