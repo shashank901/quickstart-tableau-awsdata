@@ -920,20 +920,6 @@
                     },
                     "QSS3KeyPrefix": {
                         "Ref": "QSS3KeyPrefix"
-                    },
-                    "QuickStartS3URL": {
-                        "Fn::Sub": [
-                            "https://${QSS3BucketName}.${S3Region}.amazonaws.com",
-                                {
-                                    "S3Region": {
-                                        "Fn::If": [
-                                            "GovCloudCondition",
-                                            "s3-us-gov-west-1",
-                                            "s3"
-                                        ]
-                                    }
-                                }
-                        ]
                     }
                 }
             }
