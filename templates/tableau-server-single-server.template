@@ -637,7 +637,7 @@
                             "c:\\tabsetup\\update-datasource.py": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}update-datasource.py",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/update-datasource.py",
                                         {
                                             "S3Region": {
                                                 "Fn::If": [
