@@ -40,22 +40,6 @@
         "ParameterValue": "$[alfred_getkeypair]"
     },
     {
-        "ParameterKey": "RDGW1NetBIOSName",
-        "ParameterValue": "RDGW1"
-    },
-    {
-        "ParameterKey": "RDGW1PrivateIP",
-        "ParameterValue": "10.0.128.11"
-    },
-    {
-        "ParameterKey": "RDGW2NetBIOSName",
-        "ParameterValue": "RDGW2"
-    },
-    {
-        "ParameterKey": "RDGW2PrivateIP",
-        "ParameterValue": "10.0.144.11"
-    },
-    {
         "ParameterKey": "RDGWAdminPassword",
         "ParameterValue": "$[alfred_genpass_16]"
     },
