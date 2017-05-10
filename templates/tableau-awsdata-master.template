@@ -369,32 +369,6 @@
             "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Type": "String"
         },
-        "RDGW1NetBIOSName": {
-            "AllowedPattern": "[a-zA-Z0-9]+",
-            "Default": "RDGW1",
-            "Description": "NetBIOS name of the first Remote Desktop Gateway (up to 15 characters)",
-            "MaxLength": "15",
-            "MinLength": "1",
-            "Type": "String"
-        },
-        "RDGW1PrivateIP": {
-            "Default": "10.0.128.11",
-            "Description": "Fixed private IP for the first Remote Desktop Gateway located in Availability Zone 1",
-            "Type": "String"
-        },
-        "RDGW2NetBIOSName": {
-            "AllowedPattern": "[a-zA-Z0-9]+",
-            "Default": "RDGW2",
-            "Description": "NetBIOS name of the second Remote Desktop Gateway (up to 15 characters)",
-            "MaxLength": "15",
-            "MinLength": "1",
-            "Type": "String"
-        },
-        "RDGW2PrivateIP": {
-            "Default": "10.0.144.11",
-            "Description": "Fixed private IP for the second Remote Desktop Gateway located in Availability Zone 2",
-            "Type": "String"
-        },
         "RDGWAdminPassword": {
             "AllowedPattern": "(?=^.{6,255}$)((?=.*\\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*",
             "Description": "Password for the administrative account. Must be at least 8 characters containing letters, numbers and symbols",
@@ -428,7 +402,7 @@
                 "m4.4xlarge"
             ],
             "Default": "t2.large",
-            "Description": "Amazon EC2 instance type for the first Remote Desktop Gateway instance",
+            "Description": "Amazon EC2 instance type for the Remote Desktop Gateway instances",
             "Type": "String"
         },
         "RDSAllocatedStorage": {
@@ -729,9 +703,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}submodules/quickstart-aws-vpc/templates/aws-vpc.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}submodules/quickstart-aws-vpc/templates/aws-vpc.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -906,9 +880,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}submodules/quickstart-linux-bastion/templates/linux-bastion.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}submodules/quickstart-linux-bastion/templates/linux-bastion.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -968,9 +942,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}submodules/quickstart-microsoft-rdgateway/templates/rdgw-standalone.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}submodules/quickstart-microsoft-rdgateway/templates/rdgw-standalone.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -1011,23 +985,8 @@
                     "QSS3KeyPrefix": {
                         "Fn::Sub": "${QSS3KeyPrefix}submodules/quickstart-microsoft-rdgateway/"
                     },
-                    "RDGW1InstanceType": {
+                    "RDGWInstanceType": {
                         "Ref": "RDGWInstanceType"
-                    },
-                    "RDGW1NetBIOSName": {
-                        "Ref": "RDGW1NetBIOSName"
-                    },
-                    "RDGW1PrivateIP": {
-                        "Ref": "RDGW1PrivateIP"
-                    },
-                    "RDGW2InstanceType": {
-                        "Ref": "RDGWInstanceType"
-                    },
-                    "RDGW2NetBIOSName": {
-                        "Ref": "RDGW2NetBIOSName"
-                    },
-                    "RDGW2PrivateIP": {
-                        "Ref": "RDGW2PrivateIP"
                     },
                     "RDGWCIDR": {
                         "Fn::If": [
@@ -1058,9 +1017,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}templates/tableau-awsdata.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}templates/tableau-awsdata.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -1092,16 +1051,10 @@
                             "Outputs.EIP1"
                         ]
                     },
-                    "RDGW1ElasticIP": {
+                    "RDGWElasticIP": {
                         "Fn::GetAtt": [
                             "RDGWStack",
-                            "Outputs.RDGW1ElasticIP"
-                        ]
-                    },
-                    "RDGW2ElasticIP": {
-                        "Fn::GetAtt": [
-                            "RDGWStack",
-                            "Outputs.RDGW2ElasticIP"
+                            "Outputs.EIP1"
                         ]
                     },
                     "PrivateSubnet1ID": {
@@ -1287,21 +1240,12 @@
                 ]
             }
         },
-        "RDGW1PublicName": {
-            "Description": "Convenient Name for RDGW1 Public Access",
+        "RDGWPublicName": {
+            "Description": "Convenient Name for RDGW Public Access",
             "Value": {
                 "Fn::GetAtt": [
                     "TableauAwsdataStack",
-                    "Outputs.RDGW1PublicName"
-                ]
-            }
-        },
-        "RDGW2PublicName": {
-            "Description": "Convenient Name for RDGW2 Public Access",
-            "Value": {
-                "Fn::GetAtt": [
-                    "TableauAwsdataStack",
-                    "Outputs.RDGW2PublicName"
+                    "Outputs.RDGWPublicName"
                 ]
             }
         },

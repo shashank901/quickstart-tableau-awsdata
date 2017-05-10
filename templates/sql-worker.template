@@ -332,9 +332,9 @@
                             "/home/ec2-user/setup-redshift.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-redshift.sql",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-redshift.sql",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -352,9 +352,9 @@
                             "/home/ec2-user/interpolate-setup-redshift-sql.sh": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-redshift-sql.sh",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-redshift-sql.sh",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -508,9 +508,9 @@
                             "/home/ec2-user/setup-postgres.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-postgres.sql",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-postgres.sql",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -528,9 +528,9 @@
                             "/home/ec2-user/interpolate-setup-postgres-sql.sh": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-postgres-sql.sh",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-postgres-sql.sh",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -548,9 +548,9 @@
                             "/home/ec2-user/create-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/create-aggregates.sql",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/create-aggregates.sql",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -568,9 +568,9 @@
                             "/home/ec2-user/publish-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/publish-aggregates.sql",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/publish-aggregates.sql",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -667,9 +667,9 @@
                                             " sh interpolate-setup-redshift-sql.sh setup-redshift.sql ",
                                             {
                                                 "Fn::Sub": [
-                                                    "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/content",
+                                                    "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/content",
                                                     {
-                                                        "S3Region": {
+                                                        "QSS3Region": {
                                                             "Fn::If": [
                                                                 "GovCloudCondition",
                                                                 "s3-us-gov-west-1",
@@ -815,7 +815,7 @@
                         "Fn::Join": [
                             "",
                             [
-                                "#!/bin/bash -xe\n",
+                                "#!/bin/bash\n",
                                 "yum update -y aws-cfn-bootstrap\n",
                                 "/opt/aws/bin/cfn-init -v ",
                                 "         --stack ",

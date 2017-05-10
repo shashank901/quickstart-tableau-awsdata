@@ -84,14 +84,17 @@
                                     ],
                                     "Effect": "Allow",
                                     "Resource": {
-                                        "Fn::Join": [
-                                            "",
-                                            [
-                                                "arn:aws:s3:::",
-                                                {
-                                                    "Ref": "S3BucketName"
+                                        "Fn::Sub": [
+                                            "arn:${Partition}:s3:::${S3BucketName}",
+                                            {   
+                                                "Partition": {
+                                                    "Fn::If": [
+                                                        "GovCloudCondition",
+                                                        "aws-us-gov",
+                                                        "aws"
+                                                    ]
                                                 }
-                                            ]
+                                            }
                                         ]
                                     }
                                 },
@@ -102,19 +105,17 @@
                                     ],
                                     "Effect": "Allow",
                                     "Resource": {
-                                        "Fn::Join": [
-                                            "",
-                                            [
-                                                "arn:aws:s3:::",
-                                                {
-                                                    "Ref": "S3BucketName"
-                                                },
-                                                "/",
-                                                {
-                                                    "Ref": "S3KeyPrefix"
-                                                },
-                                                "/*"
-                                            ]
+                                        "Fn::Sub": [
+                                            "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
+                                            {   
+                                                "Partition": {
+                                                    "Fn::If": [
+                                                        "GovCloudCondition",
+                                                        "aws-us-gov",
+                                                        "aws"
+                                                    ]
+                                                }
+                                            }
                                         ]
                                     }
                                 }
@@ -144,6 +145,34 @@
                     ]
                 },
                 "Policies": [
+                   {
+                        "PolicyName": "aws-quick-start-s3-policy",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {   
+                                    "Action": [
+                                        "s3:GetObject"
+                                    ],
+                                    "Resource": {
+                                        "Fn::Sub": [
+                                            "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
+                                            {   
+                                                "Partition": {
+                                                    "Fn::If": [
+                                                        "GovCloudCondition",
+                                                        "aws-us-gov",
+                                                        "aws"
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "Effect": "Allow"
+                                }
+                            ]
+                        }
+                    },
                     {
                         "PolicyName": "QuickstartEc2S3RedshiftAccess",
                         "PolicyDocument": {
@@ -168,14 +197,17 @@
                                     "Action": "s3:List*",
                                     "Effect": "Allow",
                                     "Resource": {
-                                        "Fn::Join": [
-                                            "",
-                                            [
-                                                "arn:aws:s3:::",
-                                                {
-                                                    "Ref": "S3BucketName"
+                                        "Fn::Sub": [
+                                            "arn:${Partition}:s3:::${S3BucketName}",
+                                            {   
+                                                "Partition": {
+                                                    "Fn::If": [
+                                                        "GovCloudCondition",
+                                                        "aws-us-gov",
+                                                        "aws"
+                                                    ]
                                                 }
-                                            ]
+                                            }
                                         ]
                                     }
                                 },
@@ -186,19 +218,17 @@
                                     ],
                                     "Effect": "Allow",
                                     "Resource": {
-                                        "Fn::Join": [
-                                            "",
-                                            [
-                                                "arn:aws:s3:::",
-                                                {
-                                                    "Ref": "S3BucketName"
-                                                },
-                                                "/",
-                                                {
-                                                    "Ref": "S3KeyPrefix"
-                                                },
-                                                "/*"
-                                            ]
+                                        "Fn::Sub": [
+                                            "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
+                                            {   
+                                                "Partition": {
+                                                    "Fn::If": [
+                                                        "GovCloudCondition",
+                                                        "aws-us-gov",
+                                                        "aws"
+                                                    ]
+                                                }
+                                            }
                                         ]
                                     }
                                 }

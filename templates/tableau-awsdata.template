@@ -266,17 +266,12 @@
         },
         "BastionEIP": {
             "Default": "169.254.169.254",
-            "Description": "Public IP of Bastion IP for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
+            "Description": "Public IP of Bastion for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
             "Type": "String"
         },
-        "RDGW1ElasticIP": {
+        "RDGWElasticIP": {
             "Default": "169.254.169.254",
-            "Description": "Public IP of Remote Desktop Gateway 1 for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
-            "Type": "String"
-        },
-        "RDGW2ElasticIP": {
-            "Default": "169.254.169.254",
-            "Description": "Public IP of Remote Desktop Gateway 2 for use in created convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
+            "Description": "Public IP of Remote Desktop Gateway for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
             "Type": "String"
         },
         "KeyPairName": {
@@ -628,9 +623,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}templates/iam-roles.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}templates/iam-roles.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -655,9 +650,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}templates/redshift-cluster.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}templates/redshift-cluster.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -718,9 +713,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}templates/rds-instance.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}templates/rds-instance.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -794,9 +789,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}templates/sql-worker.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}templates/sql-worker.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -929,9 +924,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}templates/tableau-server-single-server.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}templates/tableau-server-single-server.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -1071,9 +1066,9 @@
             "Properties": {
                 "TemplateURL": {
                     "Fn::Sub": [
-                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}templates/route53-recordsets.template",
+                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}templates/route53-recordsets.template",
                         {
-                            "S3Region": {
+                            "QSS3Region": {
                                 "Fn::If": [
                                     "GovCloudCondition",
                                     "s3-us-gov-west-1",
@@ -1101,11 +1096,8 @@
                     "BastionEIP": {
                         "Ref": "BastionEIP"
                     },
-                    "RDGW1PublicIP": {
-                        "Ref": "RDGW1ElasticIP"
-                    },
-                    "RDGW2PublicIP": {
-                        "Ref": "RDGW2ElasticIP"
+                    "RDGWElasticIP": {
+                        "Ref": "RDGWElasticIP"
                     },
                     "TableauServerPublicDnsName": {
                         "Fn::GetAtt": [
@@ -1195,36 +1187,19 @@
                 ]
             }
         },
-        "RDGW1PublicName": {
-            "Description": "Convenient Name for RDGW1 Public Access",
+        "RDGWPublicName": {
+            "Description": "Convenient Name for RDGW Public Access",
             "Value": {
                 "Fn::If": [
                     "HostedZoneIsSpecifiedCondition",
                     {
                         "Fn::GetAtt": [
                             "DnsRecordSetStack",
-                            "Outputs.RDGW1PublicName"
+                            "Outputs.RDGWPublicName"
                         ]
                     },
                     {
-                        "Ref": "RDGW1ElasticIP"
-                    }
-                ]
-            }
-        },
-        "RDGW2PublicName": {
-            "Description": "Convenient Name for RDGW2 Public Access",
-            "Value": {
-                "Fn::If": [
-                    "HostedZoneIsSpecifiedCondition",
-                    {
-                        "Fn::GetAtt": [
-                            "DnsRecordSetStack",
-                            "Outputs.RDGW2PublicName"
-                        ]
-                    },
-                    {
-                        "Ref": "RDGW2ElasticIP"
+                        "Ref": "RDGWElasticIP"
                     }
                 ]
             }

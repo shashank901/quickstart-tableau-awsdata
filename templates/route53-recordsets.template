@@ -14,12 +14,8 @@
             "Description": "Bastion Elastic IP Address.",
             "Type": "String"
         },
-        "RDGW1PublicIP": {
-            "Description": "Remote Desktop Gateway 1 Public DNS Name",
-            "Type": "String"
-        },
-        "RDGW2PublicIP": {
-            "Description": "Remote Desktop Gateway 2 Public DNS Name",
+        "RDGWElasticIP": {
+            "Description": "Remote Desktop Gateway Elastic IP Address",
             "Type": "String"
         },
         "TableauServerPublicDnsName": {
@@ -74,10 +70,10 @@
                 "Type": "A"
             }
         },
-        "RDGW1PublicRecordSet": {
+        "RDGWPublicRecordSet": {
             "Type": "AWS::Route53::RecordSet",
             "Properties": {
-                "Comment": "Convenience DNS Entry for RDGW1",
+                "Comment": "Convenience DNS Entry for RDGW",
                 "HostedZoneName": {
                     "Ref": "HostedZoneName"
                 },
@@ -85,7 +81,7 @@
                     "Fn::Join": [
                         ".",
                         [
-                            "rdgw1",
+                            "rdgw",
                             {
                                 "Ref": "RootStackName"
                             },
@@ -97,37 +93,7 @@
                 },
                 "ResourceRecords": [
                     {
-                        "Ref": "RDGW1PublicIP"
-                    }
-                ],
-                "TTL": "300",
-                "Type": "A"
-            }
-        },
-        "RDGW2PublicRecordSet": {
-            "Type": "AWS::Route53::RecordSet",
-            "Properties": {
-                "Comment": "Convenience DNS Entry for RDGW2",
-                "HostedZoneName": {
-                    "Ref": "HostedZoneName"
-                },
-                "Name": {
-                    "Fn::Join": [
-                        ".",
-                        [
-                            "rdgw2",
-                            {
-                                "Ref": "RootStackName"
-                            },
-                            {
-                                "Ref": "HostedZoneName"
-                            }
-                        ]
-                    ]
-                },
-                "ResourceRecords": [
-                    {
-                        "Ref": "RDGW2PublicIP"
+                        "Ref": "RDGWElasticIP"
                     }
                 ],
                 "TTL": "300",
@@ -292,16 +258,10 @@
                 "Ref": "BastionPublicRecordSet"
             }
         },
-        "RDGW1PublicName": {
-            "Description": "Convenient Name for RDGW1 Public Access",
+        "RDGWPublicName": {
+            "Description": "Convenient Name for RDGW Public Access",
             "Value": {
-                "Ref": "RDGW1PublicRecordSet"
-            }
-        },
-        "RDGW2PublicName": {
-            "Description": "Convenient Name for RDGW2 Public Access",
-            "Value": {
-                "Ref": "RDGW2PublicRecordSet"
+                "Ref": "RDGWPublicRecordSet"
             }
         },
         "TableauServerPublicName": {
