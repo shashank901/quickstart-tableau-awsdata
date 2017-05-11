@@ -23,7 +23,6 @@
                         "AvailabilityZones",
                         "BastionInboundCIDR",
                         "RDGWInboundCIDR",
-                        "TableauServerInboundCIDR",
                         "RDGWAdminPassword",
                         "RedshiftPassword",
                         "RDSPassword",
@@ -112,7 +111,8 @@
                     },
                     "Parameters": [
                         "ContentAdminUser",
-                        "TableauServerLicenseKey"
+                        "TableauServerLicenseKey",
+                        "TableauServerInboundCIDR"
                     ]
                 }
             ],
@@ -607,9 +607,10 @@
             "Type": "String"
         },
         "TableauServerInboundCIDR": {
-            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
-            "ConstraintDescription": "Must be a valid IP CIDR range of the form x.x.x.x/x.",
-            "Description": "CIDR from which you may connect to web interface or bastion host (e.g., 1.1.1.1/32)",
+            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})|<VPCCIDR>",
+            "ConstraintDescription": "must be a valid CIDR range of the form x.x.x.x/x.",
+            "Default": "<VPCCIDR>",
+            "Description": "CIDR from which you may connect to web interface or bastion host.  Set to '<VPCCIDR>' to use the CIDR of the created VPC.",
             "MaxLength": "18",
             "MinLength": "9",
             "Type": "String"
@@ -646,6 +647,14 @@
             "Fn::Equals": [
                 {
                     "Ref": "RDSInboundCIDR"
+                },
+                "<VPCCIDR>"
+            ]
+        },
+        "NoTableauServerInboundCIDRCondition": {
+            "Fn::Equals": [
+                {
+                    "Ref": "TableauServerInboundCIDR"
                 },
                 "<VPCCIDR>"
             ]
@@ -1148,7 +1157,18 @@
                         ]
                     },
                     "TableauServerInboundCIDR": {
-                        "Ref": "TableauServerInboundCIDR"
+                        "Fn::If": [
+                            "NoTableauServerInboundCIDRCondition",
+                            {
+                                "Fn::GetAtt": [
+                                    "VPCStack",
+                                    "Outputs.VPCCIDR"
+                                ]
+                            },
+                            {
+                                "Ref": "TableauServerInboundCIDR"
+                            }
+                        ]
                     },
                     "ContentAdminUser": {
                         "Ref": "ContentAdminUser"
