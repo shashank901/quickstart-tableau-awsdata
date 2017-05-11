@@ -666,18 +666,7 @@
                                         [
                                             " sh interpolate-setup-redshift-sql.sh setup-redshift.sql ",
                                             {
-                                                "Fn::Sub": [
-                                                    "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/content",
-                                                    {
-                                                        "QSS3Region": {
-                                                            "Fn::If": [
-                                                                "GovCloudCondition",
-                                                                "s3-us-gov-west-1",
-                                                                "s3"
-                                                            ]
-                                                        }
-                                                    }
-                                                ]
+                                                "Fn::Sub": "s3://${QSS3BucketName}/${QSS3KeyPrefix}dataset/content"
                                             },
                                             {
                                                 "Ref": "IAMRoleRedshiftWorkerArn"
