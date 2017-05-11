@@ -803,84 +803,6 @@
                     ]
                 },
                 "Parameters": {
-                    "KeyPairName": {
-                        "Ref": "KeyPairName"
-                    },
-                    "InstanceType": {
-                        "Ref": "SqlWorkerInstanceType"
-                    },
-                    "RedshiftClusterId": {
-                        "Fn::GetAtt": [
-                            "RedshiftClusterStack",
-                            "Outputs.RedshiftClusterId"
-                        ]
-                    },
-                    "RedshiftHost": {
-                        "Fn::GetAtt": [
-                            "RedshiftClusterStack",
-                            "Outputs.RedshiftHost"
-                        ]
-                    },
-                    "RDSHost": {
-                        "Fn::GetAtt": [
-                            "RDSInstanceStack",
-                            "Outputs.DBAddress"
-                        ]
-                    },
-                    "RDSDBName": {
-                        "Fn::GetAtt": [
-                            "RDSInstanceStack",
-                            "Outputs.DBName"
-                        ]
-                    },
-                    "RedshiftDBName": {
-                        "Fn::GetAtt": [
-                            "RedshiftClusterStack",
-                            "Outputs.RedshiftDatabaseName"
-                        ]
-                    },
-                    "RedshiftDatabasePort": {
-                        "Fn::GetAtt": [
-                            "RedshiftClusterStack",
-                            "Outputs.RedshiftPort"
-                        ]
-                    },
-                    "RDSDatabasePort": {
-                        "Fn::GetAtt": [
-                            "RDSInstanceStack",
-                            "Outputs.Port"
-                        ]
-                    },
-                    "RedshiftUsername": {
-                        "Fn::GetAtt": [
-                            "RedshiftClusterStack",
-                            "Outputs.RedshiftUsername"
-                        ]
-                    },
-                    "RDSUsername": {
-                        "Fn::GetAtt": [
-                            "RDSInstanceStack",
-                            "Outputs.DBUser"
-                        ]
-                    },
-                    "RedshiftPassword": {
-                        "Fn::GetAtt": [
-                            "RedshiftClusterStack",
-                            "Outputs.RedshiftPassword"
-                        ]
-                    },
-                    "RDSPassword": {
-                        "Fn::GetAtt": [
-                            "RDSInstanceStack",
-                            "Outputs.DBPassword"
-                        ]
-                    },
-                    "IamInstanceProfile": {
-                        "Fn::GetAtt": [
-                            "IAMRolesStack",
-                            "Outputs.InstanceProfileEc2Worker"
-                        ]
-                    },
                     "IAMRoleEc2Worker": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
@@ -905,17 +827,98 @@
                             "Outputs.IAMRoleRedshiftWorkerArn"
                         ]
                     },
-                    "SubnetId": {
-                        "Ref": "PrivateSubnet1ID"
+                    "IamInstanceProfile": {
+                        "Fn::GetAtt": [
+                            "IAMRolesStack",
+                            "Outputs.InstanceProfileEc2Worker"
+                        ]
                     },
-                    "VpcId": {
-                        "Ref": "VPCID"
+                    "InstanceType": {
+                        "Ref": "SqlWorkerInstanceType"
+                    },
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
                     },
                     "QSS3BucketName": {
                         "Ref": "QSS3BucketName"
                     },
                     "QSS3KeyPrefix": {
                         "Ref": "QSS3KeyPrefix"
+                    },
+                    "RDSDBName": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBName"
+                        ]
+                    },
+                    "RDSDatabasePort": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.Port"
+                        ]
+                    },
+                    "RDSHost": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBAddress"
+                        ]
+                    },
+                    "RDSPassword": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBPassword"
+                        ]
+                    },
+                    "RDSUsername": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBUser"
+                        ]
+                    },
+                    "RedshiftClusterId": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftClusterId"
+                        ]
+                    },
+                    "RedshiftDBName": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftDatabaseName"
+                        ]
+                    },
+                    "RedshiftDatabasePort": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftPort"
+                        ]
+                    },
+                    "RedshiftHost": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftHost"
+                        ]
+                    },
+                    "RedshiftPassword": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftPassword"
+                        ]
+                    },
+                    "RedshiftUsername": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftUsername"
+                        ]
+                    },
+                    "SSHLocation": {
+                        "Ref": "VPCCIDR"
+                    },
+                    "SubnetId": {
+                        "Ref": "PrivateSubnet1ID"
+                    },
+                    "VpcId": {
+                        "Ref": "VPCID"
                     }
                 }
             }
