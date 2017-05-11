@@ -391,10 +391,6 @@
             "NoEcho": "false",
             "Type": "String"
         },
-        "RedshiftClusterSubnetID": {
-            "Description": "SubnetId of an existing subnet in your Virtual Private Cloud (VPC), where Redshift Cluster will be launched",
-            "Type": "String"
-        },
         "RedshiftDatabaseName": {
             "AllowedPattern": "([a-z]|[0-9])+",
             "ConstraintDescription": "must contain a-z or 0-9 only.",
