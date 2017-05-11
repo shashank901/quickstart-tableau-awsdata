@@ -13,6 +13,7 @@
                         "KeyPairName",
                         "QSS3BucketName",
                         "QSS3KeyPrefix",
+                        "SourceDataS3Region",
                         "HostedZoneName"
                     ]
                 },
@@ -223,6 +224,9 @@
                 },
                 "RootStackName": {
                     "default": "Stack Name"
+                },
+                "SourceDataS3Region": {
+                    "default": "Source Data S3 Region"
                 },
                 "SqlWorkerInstanceType": {
                     "default": "SQL Worker Instance Type"
@@ -505,6 +509,11 @@
         "RootStackName": {
             "Default": "<NONE>",
             "Description": "Name of Top-Level Stack",
+            "Type": "String"
+        },
+        "SourceDataS3Region": {
+            "Default": "us-east-1",
+            "Description": "The AWS region where the S3 source data is located and is used with the Redshift COPY command. This is normally the region where the Quick Start S3 bucket is located",
             "Type": "String"
         },
         "SqlWorkerInstanceType": {
@@ -913,6 +922,9 @@
                     },
                     "SSHLocation": {
                         "Ref": "VPCCIDR"
+                    },
+                    "SourceDataS3Region": {
+                        "Ref": "SourceDataS3Region"
                     },
                     "SubnetId": {
                         "Ref": "PrivateSubnet1ID"

@@ -168,6 +168,10 @@
         "ParameterValue": "TestZip"
     },
     {
+        "ParameterKey": "SourceDataS3Region",
+        "ParameterValue": "us-east-1"
+    },
+    {
         "ParameterKey": "SqlWorkerInstanceType",
         "ParameterValue": "t2.micro"
     },

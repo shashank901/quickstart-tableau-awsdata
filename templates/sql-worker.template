@@ -182,6 +182,11 @@
             "MinLength": "9",
             "Type": "String"
         },
+        "SourceDataS3Region": {
+            "Default": "us-east-1",
+            "Description": "The AWS region where the S3 source data is located and is used with the Redshift COPY command. This is normally the region where the Quick Start S3 bucket is located",
+            "Type": "String"
+        },
         "SubnetId": {
             "Description": "SubnetId of an existing subnet in your Virtual Private Cloud (VPC)",
             "Type": "String"
@@ -672,7 +677,7 @@
                                                 "Ref": "IAMRoleRedshiftWorkerArn"
                                             },
                                             {
-                                                "Ref": "AWS::Region"
+                                                "Ref": "SourceDataS3Region"
                                             },
                                             ">/home/ec2-user/setup-redshift-intermediate.sql"
                                         ]

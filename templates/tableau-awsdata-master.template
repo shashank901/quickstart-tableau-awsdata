@@ -12,6 +12,7 @@
                         "KeyPairName",
                         "QSS3BucketName",
                         "QSS3KeyPrefix",
+                        "SourceDataS3Region",
                         "HostedZoneName"
                     ]
                 },
@@ -248,6 +249,9 @@
                 },
                 "RegZip": {
                     "default": "Reg Zip"
+                },
+                "SourceDataS3Region": {
+                    "default": "Source Data S3 Region"
                 },
                 "SqlWorkerInstanceType": {
                     "default": "SQL Worker Instance Type"
@@ -585,6 +589,11 @@
         },
         "RegZip": {
             "Description": "ZIP/Postal Code",
+            "Type": "String"
+        },
+        "SourceDataS3Region": {
+            "Default": "us-east-1",
+            "Description": "The AWS region where the S3 source data is located and is used with the Redshift COPY command. This is normally the region where the Quick Start S3 bucket is located",
             "Type": "String"
         },
         "SqlWorkerInstanceType": {
@@ -1023,32 +1032,23 @@
                     ]
                 },
                 "Parameters": {
-                    "RootStackName": {
-                        "Ref": "AWS::StackName"
-                    },
-                    "KeyPairName": {
-                        "Ref": "KeyPairName"
-                    },
-                    "QSS3BucketName": {
-                        "Ref": "QSS3BucketName"
-                    },
-                    "QSS3KeyPrefix": {
-                        "Ref": "QSS3KeyPrefix"
-                    },
-                    "HostedZoneName": {
-                        "Ref": "HostedZoneName"
-                    },
                     "BastionEIP": {
                         "Fn::GetAtt": [
                             "LinuxBastionStack",
                             "Outputs.EIP1"
                         ]
                     },
-                    "RDGWElasticIP": {
-                        "Fn::GetAtt": [
-                            "RDGWStack",
-                            "Outputs.EIP1"
-                        ]
+                    "ContentAdminPassword": {
+                        "Ref": "ContentAdminPassword"
+                    },
+                    "ContentAdminUser": {
+                        "Ref": "ContentAdminUser"
+                    },
+                    "HostedZoneName": {
+                        "Ref": "HostedZoneName"
+                    },
+                    "KeyPairName": {
+                        "Ref": "KeyPairName"
                     },
                     "PrivateSubnet1ID": {
                         "Fn::GetAtt": [
@@ -1074,73 +1074,26 @@
                             "Outputs.PublicSubnet2ID"
                         ]
                     },
-                    "VPCID": {
+                    "QSS3BucketName": {
+                        "Ref": "QSS3BucketName"
+                    },
+                    "QSS3KeyPrefix": {
+                        "Ref": "QSS3KeyPrefix"
+                    },
+                    "RDGWElasticIP": {
                         "Fn::GetAtt": [
-                            "VPCStack",
-                            "Outputs.VPCID"
+                            "RDGWStack",
+                            "Outputs.EIP1"
                         ]
-                    },
-                    "VPCCIDR": {
-                        "Fn::GetAtt": [
-                            "VPCStack",
-                            "Outputs.VPCCIDR"
-                        ]
-                    },
-                    "RedshiftDatabasePort": {
-                        "Ref": "RedshiftDatabasePort"
-                    },
-                    "RedshiftDatabaseName": {
-                        "Ref": "RedshiftDatabaseName"
-                    },
-                    "RedshiftNumberOfNodes": {
-                        "Ref": "RedshiftNumberOfNodes"
-                    },
-                    "RedshiftNodeType": {
-                        "Ref": "RedshiftNodeType"
-                    },
-                    "RedshiftUsername": {
-                        "Ref": "RedshiftUsername"
-                    },
-                    "RedshiftPassword": {
-                        "Ref": "RedshiftPassword"
-                    },
-                    "RedshiftInboundCIDR": {
-                        "Fn::If": [
-                            "NoRedshiftInboundCIDRCondition",
-                            {
-                                "Fn::GetAtt": [
-                                    "VPCStack",
-                                    "Outputs.VPCCIDR"
-                                ]
-                            },
-                            {
-                                "Ref": "RedshiftInboundCIDR"
-                            }
-                        ]
-                    },
-                    "RDSInstanceIdentifier": {
-                        "Ref": "RDSInstanceIdentifier"
-                    },
-                    "RDSDatabasePort": {
-                        "Ref": "RDSDatabasePort"
-                    },
-                    "RDSDatabaseName": {
-                        "Ref": "RDSDatabaseName"
-                    },
-                    "RDSMultiAZ": {
-                        "Ref": "RDSMultiAZ"
                     },
                     "RDSAllocatedStorage": {
                         "Ref": "RDSAllocatedStorage"
                     },
-                    "RDSInstanceClass": {
-                        "Ref": "RDSInstanceClass"
+                    "RDSDatabaseName": {
+                        "Ref": "RDSDatabaseName"
                     },
-                    "RDSUsername": {
-                        "Ref": "RDSUsername"
-                    },
-                    "RDSPassword": {
-                        "Ref": "RDSPassword"
+                    "RDSDatabasePort": {
+                        "Ref": "RDSDatabasePort"
                     },
                     "RDSInboundCIDR": {
                         "Fn::If": [
@@ -1156,6 +1109,98 @@
                             }
                         ]
                     },
+                    "RDSInstanceClass": {
+                        "Ref": "RDSInstanceClass"
+                    },
+                    "RDSInstanceIdentifier": {
+                        "Ref": "RDSInstanceIdentifier"
+                    },
+                    "RDSMultiAZ": {
+                        "Ref": "RDSMultiAZ"
+                    },
+                    "RDSPassword": {
+                        "Ref": "RDSPassword"
+                    },
+                    "RDSUsername": {
+                        "Ref": "RDSUsername"
+                    },
+                    "RedshiftDatabaseName": {
+                        "Ref": "RedshiftDatabaseName"
+                    },
+                    "RedshiftDatabasePort": {
+                        "Ref": "RedshiftDatabasePort"
+                    },
+                    "RedshiftInboundCIDR": {
+                        "Fn::If": [
+                            "NoRedshiftInboundCIDRCondition",
+                            {
+                                "Fn::GetAtt": [
+                                    "VPCStack",
+                                    "Outputs.VPCCIDR"
+                                ]
+                            },
+                            {
+                                "Ref": "RedshiftInboundCIDR"
+                            }
+                        ]
+                    },
+                    "RedshiftNodeType": {
+                        "Ref": "RedshiftNodeType"
+                    },
+                    "RedshiftNumberOfNodes": {
+                        "Ref": "RedshiftNumberOfNodes"
+                    },
+                    "RedshiftPassword": {
+                        "Ref": "RedshiftPassword"
+                    },
+                    "RedshiftUsername": {
+                        "Ref": "RedshiftUsername"
+                    },
+                    "RegCity": {
+                        "Ref": "RegCity"
+                    },
+                    "RegCompany": {
+                        "Ref": "RegCompany"
+                    },
+                    "RegCountry": {
+                        "Ref": "RegCountry"
+                    },
+                    "RegDepartment": {
+                        "Ref": "RegDepartment"
+                    },
+                    "RegEmail": {
+                        "Ref": "RegEmail"
+                    },
+                    "RegFirstName": {
+                        "Ref": "RegFirstName"
+                    },
+                    "RegIndustry": {
+                        "Ref": "RegIndustry"
+                    },
+                    "RegLastName": {
+                        "Ref": "RegLastName"
+                    },
+                    "RegPhone": {
+                        "Ref": "RegPhone"
+                    },
+                    "RegState": {
+                        "Ref": "RegState"
+                    },
+                    "RegTitle": {
+                        "Ref": "RegTitle"
+                    },
+                    "RegZip": {
+                        "Ref": "RegZip"
+                    },
+                    "RootStackName": {
+                        "Ref": "AWS::StackName"
+                    },
+                    "SourceDataS3Region": {
+                        "Ref": "SourceDataS3Region"
+                    },
+                    "SqlWorkerInstanceType": {
+                        "Ref": "SqlWorkerInstanceType"
+                    },
                     "TableauServerInboundCIDR": {
                         "Fn::If": [
                             "NoTableauServerInboundCIDRCondition",
@@ -1170,50 +1215,20 @@
                             }
                         ]
                     },
-                    "ContentAdminUser": {
-                        "Ref": "ContentAdminUser"
-                    },
-                    "ContentAdminPassword": {
-                        "Ref": "ContentAdminPassword"
-                    },
                     "TableauServerLicenseKey": {
                         "Ref": "TableauServerLicenseKey"
                     },
-                    "RegFirstName": {
-                        "Ref": "RegFirstName"
+                    "VPCCIDR": {
+                        "Fn::GetAtt": [
+                            "VPCStack",
+                            "Outputs.VPCCIDR"
+                        ]
                     },
-                    "RegLastName": {
-                        "Ref": "RegLastName"
-                    },
-                    "RegEmail": {
-                        "Ref": "RegEmail"
-                    },
-                    "RegCompany": {
-                        "Ref": "RegCompany"
-                    },
-                    "RegTitle": {
-                        "Ref": "RegTitle"
-                    },
-                    "RegDepartment": {
-                        "Ref": "RegDepartment"
-                    },
-                    "RegIndustry": {
-                        "Ref": "RegIndustry"
-                    },
-                    "RegPhone": {
-                        "Ref": "RegPhone"
-                    },
-                    "RegCity": {
-                        "Ref": "RegCity"
-                    },
-                    "RegState": {
-                        "Ref": "RegState"
-                    },
-                    "RegZip": {
-                        "Ref": "RegZip"
-                    },
-                    "RegCountry": {
-                        "Ref": "RegCountry"
+                    "VPCID": {
+                        "Fn::GetAtt": [
+                            "VPCStack",
+                            "Outputs.VPCID"
+                        ]
                     }
                 }
             }
