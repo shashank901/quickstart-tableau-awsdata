@@ -18,10 +18,10 @@
     "Conditions": {
         "GovCloudCondition": {
             "Fn::Equals": [
-               {
-                   "Ref": "AWS::Region"
-               },
-               "us-gov-west-1"
+                {
+                    "Ref": "AWS::Region"
+                },
+                "us-gov-west-1"
             ]
         }
     },
@@ -45,19 +45,19 @@
                     ]
                 },
                 "Policies": [
-                   {
+                    {
                         "PolicyName": "aws-quick-start-s3-policy",
                         "PolicyDocument": {
                             "Version": "2012-10-17",
                             "Statement": [
-                                {   
+                                {
                                     "Action": [
                                         "s3:GetObject"
                                     ],
                                     "Resource": {
                                         "Fn::Sub": [
                                             "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
-                                            {   
+                                            {
                                                 "Partition": {
                                                     "Fn::If": [
                                                         "GovCloudCondition",
@@ -86,7 +86,7 @@
                                     "Resource": {
                                         "Fn::Sub": [
                                             "arn:${Partition}:s3:::${S3BucketName}",
-                                            {   
+                                            {
                                                 "Partition": {
                                                     "Fn::If": [
                                                         "GovCloudCondition",
@@ -107,7 +107,7 @@
                                     "Resource": {
                                         "Fn::Sub": [
                                             "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
-                                            {   
+                                            {
                                                 "Partition": {
                                                     "Fn::If": [
                                                         "GovCloudCondition",
@@ -145,19 +145,19 @@
                     ]
                 },
                 "Policies": [
-                   {
+                    {
                         "PolicyName": "aws-quick-start-s3-policy",
                         "PolicyDocument": {
                             "Version": "2012-10-17",
                             "Statement": [
-                                {   
+                                {
                                     "Action": [
                                         "s3:GetObject"
                                     ],
                                     "Resource": {
                                         "Fn::Sub": [
                                             "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
-                                            {   
+                                            {
                                                 "Partition": {
                                                     "Fn::If": [
                                                         "GovCloudCondition",
@@ -199,7 +199,7 @@
                                     "Resource": {
                                         "Fn::Sub": [
                                             "arn:${Partition}:s3:::${S3BucketName}",
-                                            {   
+                                            {
                                                 "Partition": {
                                                     "Fn::If": [
                                                         "GovCloudCondition",
@@ -220,7 +220,7 @@
                                     "Resource": {
                                         "Fn::Sub": [
                                             "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
-                                            {   
+                                            {
                                                 "Partition": {
                                                     "Fn::If": [
                                                         "GovCloudCondition",
