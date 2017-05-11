@@ -929,6 +929,24 @@
                     ]
                 },
                 "Parameters": {
+                    "ContentAdminPassword": {
+                        "Ref": "ContentAdminPassword"
+                    },
+                    "ContentAdminUser": {
+                        "Ref": "ContentAdminUser"
+                    },
+                    "IAMRoleEc2Worker": {
+                        "Fn::GetAtt": [
+                            "IAMRolesStack",
+                            "Outputs.IAMRoleEc2Worker"
+                        ]
+                    },
+                    "IamInstanceProfile": {
+                        "Fn::GetAtt": [
+                            "IAMRolesStack",
+                            "Outputs.InstanceProfileEc2Worker"
+                        ]
+                    },
                     "KeyPairName": {
                         "Ref": "KeyPairName"
                     },
@@ -938,95 +956,8 @@
                     "QSS3KeyPrefix": {
                         "Ref": "QSS3KeyPrefix"
                     },
-                    "ContentAdminUser": {
-                        "Ref": "ContentAdminUser"
-                    },
-                    "ContentAdminPassword": {
-                        "Ref": "ContentAdminPassword"
-                    },
-                    "RegFirstName": {
-                        "Ref": "RegFirstName"
-                    },
-                    "RegLastName": {
-                        "Ref": "RegLastName"
-                    },
-                    "RegEmail": {
-                        "Ref": "RegEmail"
-                    },
-                    "RegCompany": {
-                        "Ref": "RegCompany"
-                    },
-                    "RegTitle": {
-                        "Ref": "RegTitle"
-                    },
-                    "RegDepartment": {
-                        "Ref": "RegDepartment"
-                    },
-                    "RegIndustry": {
-                        "Ref": "RegIndustry"
-                    },
-                    "RegPhone": {
-                        "Ref": "RegPhone"
-                    },
-                    "RegCity": {
-                        "Ref": "RegCity"
-                    },
-                    "RegState": {
-                        "Ref": "RegState"
-                    },
-                    "RegZip": {
-                        "Ref": "RegZip"
-                    },
-                    "RegCountry": {
-                        "Ref": "RegCountry"
-                    },
-                    "TableauServerLicenseKey": {
-                        "Ref": "TableauServerLicenseKey"
-                    },
-                    "IamInstanceProfile": {
-                        "Fn::GetAtt": [
-                            "IAMRolesStack",
-                            "Outputs.InstanceProfileEc2Worker"
-                        ]
-                    },
-                    "IAMRoleEc2Worker": {
-                        "Fn::GetAtt": [
-                            "IAMRolesStack",
-                            "Outputs.IAMRoleEc2Worker"
-                        ]
-                    },
-                    "VpcId": {
-                        "Ref": "VPCID"
-                    },
-                    "SubnetID": {
-                        "Ref": "PublicSubnet1ID"
-                    },
-                    "RedshiftHost": {
-                        "Fn::GetAtt": [
-                            "RedshiftClusterStack",
-                            "Outputs.RedshiftHost"
-                        ]
-                    },
-                    "RedshiftDatabasePort": {
-                        "Fn::GetAtt": [
-                            "RedshiftClusterStack",
-                            "Outputs.RedshiftPort"
-                        ]
-                    },
-                    "RedshiftUsername": {
-                        "Ref": "RedshiftUsername"
-                    },
-                    "RedshiftPassword": {
-                        "Ref": "RedshiftPassword"
-                    },
-                    "RedshiftDatabaseName": {
-                        "Ref": "RedshiftDatabaseName"
-                    },
-                    "RDSHost": {
-                        "Fn::GetAtt": [
-                            "RDSInstanceStack",
-                            "Outputs.DBAddress"
-                        ]
+                    "RDSDatabaseName": {
+                        "Ref": "RDSDatabaseName"
                     },
                     "RDSDatabasePort": {
                         "Fn::GetAtt": [
@@ -1034,14 +965,86 @@
                             "Outputs.DBPort"
                         ]
                     },
-                    "RDSUsername": {
-                        "Ref": "RDSUsername"
+                    "RDSHost": {
+                        "Fn::GetAtt": [
+                            "RDSInstanceStack",
+                            "Outputs.DBAddress"
+                        ]
                     },
                     "RDSPassword": {
                         "Ref": "RDSPassword"
                     },
-                    "RDSDatabaseName": {
-                        "Ref": "RDSDatabaseName"
+                    "RDSUsername": {
+                        "Ref": "RDSUsername"
+                    },
+                    "RedshiftDatabaseName": {
+                        "Ref": "RedshiftDatabaseName"
+                    },
+                    "RedshiftDatabasePort": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftPort"
+                        ]
+                    },
+                    "RedshiftHost": {
+                        "Fn::GetAtt": [
+                            "RedshiftClusterStack",
+                            "Outputs.RedshiftHost"
+                        ]
+                    },
+                    "RedshiftPassword": {
+                        "Ref": "RedshiftPassword"
+                    },
+                    "RedshiftUsername": {
+                        "Ref": "RedshiftUsername"
+                    },
+                    "RegCity": {
+                        "Ref": "RegCity"
+                    },
+                    "RegCompany": {
+                        "Ref": "RegCompany"
+                    },
+                    "RegCountry": {
+                        "Ref": "RegCountry"
+                    },
+                    "RegDepartment": {
+                        "Ref": "RegDepartment"
+                    },
+                    "RegEmail": {
+                        "Ref": "RegEmail"
+                    },
+                    "RegFirstName": {
+                        "Ref": "RegFirstName"
+                    },
+                    "RegIndustry": {
+                        "Ref": "RegIndustry"
+                    },
+                    "RegLastName": {
+                        "Ref": "RegLastName"
+                    },
+                    "RegPhone": {
+                        "Ref": "RegPhone"
+                    },
+                    "RegState": {
+                        "Ref": "RegState"
+                    },
+                    "RegTitle": {
+                        "Ref": "RegTitle"
+                    },
+                    "RegZip": {
+                        "Ref": "RegZip"
+                    },
+                    "SourceCidr": {
+                        "Ref": "TableauServerInboundCIDR"
+                    },
+                    "SubnetID": {
+                        "Ref": "PublicSubnet1ID"
+                    },
+                    "TableauServerLicenseKey": {
+                        "Ref": "TableauServerLicenseKey"
+                    },
+                    "VpcId": {
+                        "Ref": "VPCID"
                     }
                 }
             }
