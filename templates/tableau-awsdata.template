@@ -28,8 +28,7 @@
                         "VPCID",
                         "VPCCIDR",
                         "BastionEIP",
-                        "RDGW1ElasticIP",
-                        "RDGW2ElasticIP"
+                        "RDGWElasticIP"
                     ]
                 },
                 {
@@ -114,11 +113,8 @@
                 "BastionEIP": {
                     "default": "Bastion Elastic IP"
                 },
-                "RDGW1ElasticIP": {
-                    "default": "RDGW1 Elastic IP"
-                },
-                "RDGW2ElasticIP": {
-                    "default": "RDGW2 Elastic IP"
+                "RDGWElasticIP": {
+                    "default": "RDGW Elastic IP"
                 },
                 "KeyPairName": {
                     "default": "Key Pair Name"

@@ -67,11 +67,7 @@
                     "Parameters": [
                         "RDGWAdminUser",
                         "DomainDNSName",
-                        "RDGWInstanceType",
-                        "RDGW1NetBIOSName",
-                        "RDGW1PrivateIP",
-                        "RDGW2NetBIOSName",
-                        "RDGW2PrivateIP"
+                        "RDGWInstanceType"
                     ]
                 },
                 {
@@ -157,18 +153,6 @@
                 "QSS3KeyPrefix": {
                     "default": "Quick Start S3 Key Prefix"
                 },
-                "RDGW1NetBIOSName": {
-                    "default": "Remote Desktop Gateway 1 NetBIOS Name"
-                },
-                "RDGW1PrivateIP": {
-                    "default": "Remote Desktop Gateway 1 Private IP Address"
-                },
-                "RDGW2NetBIOSName": {
-                    "default": "Remote Desktop Gateway 2 NetBIOS Name"
-                },
-                "RDGW2PrivateIP": {
-                    "default": "Remote Desktop Gateway 2 Private IP Address"
-                },
                 "RDGWAdminPassword": {
                     "default": "Remote Desktop Gateway Admin Password"
                 },
@@ -179,7 +163,7 @@
                     "default": "Remote Desktop Gateway Inbound CIDR"
                 },
                 "RDGWInstanceType": {
-                    "default": "Remote Desktop Gateway 1 Instance Type"
+                    "default": "Remote Desktop Gateway Instance Type"
                 },
                 "RDSAllocatedStorage": {
                     "default": "RDS Allocated Storage"
