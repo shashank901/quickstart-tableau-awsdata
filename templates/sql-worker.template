@@ -2,15 +2,6 @@
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "AWS Cloudformation template to create an EC2 instance, install PSQL client for connecting to Redshift cluster. It also loads the data into target Redshift cluser by loading DDL and sample data from the specified Quick Start S3 bucket.  **WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack from this template.",
     "Parameters": {
-        "KeyPairName": {
-            "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instances",
-            "Type": "AWS::EC2::KeyPair::KeyName",
-            "ConstraintDescription": "must be the name of an existing EC2 KeyPair."
-        },
-        "IamInstanceProfile": {
-            "Description": "IAM Instance profile to allow EC2 copy from S3",
-            "Type": "String"
-        },
         "IAMRoleEc2Worker": {
             "Description": "IAM role to allows EC2 access to S3 and Redshift role association",
             "Type": "String"
@@ -27,10 +18,11 @@
             "Description": "ARN of IAM role to allows Redshift access to S3",
             "Type": "String"
         },
+        "IamInstanceProfile": {
+            "Description": "IAM Instance profile to allow EC2 copy from S3",
+            "Type": "String"
+        },
         "InstanceType": {
-            "Description": "SQL Worker EC2 instance type",
-            "Type": "String",
-            "Default": "t2.small",
             "AllowedValues": [
                 "t1.micro",
                 "t2.nano",
@@ -87,94 +79,15 @@
                 "cc2.8xlarge",
                 "cg1.4xlarge"
             ],
-            "ConstraintDescription": "must be a valid EC2 instance type."
-        },
-        "SSHLocation": {
-            "Description": "The IP address range that can be used to SSH to the EC2 instances",
-            "Type": "String",
-            "MinLength": "9",
-            "MaxLength": "18",
-            "Default": "10.0.128.0/20",
-            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
-            "ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x."
-        },
-        "RedshiftClusterId": {
-            "Description": "Redshift ClusterId for the Redshift Cluster created",
+            "ConstraintDescription": "must be a valid EC2 instance type.",
+            "Default": "t2.small",
+            "Description": "SQL Worker EC2 instance type",
             "Type": "String"
         },
-        "RedshiftHost": {
-            "Description": "Redshift host to connect to",
-            "Type": "String"
-        },
-        "RDSHost": {
-            "Description": "Redshift host to connect to",
-            "Type": "String"
-        },
-        "RDSDBName": {
-            "Description": "The name of the first database to be created when the redshift cluster is created",
-            "Type": "String",
-            "Default": "abhijeet",
-            "AllowedPattern": "([a-z]|[A-Z]|[0-9])+",
-            "ConstraintDescription": "must contain a-z or 0-9 only."
-        },
-        "RedshiftDBName": {
-            "Description": "The name of the first database to be created when the redshift cluster is created",
-            "Type": "String",
-            "Default": "defaultdb",
-            "AllowedPattern": "([a-z]|[A-Z]|[0-9])+",
-            "ConstraintDescription": "must contain a-z or 0-9 only."
-        },
-        "RedshiftDatabasePort": {
-            "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
-            "Type": "String",
-            "Default": "5439"
-        },
-        "RDSDatabasePort": {
-            "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
-            "Type": "String",
-            "Default": "5432"
-        },
-        "RedshiftUsername": {
-            "Description": "The Redshift database admin account username",
-            "Type": "String",
-            "MinLength": "1",
-            "MaxLength": "16",
-            "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
-            "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters."
-        },
-        "RDSUsername": {
-            "Description": "The Postgres database admin account username",
-            "Type": "String",
-            "MinLength": "1",
-            "MaxLength": "16",
-            "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
-            "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters."
-        },
-        "RedshiftPassword": {
-            "NoEcho": "true",
-            "Description": "The Redshift DB Password database admin account password",
-            "Type": "String",
-            "MinLength": "8",
-            "MaxLength": "41",
-            "AllowedPattern": "[a-zA-Z0-9]*",
-            "ConstraintDescription": "must contain only alphanumeric characters."
-        },
-        "RDSPassword": {
-            "NoEcho": "true",
-            "Description": "The Postgres DB Password  database admin account password",
-            "Type": "String",
-            "MinLength": "8",
-            "MaxLength": "41",
-            "AllowedPattern": "[a-zA-Z0-9]*",
-            "ConstraintDescription": "must contain only alphanumeric characters."
-        },
-        "SubnetId": {
-            "Type": "String",
-            "Description": "SubnetId of an existing subnet in your Virtual Private Cloud (VPC)"
-        },
-        "VpcId": {
-            "Type": "String",
-            "Description": "SubnetId of an existing subnet in your Virtual Private Cloud (VPC)"
+        "KeyPairName": {
+            "ConstraintDescription": "must be the name of an existing EC2 KeyPair.",
+            "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instances",
+            "Type": "AWS::EC2::KeyPair::KeyName"
         },
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
@@ -188,6 +101,93 @@
             "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Default": "tableau/awsdata/latest/",
             "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Type": "String"
+        },
+        "RDSDBName": {
+            "AllowedPattern": "([a-z]|[A-Z]|[0-9])+",
+            "ConstraintDescription": "must contain a-z or 0-9 only.",
+            "Default": "abhijeet",
+            "Description": "The name of the first database to be created when the redshift cluster is created",
+            "Type": "String"
+        },
+        "RDSDatabasePort": {
+            "Default": "5432",
+            "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
+            "Type": "String"
+        },
+        "RDSHost": {
+            "Description": "Redshift host to connect to",
+            "Type": "String"
+        },
+        "RDSPassword": {
+            "AllowedPattern": "[a-zA-Z0-9]*",
+            "ConstraintDescription": "must contain only alphanumeric characters.",
+            "Description": "The Postgres DB Password  database admin account password",
+            "MaxLength": "41",
+            "MinLength": "8",
+            "NoEcho": "true",
+            "Type": "String"
+        },
+        "RDSUsername": {
+            "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
+            "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters.",
+            "Description": "The Postgres database admin account username",
+            "MaxLength": "16",
+            "MinLength": "1",
+            "Type": "String"
+        },
+        "RedshiftClusterId": {
+            "Description": "Redshift ClusterId for the Redshift Cluster created",
+            "Type": "String"
+        },
+        "RedshiftDBName": {
+            "AllowedPattern": "([a-z]|[A-Z]|[0-9])+",
+            "ConstraintDescription": "must contain a-z or 0-9 only.",
+            "Default": "defaultdb",
+            "Description": "The name of the first database to be created when the redshift cluster is created",
+            "Type": "String"
+        },
+        "RedshiftDatabasePort": {
+            "Default": "5439",
+            "Description": "The port that Redshift will listen on and that will be allowed through the Security Group. ",
+            "Type": "String"
+        },
+        "RedshiftHost": {
+            "Description": "Redshift host to connect to",
+            "Type": "String"
+        },
+        "RedshiftPassword": {
+            "AllowedPattern": "[a-zA-Z0-9]*",
+            "ConstraintDescription": "must contain only alphanumeric characters.",
+            "Description": "The Redshift DB Password database admin account password",
+            "MaxLength": "41",
+            "MinLength": "8",
+            "NoEcho": "true",
+            "Type": "String"
+        },
+        "RedshiftUsername": {
+            "AllowedPattern": "[a-zA-Z][a-zA-Z0-9]*",
+            "ConstraintDescription": "must begin with a letter and contain only alphanumeric characters.",
+            "Description": "The Redshift database admin account username",
+            "MaxLength": "16",
+            "MinLength": "1",
+            "Type": "String"
+        },
+        "SSHLocation": {
+            "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+            "ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x.",
+            "Default": "10.0.128.0/20",
+            "Description": "The IP address range that can be used to SSH to the EC2 instances",
+            "MaxLength": "18",
+            "MinLength": "9",
+            "Type": "String"
+        },
+        "SubnetId": {
+            "Description": "SubnetId of an existing subnet in your Virtual Private Cloud (VPC)",
+            "Type": "String"
+        },
+        "VpcId": {
+            "Description": "SubnetId of an existing subnet in your Virtual Private Cloud (VPC)",
             "Type": "String"
         }
     },
