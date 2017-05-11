@@ -55,6 +55,7 @@
         },
         "RDSPassword": {
             "Description": "RDS Password",
+            "NoEcho": "true",
             "Type": "String"
         },
         "RDSUsername": {
@@ -75,6 +76,7 @@
         },
         "RedshiftPassword": {
             "Description": "Redshift Password",
+            "NoEcho": "true",
             "Type": "String"
         },
         "RedshiftUsername": {
