@@ -6,27 +6,90 @@
             "ParameterGroups": [
                 {
                     "Label": {
-                        "default": "AWS Quick Start Configuration"
+                        "default": "Network Configuration"
                     },
                     "Parameters": [
-                        "KeyPairName",
-                        "QSS3BucketName",
-                        "QSS3KeyPrefix",
-                        "SourceDataS3Region",
+                        "AvailabilityZones",
+                        "VPCDefinition",
+                        "RDSInboundCIDR",
+                        "RedshiftInboundCIDR",
+                        "TableauServerInboundCIDR",
+                        "BastionInboundCIDR",
+                        "RDGWInboundCIDR",
                         "HostedZoneName"
                     ]
                 },
                 {
                     "Label": {
-                        "default": "Required Parameters"
+                        "default": "Amazon EC2 Common Configuration"
                     },
                     "Parameters": [
-                        "AvailabilityZones",
-                        "BastionInboundCIDR",
-                        "RDGWInboundCIDR",
+                        "KeyPairName"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Linux Bastion Configuration"
+                    },
+                    "Parameters": [
+                        "BastionInstanceType",
+                        "BastionAMIOS",
+                        "BastionBanner"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Remote Desktop Gateway Configuration"
+                    },
+                    "Parameters": [
+                        "RDGWInstanceType",
+                        "RDGWAdminUser",
                         "RDGWAdminPassword",
+                        "DomainDNSName"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Amazon Redshift Configuration"
+                    },
+                    "Parameters": [
+                        "RedshiftDatabaseName",
+                        "RedshiftNumberOfNodes",
+                        "RedshiftNodeType",
+                        "RedshiftUsername",
                         "RedshiftPassword",
-                        "RDSPassword",
+                        "RedshiftDatabasePort"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Amazon RDS PostgreSQL Configuration"
+                    },
+                    "Parameters": [
+                        "RDSInstanceIdentifier",
+                        "RDSDatabasePort",
+                        "RDSDatabaseName",
+                        "RDSMultiAZ",
+                        "RDSInstanceClass",
+                        "RDSAllocatedStorage",
+                        "RDSUsername",
+                        "RDSPassword"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "SQL Worker Configuration"
+                    },
+                    "Parameters": [
+                        "SqlWorkerInstanceType"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Tableau Server Configuration"
+                    },
+                    "Parameters": [
+                        "ContentAdminUser",
                         "ContentAdminPassword",
                         "RegFirstName",
                         "RegLastName",
@@ -39,81 +102,18 @@
                         "RegCity",
                         "RegState",
                         "RegZip",
-                        "RegCountry"
+                        "RegCountry",
+                        "TableauServerLicenseKey"
                     ]
                 },
                 {
                     "Label": {
-                        "default": "New VPC Configuration"
+                        "default": "AWS Quick Start Configuration"
                     },
                     "Parameters": [
-                        "VPCDefinition"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "Linux Bastion Configuration"
-                    },
-                    "Parameters": [
-                        "BastionAMIOS",
-                        "BastionInstanceType",
-                        "BastionBanner"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "Remote Desktop Gateway Configuration"
-                    },
-                    "Parameters": [
-                        "RDGWAdminUser",
-                        "DomainDNSName",
-                        "RDGWInstanceType"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "Redshift Cluster Configuration"
-                    },
-                    "Parameters": [
-                        "RedshiftDatabaseName",
-                        "RedshiftNumberOfNodes",
-                        "RedshiftNodeType",
-                        "RedshiftUsername",
-                        "RedshiftInboundCIDR",
-                        "RedshiftDatabasePort"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "Postgress RDS Instance Configuration"
-                    },
-                    "Parameters": [
-                        "RDSInstanceIdentifier",
-                        "RDSDatabasePort",
-                        "RDSDatabaseName",
-                        "RDSMultiAZ",
-                        "RDSInstanceClass",
-                        "RDSAllocatedStorage",
-                        "RDSUsername",
-                        "RDSInboundCIDR"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "SQL-Worker EC2 Instance Configuration"
-                    },
-                    "Parameters": [
-                        "SqlWorkerInstanceType"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "Tableau Server EC2 Instance Configuration"
-                    },
-                    "Parameters": [
-                        "ContentAdminUser",
-                        "TableauServerLicenseKey",
-                        "TableauServerInboundCIDR"
+                        "QSS3BucketName",
+                        "QSS3KeyPrefix",
+                        "SourceDataS3Region"
                     ]
                 }
             ],
