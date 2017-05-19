@@ -58,11 +58,11 @@
         },
         "DBAllocatedStorage": {
             "Default": "5",
-            "Description": "The size of the database (Gb)",
+            "Description": "The size of the database (GiB)",
             "Type": "Number",
             "MinValue": "5",
             "MaxValue": "1024",
-            "ConstraintDescription": "must be between 5 and 1024Gb"
+            "ConstraintDescription": "must be between 5 and 1024GiB"
         },
         "DBInstanceClass": {
             "Default": "db.t2.large",
@@ -94,7 +94,7 @@
         "SecurityGroup": {
             "Type": "AWS::EC2::SecurityGroup",
             "Properties": {
-                "GroupDescription": "Allow access to the postgress (Abhijeet) from the Web Server",
+                "GroupDescription": "Allow access to the PostgreSQL from the other instances",
                 "VpcId": {
                     "Ref": "VpcId"
                 },

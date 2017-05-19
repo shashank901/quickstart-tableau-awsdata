@@ -106,7 +106,7 @@
         "RDSDBName": {
             "AllowedPattern": "([a-z]|[A-Z]|[0-9])+",
             "ConstraintDescription": "must contain a-z or 0-9 only.",
-            "Default": "abhijeet",
+            "Default": "quickstart",
             "Description": "The name of the first database to be created when the redshift cluster is created",
             "Type": "String"
         },

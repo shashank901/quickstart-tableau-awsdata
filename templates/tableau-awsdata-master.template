@@ -394,9 +394,9 @@
             "Type": "String"
         },
         "RDSAllocatedStorage": {
-            "ConstraintDescription": "must be between 5 and 1024Gb",
+            "ConstraintDescription": "must be between 5 and 1024GiB",
             "Default": "5",
-            "Description": "The size of the database (Gb)",
+            "Description": "The size of the database (GiB)",
             "MaxValue": "1024",
             "MinValue": "5",
             "Type": "Number"
