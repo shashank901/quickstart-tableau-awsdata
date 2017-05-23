@@ -113,7 +113,9 @@
                     "Parameters": [
                         "QSS3BucketName",
                         "QSS3KeyPrefix",
-                        "SourceDataS3Region"
+                        "DatasetS3BucketName",
+                        "DatasetS3KeyPrefix",
+                        "DatasetS3Region"
                     ]
                 }
             ],
@@ -138,6 +140,15 @@
                 },
                 "ContentAdminUser": {
                     "default": "Content Admin User"
+                },
+                "DatasetS3BucketName": {
+                    "default": "Dataset S3 Bucket Name"
+                },
+                "DatasetS3KeyPrefix": {
+                    "default": "Dataset S3 Key Prefix"
+                },
+                "DatasetS3Region": {
+                    "default": "Dataset S3 Region"
                 },
                 "DomainDNSName": {
                     "default": "Domain DNS Name"
@@ -250,9 +261,6 @@
                 "RegZip": {
                     "default": "Reg Zip"
                 },
-                "SourceDataS3Region": {
-                    "default": "Source Data S3 Region"
-                },
                 "SqlWorkerInstanceType": {
                     "default": "SQL Worker Instance Type"
                 },
@@ -324,6 +332,25 @@
             "Default": "admin",
             "Description": "The name of the initial Admin user for Tableau server",
             "MinLength": "1",
+            "Type": "String"
+        },
+        "DatasetS3BucketName": {
+            "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
+            "ConstraintDescription": "Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Default": "aws-quickstart-datasets",
+            "Description": "Dataset bucket name for the Quick Start dataset. Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Type": "String"
+        },
+        "DatasetS3KeyPrefix": {
+            "AllowedPattern": "^[0-9a-zA-Z-/]*$",
+            "ConstraintDescription": "Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Default": "tableau-awsdata/flat-tpcds/v1/",
+            "Description": "S3 key prefix for the Quick Start dataset. Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Type": "String"
+        },
+        "DatasetS3Region": {
+            "Default": "us-east-1",
+            "Description": "The AWS region where the dataset S3 bucket is located and is used with the Redshift COPY command.",
             "Type": "String"
         },
         "DomainDNSName": {
@@ -589,11 +616,6 @@
         },
         "RegZip": {
             "Description": "ZIP/Postal Code",
-            "Type": "String"
-        },
-        "SourceDataS3Region": {
-            "Default": "us-east-1",
-            "Description": "The AWS region where the S3 source data is located and is used with the Redshift COPY command. This is normally the region where the Quick Start S3 bucket is located",
             "Type": "String"
         },
         "SqlWorkerInstanceType": {
@@ -1044,6 +1066,15 @@
                     "ContentAdminUser": {
                         "Ref": "ContentAdminUser"
                     },
+                    "DatasetS3BucketName": {
+                        "Ref": "DatasetS3BucketName"
+                    },
+                    "DatasetS3KeyPrefix": {
+                        "Ref": "DatasetS3KeyPrefix"
+                    },
+                    "DatasetS3Region": {
+                        "Ref": "DatasetS3Region"
+                    },
                     "HostedZoneName": {
                         "Ref": "HostedZoneName"
                     },
@@ -1194,9 +1225,6 @@
                     },
                     "RootStackName": {
                         "Ref": "AWS::StackName"
-                    },
-                    "SourceDataS3Region": {
-                        "Ref": "SourceDataS3Region"
                     },
                     "SqlWorkerInstanceType": {
                         "Ref": "SqlWorkerInstanceType"

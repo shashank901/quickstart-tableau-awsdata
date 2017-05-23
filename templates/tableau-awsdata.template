@@ -97,25 +97,33 @@
                         "RootStackName",
                         "QSS3BucketName",
                         "QSS3KeyPrefix",
-                        "SourceDataS3Region"
+                        "DatasetS3BucketName",
+                        "DatasetS3KeyPrefix",
+                        "DatasetS3Region"
                     ]
                 }
             ],
             "ParameterLabels": {
+                "BastionEIP": {
+                    "default": "Bastion Elastic IP"
+                },
                 "ContentAdminPassword": {
                     "default": "Content Admin Password"
                 },
                 "ContentAdminUser": {
                     "default": "Content Admin User"
                 },
+                "DatasetS3BucketName": {
+                    "default": "Dataset S3 Bucket Name"
+                },
+                "DatasetS3KeyPrefix": {
+                    "default": "Dataset S3 Key Prefix"
+                },
+                "DatasetS3Region": {
+                    "default": "Dataset S3 Region"
+                },
                 "HostedZoneName": {
                     "default": "Hosted Zone Name"
-                },
-                "BastionEIP": {
-                    "default": "Bastion Elastic IP"
-                },
-                "RDGWElasticIP": {
-                    "default": "RDGW Elastic IP"
                 },
                 "KeyPairName": {
                     "default": "Key Pair Name"
@@ -137,6 +145,9 @@
                 },
                 "QSS3KeyPrefix": {
                     "default": "Quick Start S3 Key Prefix"
+                },
+                "RDGWElasticIP": {
+                    "default": "RDGW Elastic IP"
                 },
                 "RDSAllocatedStorage": {
                     "default": "RDS Allocated Storage"
@@ -247,6 +258,11 @@
         }
     },
     "Parameters": {
+        "BastionEIP": {
+            "Default": "169.254.169.254",
+            "Description": "Public IP of Bastion for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
+            "Type": "String"
+        },
         "ContentAdminPassword": {
             "Description": "The password for the initial Admin user for Tableau server",
             "MinLength": "1",
@@ -259,19 +275,28 @@
             "MinLength": "1",
             "Type": "String"
         },
+        "DatasetS3BucketName": {
+            "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
+            "ConstraintDescription": "Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Default": "aws-quickstart-datasets",
+            "Description": "Dataset bucket name for the Quick Start dataset. Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Type": "String"
+        },
+        "DatasetS3KeyPrefix": {
+            "AllowedPattern": "^[0-9a-zA-Z-/]*$",
+            "ConstraintDescription": "Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Default": "tableau-awsdata/flat-tpcds/v1/",
+            "Description": "S3 key prefix for the Quick Start dataset. Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Type": "String"
+        },
+        "DatasetS3Region": {
+            "Default": "us-east-1",
+            "Description": "The AWS region where the dataset S3 bucket is located and is used with the Redshift COPY command.",
+            "Type": "String"
+        },
         "HostedZoneName": {
             "Default": "<NONE>",
             "Description": "Name of Hosted Zone within which the Quick Start will create convenience DNS entries for AWS Resources created by the Quick Start.  If you do not wish to create convenience DNS entries or are not using AWS Route53 for DNS, enter '<NONE>', otherwise enter the Hosted Zone name including the trailing period, for example 'dev.example.com.'.",
-            "Type": "String"
-        },
-        "BastionEIP": {
-            "Default": "169.254.169.254",
-            "Description": "Public IP of Bastion for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
-            "Type": "String"
-        },
-        "RDGWElasticIP": {
-            "Default": "169.254.169.254",
-            "Description": "Public IP of Remote Desktop Gateway for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
             "Type": "String"
         },
         "KeyPairName": {
@@ -306,6 +331,11 @@
             "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Default": "tableau/awsdata/latest/",
             "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Type": "String"
+        },
+        "RDGWElasticIP": {
+            "Default": "169.254.169.254",
+            "Description": "Public IP of Remote Desktop Gateway for use in creating convenience DNS entries for AWS Resources created by the Quick Start.  If you have not specified a name in the Hosted Zone Name parameter, this parameter will not be used and can remain set to its default.",
             "Type": "String"
         },
         "RDSAllocatedStorage": {
@@ -509,11 +539,6 @@
         "RootStackName": {
             "Default": "<NONE>",
             "Description": "Name of Top-Level Stack",
-            "Type": "String"
-        },
-        "SourceDataS3Region": {
-            "Default": "us-east-1",
-            "Description": "The AWS region where the S3 source data is located and is used with the Redshift COPY command. This is normally the region where the Quick Start S3 bucket is located",
             "Type": "String"
         },
         "SqlWorkerInstanceType": {
@@ -812,6 +837,15 @@
                     ]
                 },
                 "Parameters": {
+                    "DatasetS3BucketName": {
+                        "Ref": "DatasetS3BucketName"
+                    },
+                    "DatasetS3KeyPrefix": {
+                        "Ref": "DatasetS3KeyPrefix"
+                    },
+                    "DatasetS3Region": {
+                        "Ref": "DatasetS3Region"
+                    },
                     "IAMRoleEc2Worker": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
@@ -923,9 +957,6 @@
                     "SSHLocation": {
                         "Ref": "VPCCIDR"
                     },
-                    "SourceDataS3Region": {
-                        "Ref": "SourceDataS3Region"
-                    },
                     "SubnetId": {
                         "Ref": "PrivateSubnet1ID"
                     },
@@ -958,6 +989,12 @@
                     },
                     "ContentAdminUser": {
                         "Ref": "ContentAdminUser"
+                    },
+                    "DatasetS3BucketName": {
+                        "Ref": "DatasetS3BucketName"
+                    },
+                    "DatasetS3KeyPrefix": {
+                        "Ref": "DatasetS3KeyPrefix"
                     },
                     "IAMRoleEc2Worker": {
                         "Fn::GetAtt": [

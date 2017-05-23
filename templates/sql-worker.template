@@ -2,6 +2,25 @@
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "AWS Cloudformation template to create an EC2 instance, install PSQL client for connecting to Redshift cluster. It also loads the data into target Redshift cluser by loading DDL and sample data from the specified Quick Start S3 bucket.  **WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack from this template.",
     "Parameters": {
+        "DatasetS3BucketName": {
+            "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
+            "ConstraintDescription": "Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Default": "aws-quickstart-datasets",
+            "Description": "Dataset bucket name for the Quick Start dataset. Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Type": "String"
+        },
+        "DatasetS3KeyPrefix": {
+            "AllowedPattern": "^[0-9a-zA-Z-/]*$",
+            "ConstraintDescription": "Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Default": "tableau-awsdata/flat-tpcds/v1/",
+            "Description": "S3 key prefix for the Quick Start dataset. Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Type": "String"
+        },
+        "DatasetS3Region": {
+            "Default": "us-east-1",
+            "Description": "The AWS region where the dataset S3 bucket is located and is used with the Redshift COPY command.",
+            "Type": "String"
+        },
         "IAMRoleEc2Worker": {
             "Description": "IAM role to allows EC2 access to S3 and Redshift role association",
             "Type": "String"
@@ -182,11 +201,6 @@
             "MinLength": "9",
             "Type": "String"
         },
-        "SourceDataS3Region": {
-            "Default": "us-east-1",
-            "Description": "The AWS region where the S3 source data is located and is used with the Redshift COPY command. This is normally the region where the Quick Start S3 bucket is located",
-            "Type": "String"
-        },
         "SubnetId": {
             "Description": "SubnetId of an existing subnet in your Virtual Private Cloud (VPC)",
             "Type": "String"
@@ -337,7 +351,7 @@
                             "/home/ec2-user/setup-redshift.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-redshift.sql",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetKeyPrefix}sql/setup-redshift.sql",
                                         {
                                             "QSS3Region": {
                                                 "Fn::If": [
@@ -513,7 +527,7 @@
                             "/home/ec2-user/setup-postgres.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/setup-postgres.sql",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/setup-postgres.sql",
                                         {
                                             "QSS3Region": {
                                                 "Fn::If": [
@@ -553,7 +567,7 @@
                             "/home/ec2-user/create-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/create-aggregates.sql",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/create-aggregates.sql",
                                         {
                                             "QSS3Region": {
                                                 "Fn::If": [
@@ -573,7 +587,7 @@
                             "/home/ec2-user/publish-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/sql/publish-aggregates.sql",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/publish-aggregates.sql",
                                         {
                                             "QSS3Region": {
                                                 "Fn::If": [
@@ -671,13 +685,13 @@
                                         [
                                             " sh interpolate-setup-redshift-sql.sh setup-redshift.sql ",
                                             {
-                                                "Fn::Sub": "s3://${QSS3BucketName}/${QSS3KeyPrefix}dataset/content"
+                                                "Fn::Sub": "s3://${QSS3BucketName}/${QSS3KeyPrefix}"
                                             },
                                             {
                                                 "Ref": "IAMRoleRedshiftWorkerArn"
                                             },
                                             {
-                                                "Ref": "SourceDataS3Region"
+                                                "Ref": "DatasetS3Region"
                                             },
                                             ">/home/ec2-user/setup-redshift-intermediate.sql"
                                         ]

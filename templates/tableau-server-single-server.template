@@ -14,6 +14,20 @@
             "MinLength": "1",
             "Type": "String"
         },
+        "DatasetS3BucketName": {
+            "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
+            "ConstraintDescription": "Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Default": "aws-quickstart-datasets",
+            "Description": "Dataset bucket name for the Quick Start dataset. Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Type": "String"
+        },
+        "DatasetS3KeyPrefix": {
+            "AllowedPattern": "^[0-9a-zA-Z-/]*$",
+            "ConstraintDescription": "Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Default": "tableau-awsdata/flat-tpcds/v1/",
+            "Description": "S3 key prefix for the Quick Start dataset. Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Type": "String"
+        },
         "IAMRoleEc2Worker": {
             "Description": "IAM role to allows EC2 access to S3",
             "Type": "String"
@@ -154,107 +168,6 @@
         "VpcId": {
             "Description": "ID of the Cage's Virtual Private Cloud",
             "Type": "String"
-        }
-    },
-    "Metadata": {
-        "AWS::CloudFormation::Interface": {
-            "ParameterGroups": [
-                {
-                    "Label": {
-                        "default": "AWS Environment"
-                    },
-                    "Parameters": [
-                        "KeyPairName",
-                        "SubnetID",
-                        "SourceCidr"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "Configure Initial Tableau Admin User"
-                    },
-                    "Parameters": [
-                        "ContentAdminUser",
-                        "ContentAdminPassword"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "Registration"
-                    },
-                    "Parameters": [
-                        "TableauServerLicenseKey",
-                        "RegFirstName",
-                        "RegLastName",
-                        "RegEmail",
-                        "RegCompany",
-                        "RegTitle",
-                        "RegDepartment",
-                        "RegIndustry",
-                        "RegPhone",
-                        "RegCity",
-                        "RegState",
-                        "RegZip",
-                        "RegCountry"
-                    ]
-                }
-            ],
-            "ParameterLabels": {
-                "ContentAdminPassword": {
-                    "default": "Portal admin password"
-                },
-                "ContentAdminUser": {
-                    "default": "Portal admin username"
-                },
-                "KeyPairName": {
-                    "default": "EC2 keypair"
-                },
-                "RegCity": {
-                    "default": "City"
-                },
-                "RegCompany": {
-                    "default": "Company"
-                },
-                "RegCountry": {
-                    "default": "Country"
-                },
-                "RegDepartment": {
-                    "default": "Department"
-                },
-                "RegEmail": {
-                    "default": "Email Address"
-                },
-                "RegFirstName": {
-                    "default": "First Name"
-                },
-                "RegIndustry": {
-                    "default": "Industry"
-                },
-                "RegLastName": {
-                    "default": "Last name"
-                },
-                "RegPhone": {
-                    "default": "Phone"
-                },
-                "RegState": {
-                    "default": "State"
-                },
-                "RegTitle": {
-                    "default": "Title"
-                },
-                "RegZip": {
-                    "default": "Zip/Postal Code"
-                },
-                "SourceCidr": {
-                    "default": "Source CIDR for access"
-                },
-                "SubnetID": {
-                    "default": "ID of the subnet within which Tableau Server will be launched"
-                },
-                "TableauServerLicenseKey": {
-                    "default": "Tableau Activation Key"
-                }
-            }
         }
     },
     "Mappings": {
@@ -655,7 +568,7 @@
                             "c:\\tabsetup\\redshift.tds": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/redshift.tds",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/redshift.tds",
                                         {
                                             "QSS3Region": {
                                                 "Fn::If": [
@@ -672,7 +585,7 @@
                             "c:\\tabsetup\\postgres.tds": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/postgres.tds",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/postgres.tds",
                                         {
                                             "QSS3Region": {
                                                 "Fn::If": [
@@ -689,7 +602,7 @@
                             "c:\\tabsetup\\quickstart.twb": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}dataset/dashboard/quickstart.twb",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/quickstart.twb",
                                         {
                                             "QSS3Region": {
                                                 "Fn::If": [
