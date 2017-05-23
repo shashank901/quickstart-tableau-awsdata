@@ -28,6 +28,18 @@
         "ParameterValue": "admin"
     },
     {
+        "ParameterKey": "DatasetS3BucketName",
+        "ParameterValue": "aws-quickstart-datasets"
+    },
+    {
+        "ParameterKey": "DatasetS3KeyPrefix",
+        "ParameterValue": "tableau-awsdata/flat-tpcds/v1/"
+    },
+    {
+        "ParameterKey": "DatasetS3Region",
+        "ParameterValue": "us-east-1"
+    },
+    {
         "ParameterKey": "DomainDNSName",
         "ParameterValue": "example.com"
     },
@@ -166,10 +178,6 @@
     {
         "ParameterKey": "RegZip",
         "ParameterValue": "TestZip"
-    },
-    {
-        "ParameterKey": "SourceDataS3Region",
-        "ParameterValue": "us-east-1"
     },
     {
         "ParameterKey": "SqlWorkerInstanceType",
