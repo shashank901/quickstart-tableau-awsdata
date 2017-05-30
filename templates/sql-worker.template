@@ -351,9 +351,9 @@
                             "/home/ec2-user/setup-redshift.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetKeyPrefix}sql/setup-redshift.sql",
+                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/setup-redshift.sql",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -371,9 +371,9 @@
                             "/home/ec2-user/interpolate-setup-redshift-sql.sh": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-redshift-sql.sh",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-redshift-sql.sh",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -527,9 +527,9 @@
                             "/home/ec2-user/setup-postgres.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/setup-postgres.sql",
+                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/setup-postgres.sql",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -547,9 +547,9 @@
                             "/home/ec2-user/interpolate-setup-postgres-sql.sh": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-postgres-sql.sh",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-postgres-sql.sh",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -567,9 +567,9 @@
                             "/home/ec2-user/create-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/create-aggregates.sql",
+                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/create-aggregates.sql",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -587,9 +587,9 @@
                             "/home/ec2-user/publish-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/publish-aggregates.sql",
+                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/publish-aggregates.sql",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -678,50 +678,7 @@
                                 "command": "sudo pip install psycopg2",
                                 "cwd": "/home/ec2-user"
                             },
-                            "03-interpolate-setup-redshift-sql": {
-                                "command": {
-                                    "Fn::Join": [
-                                        " ",
-                                        [
-                                            " sh interpolate-setup-redshift-sql.sh setup-redshift.sql ",
-                                            {
-                                                "Fn::Sub": "s3://${QSS3BucketName}/${QSS3KeyPrefix}"
-                                            },
-                                            {
-                                                "Ref": "IAMRoleRedshiftWorkerArn"
-                                            },
-                                            {
-                                                "Ref": "DatasetS3Region"
-                                            },
-                                            ">/home/ec2-user/setup-redshift-intermediate.sql"
-                                        ]
-                                    ]
-                                },
-                                "cwd": "/home/ec2-user"
-                            },
-                            "04-create-tables-redshift": {
-                                "command": {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            " sh runsql.sh > /home/ec2-user/runsql.log\n"
-                                        ]
-                                    ]
-                                },
-                                "cwd": "/home/ec2-user"
-                            },
-                            "05-create-aggregates-redshift": {
-                                "command": {
-                                    "Fn::Join": [
-                                        " ",
-                                        [
-                                            " sh /home/ec2-user/create-aggregate-sql.sh > /home/ec2-user/create-aggregate-sql.log"
-                                        ]
-                                    ]
-                                },
-                                "cwd": "/home/ec2-user"
-                            },
-                            "06-interpolate-setup-postgres-sql": {
+                            "03-interpolate-setup-postgres-sql": {
                                 "command": {
                                     "Fn::Join": [
                                         " ",
@@ -751,12 +708,55 @@
                                 },
                                 "cwd": "/home/ec2-user"
                             },
-                            "07-setup-postgres": {
+                            "04-setup-postgres": {
                                 "command": {
                                     "Fn::Join": [
                                         " ",
                                         [
                                             " sh /home/ec2-user/setup-postgres-intermediate-sql.sh > /home/ec2-user/setup-postgres-intermediate-sql.log\n"
+                                        ]
+                                    ]
+                                },
+                                "cwd": "/home/ec2-user"
+                            },
+                            "05-interpolate-setup-redshift-sql": {
+                                "command": {
+                                    "Fn::Join": [
+                                        " ",
+                                        [
+                                            " sh interpolate-setup-redshift-sql.sh setup-redshift.sql ",
+                                            {
+                                                "Fn::Sub": "s3://${DatasetS3BucketName}/${DatasetS3KeyPrefix}"
+                                            },
+                                            {
+                                                "Ref": "IAMRoleRedshiftWorkerArn"
+                                            },
+                                            {
+                                                "Ref": "DatasetS3Region"
+                                            },
+                                            ">/home/ec2-user/setup-redshift-intermediate.sql"
+                                        ]
+                                    ]
+                                },
+                                "cwd": "/home/ec2-user"
+                            },
+                            "06-create-tables-redshift": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            " sh runsql.sh > /home/ec2-user/runsql.log\n"
+                                        ]
+                                    ]
+                                },
+                                "cwd": "/home/ec2-user"
+                            },
+                            "07-create-aggregates-redshift": {
+                                "command": {
+                                    "Fn::Join": [
+                                        " ",
+                                        [
+                                            " sh /home/ec2-user/create-aggregate-sql.sh > /home/ec2-user/create-aggregate-sql.log"
                                         ]
                                     ]
                                 },

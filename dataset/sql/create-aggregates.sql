@@ -1,15 +1,17 @@
-DROP VIEW IF EXISTS sales_aggregates;
+DROP VIEW IF EXISTS store_sales_aggregates;
 
-CREATE VIEW sales_aggregates AS
+CREATE VIEW store_sales_aggregates AS
 SELECT
-    d.year,
-    d.month,
-    SUM(s.qtysold) as sum_qtysold,
-    SUM(s.pricepaid) as sum_pricepaid,
-    SUM(s.commission) as sum_commission
-FROM sales s
-INNER JOIN date d
-ON s.dateid=d.dateid
-GROUP BY d.year, d.month
-ORDER BY d.year, d.month
+  cd_credit_rating,
+  i_category,
+  cd_education_status,
+  ca_state,
+  d_date_week,
+  count(ss_ticket_number) as ss_ticket_number,
+  sum(1) as "number of rows",
+  sum(ss_ext_discount_amt) as ss_ext_discount_amt,
+  sum(ss_net_paid) as ss_net_paid
+FROM
+  store_sales
+  GROUP BY 1,2,3,4,5
 ;

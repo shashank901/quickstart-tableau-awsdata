@@ -1,88 +1,62 @@
-drop table IF EXISTS users;
-drop table IF EXISTS venue;
-drop table IF EXISTS category;
-drop table IF EXISTS date;
-drop table IF EXISTS event; 
-drop table IF EXISTS listing ; 
-drop table IF EXISTS sales; 
+drop table IF EXISTS store_sales;
 
+CREATE TABLE public.store_sales
+(
+	ss_item_sk INTEGER NOT NULL ENCODE delta32k,
+	ss_addr_sk INTEGER ENCODE runlength,
+	ss_ticket_number INTEGER NOT NULL ENCODE runlength,
+	ss_quantity INTEGER ENCODE delta,
+	ss_wholesale_cost NUMERIC(7, 2) ENCODE delta32k,
+	ss_list_price NUMERIC(7, 2) ENCODE delta32k,
+	ss_sales_price NUMERIC(7, 2) ENCODE delta32k,
+	ss_ext_discount_amt NUMERIC(7, 2) ENCODE lzo,
+	ss_ext_sales_price NUMERIC(7, 2) ENCODE lzo,
+	ss_ext_wholesale_cost NUMERIC(7, 2) ENCODE lzo,
+	ss_ext_list_price NUMERIC(7, 2) ENCODE lzo,
+	ss_ext_tax NUMERIC(7, 2) ENCODE mostly16,
+	ss_coupon_amt NUMERIC(7, 2) ENCODE lzo,
+	ss_net_paid NUMERIC(7, 2) ENCODE lzo,
+	ss_net_paid_inc_tax NUMERIC(7, 2) ENCODE lzo,
+	ss_net_profit NUMERIC(7, 2) ENCODE lzo,
+	d_date DATE ENCODE lzo,
+	i_item_id CHAR(16) ENCODE lzo DISTKEY,
+	i_category CHAR(50) ENCODE lzo,
+	i_brand CHAR(50) ENCODE lzo,
+	cd_gender CHAR(1) ENCODE lzo,
+	cd_marital_status CHAR(1) ENCODE lzo,
+	cd_education_status CHAR(20),
+	cd_purchase_estimate INTEGER ENCODE lzo,
+	cd_credit_rating CHAR(10) ENCODE lzo,
+	cd_dep_count INTEGER ENCODE lzo,
+	ca_city VARCHAR(60) ENCODE lzo,
+	ca_state CHAR(2) ENCODE runlength,
+	s_manager VARCHAR(40) ENCODE lzo,
+	s_floor_space INTEGER ENCODE lzo,
+	s_market_desc VARCHAR(100) ENCODE lzo,
+	s_market_manager VARCHAR(40) ENCODE lzo,
+	s_state CHAR(2) ENCODE lzo,
+	s_store_closed_date DATE ENCODE lzo,
+	s_store_id CHAR(16) ENCODE lzo,
+	s_store_name VARCHAR(50) ENCODE lzo,
+	p_cost NUMERIC(15, 2) ENCODE lzo,
+	hd_buy_potential CHAR(15) ENCODE bytedict,
+	hd_income_band_sk INTEGER ENCODE delta,
+	ib_lower_bound INTEGER ENCODE bytedict,
+	ib_upper_bound INTEGER ENCODE bytedict,
+	d_date_week DATE ENCODE lzo
+)
+SORTKEY
+(
+	cd_education_status,
+	cd_credit_rating,
+	d_date,
+	i_category
+);
 
-create table users(
-	userid integer not null distkey sortkey,
-	username char(8),
-	firstname varchar(30),
-	lastname varchar(30),
-	city varchar(30),
-	state char(2),
-	email varchar(100),
-	phone char(14),
-	likesports boolean,
-	liketheatre boolean,
-	likeconcerts boolean,
-	likejazz boolean,
-	likeclassical boolean,
-	likeopera boolean,
-	likerock boolean,
-	likevegas boolean,
-	likebroadway boolean,
-	likemusicals boolean);
+ALTER TABLE public.store_sales
+ADD CONSTRAINT store_sales_pkey
+PRIMARY KEY (ss_item_sk, ss_ticket_number);
 
-create table venue(
-	venueid smallint not null distkey sortkey,
-	venuename varchar(100),
-	venuecity varchar(30),
-	venuestate char(2),
-	venueseats integer);
-
-create table category(
-	catid smallint not null distkey sortkey,
-	catgroup varchar(10),
-	catname varchar(10),
-	catdesc varchar(50));
-
-create table date(
-	dateid smallint not null distkey sortkey,
-	caldate date not null,
-	day character(3) not null,
-	week smallint not null,
-	month character(5) not null,
-	qtr character(5) not null,
-	year smallint not null,
-	holiday boolean default('N'));
-
-create table event(
-	eventid integer not null distkey,
-	venueid smallint not null,
-	catid smallint not null,
-	dateid smallint not null sortkey,
-	eventname varchar(200),
-	starttime timestamp);
-
-create table listing(
-	listid integer not null distkey,
-	sellerid integer not null,
-	eventid integer not null,
-	dateid smallint not null  sortkey,
-	numtickets smallint not null,
-	priceperticket decimal(8,2),
-	totalprice decimal(8,2),
-	listtime timestamp);
-
-create table sales(
-	salesid integer not null,
-	listid integer not null distkey,
-	sellerid integer not null,
-	buyerid integer not null,
-	eventid integer not null,
-	dateid smallint not null sortkey,
-	qtysold smallint not null,
-	pricepaid decimal(8,2),
-	commission decimal(8,2),
-	saletime timestamp);
-copy users from '<S3Location>/users/allusers_pipe.txt' credentials 'aws_iam_role=<IAM_ROLE_ARN>' delimiter '|' region '<REGION>' ;
-copy venue from '<S3Location>/venue/venue_pipe.txt' credentials 'aws_iam_role=<IAM_ROLE_ARN>' delimiter '|' region '<REGION>' ;
-copy category from '<S3Location>/category/category_pipe.txt' credentials 'aws_iam_role=<IAM_ROLE_ARN>' delimiter '|' region '<REGION>' ;
-copy date from '<S3Location>/date/date2008_pipe.txt' credentials 'aws_iam_role=<IAM_ROLE_ARN>' delimiter '|' region '<REGION>' ;
-copy event from '<S3Location>/event/allevents_pipe.txt' credentials 'aws_iam_role=<IAM_ROLE_ARN>' delimiter '|' timeformat 'YYYY-MM-DD HH:MI:SS' region '<REGION>';
-copy listing from '<S3Location>/listing/listings_pipe.txt' credentials 'aws_iam_role=<IAM_ROLE_ARN>' delimiter '|' region '<REGION>' ;
-copy sales from '<S3Location>/sales/sales_tab.txt' credentials 'aws_iam_role=<IAM_ROLE_ARN>' delimiter '\t' timeformat 'MM/DD/YYYY HH:MI:SS' region '<REGION>';
+copy store_sales FROM '<S3Location>content/flat-store-sales.manifest'
+credentials 'aws_iam_role=<IAM_ROLE_ARN>'
+manifest csv gzip dateformat 'auto' delimiter '|' timeformat 'HH12:MI:SS' region as '<REGION>';
