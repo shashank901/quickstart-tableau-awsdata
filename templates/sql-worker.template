@@ -351,9 +351,9 @@
                             "/home/ec2-user/setup-redshift.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/setup-redshift.sql",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/setup-redshift.sql",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -371,9 +371,9 @@
                             "/home/ec2-user/interpolate-setup-redshift-sql.sh": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-redshift-sql.sh",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-redshift-sql.sh",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -527,9 +527,9 @@
                             "/home/ec2-user/setup-postgres.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/setup-postgres.sql",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/setup-postgres.sql",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -547,9 +547,9 @@
                             "/home/ec2-user/interpolate-setup-postgres-sql.sh": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-postgres-sql.sh",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/interpolate-setup-postgres-sql.sh",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -567,9 +567,9 @@
                             "/home/ec2-user/create-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/create-aggregates.sql",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/create-aggregates.sql",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -587,9 +587,9 @@
                             "/home/ec2-user/publish-aggregates.sql": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/publish-aggregates.sql",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}sql/publish-aggregates.sql",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",

@@ -24,13 +24,8 @@
         "DatasetS3KeyPrefix": {
             "AllowedPattern": "^[0-9a-zA-Z-/]*$",
             "ConstraintDescription": "Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
-            "Default": "tableau-awsdata/flat-tpcds/v1/",
+            "Default": "tableau-awsdata/synthetic-store-sales/v1/",
             "Description": "S3 key prefix for the Quick Start dataset. Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
-            "Type": "String"
-        },
-        "DatasetS3Region": {
-            "Default": "us-east-1",
-            "Description": "The AWS region where the dataset S3 bucket is located and is used with the Redshift COPY command.",
             "Type": "String"
         },
         "IAMRoleEc2Worker": {
@@ -568,9 +563,9 @@
                             "c:\\tabsetup\\update-datasource.py": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/update-datasource.py",
+                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/update-datasource.py",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -585,9 +580,9 @@
                             "c:\\tabsetup\\redshift.tds": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/redshift.tds",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/redshift.tds",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -602,9 +597,9 @@
                             "c:\\tabsetup\\postgres.tds": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/postgres.tds",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/postgres.tds",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -619,9 +614,9 @@
                             "c:\\tabsetup\\quickstart.twb": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/quickstart.twb",
+                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/quickstart.twb",
                                         {
-                                            "S3Region": {
+                                            "QSS3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",

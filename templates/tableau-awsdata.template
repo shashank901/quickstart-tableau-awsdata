@@ -285,7 +285,7 @@
         "DatasetS3KeyPrefix": {
             "AllowedPattern": "^[0-9a-zA-Z-/]*$",
             "ConstraintDescription": "Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
-            "Default": "tableau-awsdata/flat-tpcds/v1/",
+            "Default": "tableau-awsdata/synthetic-store-sales/v1/",
             "Description": "S3 key prefix for the Quick Start dataset. Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Type": "String"
         },
@@ -995,9 +995,6 @@
                     },
                     "DatasetS3KeyPrefix": {
                         "Ref": "DatasetS3KeyPrefix"
-                    },
-                    "DatasetS3Region": {
-                        "Ref": "DatasetS3Region"
                     },
                     "IAMRoleEc2Worker": {
                         "Fn::GetAtt": [
