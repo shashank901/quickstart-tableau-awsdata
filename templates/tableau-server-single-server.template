@@ -28,6 +28,11 @@
             "Description": "S3 key prefix for the Quick Start dataset. Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Type": "String"
         },
+        "DatasetS3Region": {
+            "Default": "us-east-1",
+            "Description": "The AWS region where the dataset S3 bucket is located and is used with the Redshift COPY command.",
+            "Type": "String"
+        },
         "IAMRoleEc2Worker": {
             "Description": "IAM role to allows EC2 access to S3",
             "Type": "String"
@@ -229,7 +234,7 @@
                 "VizqlServerProcs": "1"
             },
             "InstallationConfig": {
-                "InstallationBucket": "tableau-server-installer",
+                "InstallationBucket": "tableau-quickstart",
                 "InstallationExecutable": "Setup-Server-x64.exe"
             },
             "MachineConfiguration": {
@@ -295,6 +300,18 @@
                 "VpcId": {
                     "Ref": "VpcId"
                 }
+            }
+        },
+        "TableauServerWaitHandle": {
+            "Type": "AWS::CloudFormation::WaitConditionHandle"
+        },
+        "TableauServerWaitCondition": {
+            "Type": "AWS::CloudFormation::WaitCondition",
+            "Properties": {
+                "Handle": {
+                    "Ref": "TableauServerWaitHandle"
+                },
+                "Timeout": "3600"
             }
         },
         "TableauWindowsServer": {
@@ -551,9 +568,9 @@
                             "c:\\tabsetup\\update-datasource.py": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${QSS3BucketName}.${QSS3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/update-datasource.py",
+                                        "https://${QSS3BucketName}.${S3Region}.amazonaws.com/${QSS3KeyPrefix}scripts/update-datasource.py",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -568,9 +585,9 @@
                             "c:\\tabsetup\\redshift.tds": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/redshift.tds",
+                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/redshift.tds",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -585,9 +602,9 @@
                             "c:\\tabsetup\\postgres.tds": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/postgres.tds",
+                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/postgres.tds",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -602,9 +619,9 @@
                             "c:\\tabsetup\\quickstart.twb": {
                                 "source": {
                                     "Fn::Sub": [
-                                        "https://${DatasetS3BucketName}.${QSS3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/quickstart.twb",
+                                        "https://${DatasetS3BucketName}.${S3Region}.amazonaws.com/${DatasetS3KeyPrefix}dashboard/quickstart.twb",
                                         {
-                                            "QSS3Region": {
+                                            "S3Region": {
                                                 "Fn::If": [
                                                     "GovCloudCondition",
                                                     "s3-us-gov-west-1",
@@ -615,49 +632,6 @@
                                     ]
                                 },
                                 "authentication": "S3Access"
-                            },
-                            "c:\\tabsetup\\send-done-signal.cmd": {
-                                "content": {
-                                    "Fn::Join": [
-                                        "\n",
-                                        [
-                                            "@echo off",
-                                            "if not exist c:\\tabsetup\\installer-output.txt goto no_installer_output",
-                                            "SetLocal EnableDelayedExpansion",
-                                            "set content=",
-                                            "for /F \"delims=\" %%i in (c:\\tabsetup\\installer-output.txt) do set content=!content! %%i",
-                                            {
-                                                "Fn::Sub": [
-                                                    "cfn-signal.exe --reason \"Installer failed\" --data \"%content%\" -e %1 ${WHUrl}",
-                                                    {
-                                                        "WHUrl": {
-                                                            "Fn::Base64": {
-                                                                "Ref": "TableauServerWaitHandle"
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            },
-                                            "EndLocal",
-                                            "goto alldone",
-                                            ":no_installer_output",
-                                            {
-                                                "Fn::Sub": [
-                                                    "cfn-signal.exe -e %1 ${WHUrl}",
-                                                    {
-                                                        "WHUrl": {
-                                                            "Fn::Base64": {
-                                                                "Ref": "TableauServerWaitHandle"
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            },
-                                            ":alldone",
-                                            "exit /B %1"
-                                        ]
-                                    ]
-                                }
                             }
                         },
                         "commands": {
@@ -787,7 +761,7 @@
                                 "waitAfterCompletion": "0"
                             },
                             "08-publish-redshift-datasource": {
-                                "cwd": "C:\\TableauServer\\10.1\\bin",
+                                "cwd": "C:\\TableauServer\\10.2\\bin",
                                 "command": {
                                     "Fn::Join": [
                                         "",
@@ -821,7 +795,7 @@
                                 "waitAfterCompletion": "0"
                             },
                             "09-publish-postgres-datasource": {
-                                "cwd": "C:\\TableauServer\\10.1\\bin",
+                                "cwd": "C:\\TableauServer\\10.2\\bin",
                                 "command": {
                                     "Fn::Join": [
                                         "",
@@ -855,7 +829,7 @@
                                 "waitAfterCompletion": "0"
                             },
                             "10-publish-sample-dashboard": {
-                                "cwd": "C:\\TableauServer\\10.1\\bin",
+                                "cwd": "C:\\TableauServer\\10.2\\bin",
                                 "command": {
                                     "Fn::Join": [
                                         "",
@@ -870,8 +844,22 @@
                                             "--password ",
                                             {
                                                 "Ref": "ContentAdminPassword"
+                                            }
+                                        ]
+                                    ]
+                                },
+                                "waitAfterCompletion": "0"
+                            },
+                            "11-signal-success": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "cfn-signal.exe -e 0 \"",
+                                            {
+                                                "Ref": "TableauServerWaitHandle"
                                             },
-                                            " "
+                                            "\""
                                         ]
                                     ]
                                 },
@@ -944,7 +932,6 @@
                                 {
                                     "Fn::Sub": "cfn-init.exe -v -s ${AWS::StackId} -r TableauWindowsServer --region ${AWS::Region}"
                                 },
-                                "c:\\tabsetup\\send-done-signal.cmd %errorlevel%",
                                 "</script>"
                             ]
                         ]
@@ -967,18 +954,6 @@
                 "InstanceId": {
                     "Ref": "TableauWindowsServer"
                 }
-            }
-        },
-        "TableauServerWaitHandle": {
-            "Type": "AWS::CloudFormation::WaitConditionHandle"
-        },
-        "TableauServerWaitCondition": {
-            "Type": "AWS::CloudFormation::WaitCondition",
-            "Properties": {
-                "Handle": {
-                    "Ref": "TableauServerWaitHandle"
-                },
-                "Timeout": "3600"
             }
         }
     },

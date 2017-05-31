@@ -996,6 +996,9 @@
                     "DatasetS3KeyPrefix": {
                         "Ref": "DatasetS3KeyPrefix"
                     },
+                    "DatasetS3Region": {
+                        "Ref": "DatasetS3Region"
+                    },
                     "IAMRoleEc2Worker": {
                         "Fn::GetAtt": [
                             "IAMRolesStack",
