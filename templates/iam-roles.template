@@ -2,16 +2,32 @@
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "Creates IAM Roles and Instance Profiles that entitle EC2 Instances and Redshift Cluster to access the specified S3 Bucket and Key Prefix.",
     "Parameters": {
-        "S3BucketName": {
+        "DatasetS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
-            "ConstraintDescription": "Bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
-            "Description": "S3 bucket name where access should be enabled. Bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "ConstraintDescription": "Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Default": "aws-quickstart-datasets",
+            "Description": "Dataset bucket name for the Quick Start dataset. Dataset bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
             "Type": "String"
         },
-        "S3KeyPrefix": {
+        "DatasetS3KeyPrefix": {
             "AllowedPattern": "^[0-9a-zA-Z-/]*$",
-            "ConstraintDescription": "Key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
-            "Description": "S3 key prefix where access should be enabled. Key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "ConstraintDescription": "Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Default": "tableau-awsdata/synthetic-store-sales/v1/",
+            "Description": "S3 key prefix for the Quick Start dataset. Dataset key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Type": "String"
+        },
+        "QSS3BucketName": {
+            "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
+            "ConstraintDescription": "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Default": "quickstart-reference",
+            "Description": "S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
+            "Type": "String"
+        },
+        "QSS3KeyPrefix": {
+            "AllowedPattern": "^[0-9a-zA-Z-/]*$",
+            "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
+            "Default": "tableau/awsdata/latest/",
+            "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).",
             "Type": "String"
         }
     },
@@ -55,18 +71,18 @@
                                         "s3:GetObject"
                                     ],
                                     "Resource": {
-                                        "Fn::Sub": [
-                                            "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
-                                            {
-                                                "Partition": {
-                                                    "Fn::If": [
-                                                        "GovCloudCondition",
-                                                        "aws-us-gov",
-                                                        "aws"
-                                                    ]
+                                            "Fn::Sub": [
+                                                "arn:${Partition}:s3:::${QSS3BucketName}/${QSS3KeyPrefix}*",
+                                                {
+                                                    "Partition": {
+                                                        "Fn::If": [
+                                                            "GovCloudCondition",
+                                                            "aws-us-gov",
+                                                            "aws"
+                                                        ]
+                                                    }
                                                 }
-                                            }
-                                        ]
+                                            ]
                                     },
                                     "Effect": "Allow"
                                 }
@@ -80,12 +96,12 @@
                             "Statement": [
                                 {
                                     "Action": [
-                                        "s3:List*"
+                                        "s3:ListBucket"
                                     ],
                                     "Effect": "Allow",
                                     "Resource": {
                                         "Fn::Sub": [
-                                            "arn:${Partition}:s3:::${S3BucketName}",
+                                            "arn:${Partition}:s3:::${DatasetS3BucketName}",
                                             {
                                                 "Partition": {
                                                     "Fn::If": [
@@ -100,13 +116,12 @@
                                 },
                                 {
                                     "Action": [
-                                        "s3:Get*",
-                                        "s3:List*"
+                                        "s3:GetObject"
                                     ],
                                     "Effect": "Allow",
                                     "Resource": {
                                         "Fn::Sub": [
-                                            "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
+                                            "arn:${Partition}:s3:::${DatasetS3BucketName}/${DatasetS3KeyPrefix}*",
                                             {
                                                 "Partition": {
                                                     "Fn::If": [
@@ -156,7 +171,7 @@
                                     ],
                                     "Resource": {
                                         "Fn::Sub": [
-                                            "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
+                                            "arn:${Partition}:s3:::${QSS3BucketName}/${QSS3KeyPrefix}*",
                                             {
                                                 "Partition": {
                                                     "Fn::If": [
@@ -194,11 +209,11 @@
                                     "Resource": "*"
                                 },
                                 {
-                                    "Action": "s3:List*",
+                                    "Action": "s3:ListBucket",
                                     "Effect": "Allow",
                                     "Resource": {
                                         "Fn::Sub": [
-                                            "arn:${Partition}:s3:::${S3BucketName}",
+                                            "arn:${Partition}:s3:::${DatasetS3BucketName}",
                                             {
                                                 "Partition": {
                                                     "Fn::If": [
@@ -213,13 +228,12 @@
                                 },
                                 {
                                     "Action": [
-                                        "s3:Get*",
-                                        "s3:List*"
+                                        "s3:GetObject"
                                     ],
                                     "Effect": "Allow",
                                     "Resource": {
                                         "Fn::Sub": [
-                                            "arn:${Partition}:s3:::${S3BucketName}/${S3KeyPrefix}*",
+                                            "arn:${Partition}:s3:::${DatasetS3BucketName}/${DatasetS3KeyPrefix}*",
                                             {
                                                 "Partition": {
                                                     "Fn::If": [
