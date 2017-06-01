@@ -33,7 +33,7 @@
     },
     {
         "ParameterKey": "DatasetS3KeyPrefix",
-        "ParameterValue": "tableau-awsdata/flat-tpcds/v1/"
+        "ParameterValue": "tableau-awsdata/synthetic-store-sales/v1/"
     },
     {
         "ParameterKey": "DatasetS3Region",
