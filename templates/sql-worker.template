@@ -852,6 +852,11 @@
                         ]
                     }
                 }
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT12H"
+                }
             }
         }
     },
