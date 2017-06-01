@@ -345,8 +345,8 @@
                                     ]
                                 },
                                 "mode": "000600",
-                                "owner": "ec2-user",
-                                "group": "ec2-user"
+                                "owner": "root",
+                                "group": "root"
                             },
                             "/home/ec2-user/setup-redshift.sql": {
                                 "source": {
@@ -364,8 +364,8 @@
                                     ]
                                 },
                                 "mode": "000600",
-                                "owner": "ec2-user",
-                                "group": "ec2-user",
+                                "owner": "root",
+                                "group": "root",
                                 "authentication": "S3Access"
                             },
                             "/home/ec2-user/interpolate-setup-redshift-sql.sh": {
@@ -384,8 +384,8 @@
                                     ]
                                 },
                                 "mode": "000700",
-                                "owner": "ec2-user",
-                                "group": "ec2-user",
+                                "owner": "root",
+                                "group": "root",
                                 "authentication": "S3Access"
                             },
                             "/home/ec2-user/runsql.sh": {
@@ -418,9 +418,9 @@
                                         ]
                                     ]
                                 },
-                                "mode": "000744",
-                                "owner": "ec2-user",
-                                "group": "ec2-user"
+                                "mode": "000700",
+                                "owner": "root",
+                                "group": "root"
                             },
                             "/home/ec2-user/create-aggregate-sql.sh": {
                                 "content": {
@@ -452,9 +452,9 @@
                                         ]
                                     ]
                                 },
-                                "mode": "000744",
-                                "owner": "ec2-user",
-                                "group": "ec2-user"
+                                "mode": "000700",
+                                "owner": "root",
+                                "group": "root"
                             },
                             "/home/ec2-user/setup-postgres-intermediate-sql.sh": {
                                 "content": {
@@ -486,9 +486,9 @@
                                         ]
                                     ]
                                 },
-                                "mode": "000744",
-                                "owner": "ec2-user",
-                                "group": "ec2-user"
+                                "mode": "000700",
+                                "owner": "root",
+                                "group": "root"
                             },
                             "/home/ec2-user/publish-aggregate-sql.sh": {
                                 "content": {
@@ -520,9 +520,9 @@
                                         ]
                                     ]
                                 },
-                                "mode": "000744",
-                                "owner": "ec2-user",
-                                "group": "ec2-user"
+                                "mode": "000700",
+                                "owner": "root",
+                                "group": "root"
                             },
                             "/home/ec2-user/setup-postgres.sql": {
                                 "source": {
@@ -540,8 +540,8 @@
                                     ]
                                 },
                                 "mode": "000600",
-                                "owner": "ec2-user",
-                                "group": "ec2-user",
+                                "owner": "root",
+                                "group": "root",
                                 "authentication": "S3Access"
                             },
                             "/home/ec2-user/interpolate-setup-postgres-sql.sh": {
@@ -560,8 +560,8 @@
                                     ]
                                 },
                                 "mode": "000700",
-                                "owner": "ec2-user",
-                                "group": "ec2-user",
+                                "owner": "root",
+                                "group": "root",
                                 "authentication": "S3Access"
                             },
                             "/home/ec2-user/create-aggregates.sql": {
@@ -580,8 +580,8 @@
                                     ]
                                 },
                                 "mode": "000700",
-                                "owner": "ec2-user",
-                                "group": "ec2-user",
+                                "owner": "root",
+                                "group": "root",
                                 "authentication": "S3Access"
                             },
                             "/home/ec2-user/publish-aggregates.sql": {
@@ -600,8 +600,8 @@
                                     ]
                                 },
                                 "mode": "000700",
-                                "owner": "ec2-user",
-                                "group": "ec2-user",
+                                "owner": "root",
+                                "group": "root",
                                 "authentication": "S3Access"
                             }
                         },
