@@ -756,7 +756,7 @@
                                 "waitAfterCompletion": "0"
                             },
                             "08-publish-redshift-datasource": {
-                                "cwd": "C:\\TableauServer\\10.2\\bin",
+                                "cwd": "C:\\TableauServer\\10.3\\bin",
                                 "command": {
                                     "Fn::Join": [
                                         "",
@@ -790,7 +790,7 @@
                                 "waitAfterCompletion": "0"
                             },
                             "09-publish-postgres-datasource": {
-                                "cwd": "C:\\TableauServer\\10.2\\bin",
+                                "cwd": "C:\\TableauServer\\10.3\\bin",
                                 "command": {
                                     "Fn::Join": [
                                         "",
@@ -824,7 +824,7 @@
                                 "waitAfterCompletion": "0"
                             },
                             "10-publish-sample-dashboard": {
-                                "cwd": "C:\\TableauServer\\10.2\\bin",
+                                "cwd": "C:\\TableauServer\\10.3\\bin",
                                 "command": {
                                     "Fn::Join": [
                                         "",
