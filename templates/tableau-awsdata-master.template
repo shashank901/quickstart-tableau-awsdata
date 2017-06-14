@@ -113,6 +113,7 @@
                     "Parameters": [
                         "QSS3BucketName",
                         "QSS3KeyPrefix",
+                        "LoadDataset",
                         "DatasetS3BucketName",
                         "DatasetS3KeyPrefix",
                         "DatasetS3Region"
@@ -158,6 +159,9 @@
                 },
                 "KeyPairName": {
                     "default": "Key pair name"
+                },
+                "LoadDataset": {
+                    "default": "Load dataset"
                 },
                 "QSS3BucketName": {
                     "default": "Quick Start S3 Bucket Name"
@@ -369,6 +373,15 @@
         "KeyPairName": {
             "Description": "Amazon EC2 Key Pair",
             "Type": "AWS::EC2::KeyPair::KeyName"
+        },
+        "LoadDataset": {
+            "AllowedValues": [
+                "true",
+                "false"
+            ],
+            "Default": "true",
+            "Description": "To load and configure the dataset in Amazon Redshift, Amazon RDS PostgresSQL, and Tableau Server using the dataset S3 bucket name and key prefix, set this parameter to true.",
+            "Type": "String"
         },
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
@@ -1081,6 +1094,9 @@
                     },
                     "KeyPairName": {
                         "Ref": "KeyPairName"
+                    },
+                    "LoadDataset": {
+                        "Ref": "LoadDataset"
                     },
                     "PrivateSubnet1ID": {
                         "Fn::GetAtt": [

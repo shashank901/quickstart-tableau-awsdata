@@ -108,6 +108,15 @@
             "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instances",
             "Type": "AWS::EC2::KeyPair::KeyName"
         },
+        "LoadDataset": {
+            "AllowedValues": [
+                "true",
+                "false"
+            ],
+            "Default": "true",
+            "Description": "To load and configure the dataset in Amazon Redshift, Amazon RDS PostgresSQL, and Tableau Server using the dataset S3 bucket name and key prefix, set this parameter to true.",
+            "Type": "String"
+        },
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
             "ConstraintDescription": "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
@@ -211,6 +220,14 @@
         }
     },
     "Conditions": {
+        "LoadDatasetCondition": {
+            "Fn::Equals": [
+                {
+                    "Ref": "LoadDataset"
+                },
+                "true"
+            ]
+        },
         "GovCloudCondition": {
             "Fn::Equals": [
                 {
@@ -308,11 +325,29 @@
                 },
                 "AWS::CloudFormation::Init": {
                     "configSets": {
-                        "install_data": [
-                            "localize_scripts",
-                            "install_psql",
-                            "execute_scripts"
-                        ]
+                        "install_data": {
+                            "Fn::If": [
+                                "LoadDatasetCondition",
+                                [
+                                    "install_psql",
+                                    "localize_scripts",
+                                    "execute_scripts"
+                                ],
+                                [
+                                    "install_psql"
+                                ]
+                            ]
+                        }
+                    },
+                    "install_psql": {
+                        "packages": {
+                            "yum": {
+                                "gcc": [],
+                                "python27-devel": [],
+                                "postgresql92-devel": [],
+                                "postgresql8.x86_64": []
+                            }
+                        }
                     },
                     "localize_scripts": {
                         "files": {
@@ -615,16 +650,6 @@
                                         "/etc/cfn/hooks.d/cfn-auto-reloader.conf"
                                     ]
                                 }
-                            }
-                        }
-                    },
-                    "install_psql": {
-                        "packages": {
-                            "yum": {
-                                "gcc": [],
-                                "python27-devel": [],
-                                "postgresql92-devel": [],
-                                "postgresql8.x86_64": []
                             }
                         }
                     },

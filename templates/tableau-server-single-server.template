@@ -41,6 +41,15 @@
             "Description": "Name of an existing EC2 KeyPair used to get the Administrator password for the instance",
             "Type": "AWS::EC2::KeyPair::KeyName"
         },
+        "LoadDataset": {
+            "AllowedValues": [
+                "true",
+                "false"
+            ],
+            "Default": "true",
+            "Description": "To load and configure the dataset in Amazon Redshift, Amazon RDS PostgresSQL, and Tableau Server using the dataset S3 bucket name and key prefix, set this parameter to true.",
+            "Type": "String"
+        },
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
             "ConstraintDescription": "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).",
@@ -248,6 +257,14 @@
                 }
             ]
         },
+        "LoadDatasetCondition": {
+            "Fn::Equals": [
+                {
+                    "Ref": "LoadDataset"
+                },
+                "true"
+            ]
+        },
         "GovCloudCondition": {
             "Fn::Equals": [
                 {
@@ -322,7 +339,23 @@
                     }
                 },
                 "AWS::CloudFormation::Init": {
-                    "config": {
+                    "configSets": {
+                        "config": {
+                            "Fn::If": [
+                                "LoadDatasetCondition",
+                                [
+                                    "install_configure",
+                                    "load_dataset",
+                                    "finalize"
+                                ],
+                                [
+                                    "install_configure",
+                                    "finalize"
+                                ]
+                            ]
+                        }
+                    },
+                    "install_configure": {
                         "files": {
                             "c:\\tabsetup\\json2yml.py": {
                                 "content": {
@@ -559,7 +592,70 @@
                                         ]
                                     ]
                                 }
+                            }
+                        },
+                        "commands": {
+                            "01-install-python": {
+                                "command": "c:\\tabsetup\\python-2.7.12.msi /quiet /qn",
+                                "cwd": "c:\\tabsetup",
+                                "waitAfterCompletion": "0"
                             },
+                            "02a-pip-install-document-api": {
+                                "command": "c:\\Python27\\Scripts\\pip.exe install tableaudocumentapi",
+                                "cwd": "c:\\Python27\\Scripts",
+                                "waitAfterCompletion": "0"
+                            },
+                            "02b-pip-install-yaml": {
+                                "command": "c:\\Python27\\Scripts\\pip.exe install pyyaml",
+                                "cwd": "c:\\Python27\\Scripts",
+                                "waitAfterCompletion": "0"
+                            },
+                            "03-convert-config": {
+                                "cwd": "c:\\tabsetup",
+                                "command": "type config.json | c:\\Python27\\python json2yml.py > config.yml",
+                                "waitAfterCompletion": "0"
+                            },
+                            "04-run-installer": {
+                                "cwd": "c:\\tabsetup",
+                                "command": {
+                                    "Fn::Join": [
+                                        " ",
+                                        [
+                                            "c:\\Python27\\python.exe",
+                                            "ScriptedInstaller.py",
+                                            "install",
+                                            "--installerLog",
+                                            "C:\\tabsetup\\tabinstall.txt",
+                                            "--installDir C:\\TableauServer",
+                                            "--enablePublicFwRule",
+                                            "--secretsFile c:\\tabsetup\\secrets.json",
+                                            "--configFile c:\\tabsetup\\config.yml",
+                                            "--registrationFile c:\\tabsetup\\registration.json",
+                                            {
+                                                "Fn::If": [
+                                                    "IsTrial",
+                                                    "--trialLicense",
+                                                    {
+                                                        "Fn::Sub": "--licenseKey ${TableauServerLicenseKey}"
+                                                    }
+                                                ]
+                                            },
+                                            "c:\\tabsetup\\tableau-server-installer.exe",
+                                            " > c:\\tabsetup\\installer-output.txt 2>&1"
+                                        ]
+                                    ]
+                                },
+                                "waitAfterCompletion": "0"
+                            },
+                            "05-cleanup-secrets": {
+                                "cwd": "c:\\tabsetup",
+                                "command": "del c:\\tabsetup\\secrets.json",
+                                "waitAfterCompletion": "0"
+                            }
+                        }
+                    },
+                    "load_dataset": {
+                        "files": {
                             "c:\\tabsetup\\update-datasource.py": {
                                 "source": {
                                     "Fn::Sub": [
@@ -630,63 +726,6 @@
                             }
                         },
                         "commands": {
-                            "01-install-python": {
-                                "command": "c:\\tabsetup\\python-2.7.12.msi /quiet /qn",
-                                "cwd": "c:\\tabsetup",
-                                "waitAfterCompletion": "0"
-                            },
-                            "02a-pip-install-document-api": {
-                                "command": "c:\\Python27\\Scripts\\pip.exe install tableaudocumentapi",
-                                "cwd": "c:\\Python27\\Scripts",
-                                "waitAfterCompletion": "0"
-                            },
-                            "02b-pip-install-yaml": {
-                                "command": "c:\\Python27\\Scripts\\pip.exe install pyyaml",
-                                "cwd": "c:\\Python27\\Scripts",
-                                "waitAfterCompletion": "0"
-                            },
-                            "03-convert-config": {
-                                "cwd": "c:\\tabsetup",
-                                "command": "type config.json | c:\\Python27\\python json2yml.py > config.yml",
-                                "waitAfterCompletion": "0"
-                            },
-                            "04-run-installer": {
-                                "cwd": "c:\\tabsetup",
-                                "command": {
-                                    "Fn::Join": [
-                                        " ",
-                                        [
-                                            "c:\\Python27\\python.exe",
-                                            "ScriptedInstaller.py",
-                                            "install",
-                                            "--installerLog",
-                                            "C:\\tabsetup\\tabinstall.txt",
-                                            "--installDir C:\\TableauServer",
-                                            "--enablePublicFwRule",
-                                            "--secretsFile c:\\tabsetup\\secrets.json",
-                                            "--configFile c:\\tabsetup\\config.yml",
-                                            "--registrationFile c:\\tabsetup\\registration.json",
-                                            {
-                                                "Fn::If": [
-                                                    "IsTrial",
-                                                    "--trialLicense",
-                                                    {
-                                                        "Fn::Sub": "--licenseKey ${TableauServerLicenseKey}"
-                                                    }
-                                                ]
-                                            },
-                                            "c:\\tabsetup\\tableau-server-installer.exe",
-                                            " > c:\\tabsetup\\installer-output.txt 2>&1"
-                                        ]
-                                    ]
-                                },
-                                "waitAfterCompletion": "0"
-                            },
-                            "05-cleanup-secrets": {
-                                "cwd": "c:\\tabsetup",
-                                "command": "del c:\\tabsetup\\secrets.json",
-                                "waitAfterCompletion": "0"
-                            },
                             "06-update-datasource-redshift": {
                                 "cwd": "c:\\tabsetup",
                                 "command": {
@@ -844,7 +883,11 @@
                                     ]
                                 },
                                 "waitAfterCompletion": "0"
-                            },
+                            }
+                        }
+                    },
+                    "finalize": {
+                        "commands": {
                             "11-signal-success": {
                                 "command": {
                                     "Fn::Join": [
@@ -925,7 +968,7 @@
                             [
                                 "<script>",
                                 {
-                                    "Fn::Sub": "cfn-init.exe -v -s ${AWS::StackId} -r TableauWindowsServer --region ${AWS::Region}"
+                                    "Fn::Sub": "cfn-init.exe -v -c config -s ${AWS::StackId} -r TableauWindowsServer --region ${AWS::Region}"
                                 },
                                 "</script>"
                             ]

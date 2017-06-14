@@ -97,6 +97,7 @@
                         "RootStackName",
                         "QSS3BucketName",
                         "QSS3KeyPrefix",
+                        "LoadDataset",
                         "DatasetS3BucketName",
                         "DatasetS3KeyPrefix",
                         "DatasetS3Region"
@@ -127,6 +128,9 @@
                 },
                 "KeyPairName": {
                     "default": "Key Pair Name"
+                },
+                "LoadDataset": {
+                    "default": "Load dataset"
                 },
                 "PrivateSubnet1ID": {
                     "default": "Existing VPC Private Subnet 1 ID"
@@ -302,6 +306,15 @@
         "KeyPairName": {
             "Description": "Name of existing EC2 public/private key pair, which allows you to connect securely to instances deployed with the Quick Start after they launch.  When you created an AWS account, this is the key pair you created in your preferred region.  Enter the name of the keypair.",
             "Type": "AWS::EC2::KeyPair::KeyName"
+        },
+        "LoadDataset": {
+            "AllowedValues": [
+                "true",
+                "false"
+            ],
+            "Default": "true",
+            "Description": "To load and configure the dataset in Amazon Redshift, Amazon RDS PostgresSQL, and Tableau Server using the dataset S3 bucket name and key prefix, set this parameter to true.",
+            "Type": "String"
         },
         "PrivateSubnet1ID": {
             "Description": "ID of the private subnet 1 in Availability Zone 1 (e.g., subnet-a0246dcd)",
@@ -888,6 +901,9 @@
                     "KeyPairName": {
                         "Ref": "KeyPairName"
                     },
+                    "LoadDataset": {
+                        "Ref": "LoadDataset"
+                    },
                     "QSS3BucketName": {
                         "Ref": "QSS3BucketName"
                     },
@@ -1016,6 +1032,9 @@
                     },
                     "KeyPairName": {
                         "Ref": "KeyPairName"
+                    },
+                    "LoadDataset": {
+                        "Ref": "LoadDataset"
                     },
                     "QSS3BucketName": {
                         "Ref": "QSS3BucketName"
