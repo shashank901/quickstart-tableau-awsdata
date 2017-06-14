@@ -22,3 +22,8 @@ tests:
   default:
     parameter_input: tableau-awsdata-master.json
     template_file: tableau-awsdata-master.template
+  no-dataset:
+    parameter_input: tableau-awsdata-master-no-dataset.json
+    regions:
+      - us-east-2
+    template_file: tableau-awsdata-master.template
