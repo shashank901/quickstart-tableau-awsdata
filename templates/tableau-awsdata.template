@@ -479,7 +479,7 @@
         },
         "RedshiftNumberOfNodes": {
             "Default": "2",
-            "Description": "The number of compute nodes in the redshift cluster.",
+            "Description": "The number of compute nodes in the redshift cluster",
             "Type": "Number"
         },
         "RedshiftPassword": {
