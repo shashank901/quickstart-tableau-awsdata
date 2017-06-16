@@ -18,9 +18,9 @@
                         "RDSInboundCIDR",
                         "RedshiftInboundCIDR",
                         "TableauServerInboundCIDR",
+                        "HostedZoneName",
                         "BastionEIP",
-                        "RDGWElasticIP",
-                        "HostedZoneName"
+                        "RDGWElasticIP"
                     ]
                 },
                 {
