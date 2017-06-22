@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Create a highly-available, Relational Database Service Instance of PostgreSQL version 9.3 with alarming on important metrics that indicate the health of the database. **WARNING** This template creates a multi-AZ (by default) RDS instance. You will be billed for the AWS resources used if you create a stack from this template.",
+    "Description": "Create a highly-available, Relational Database Service Instance of PostgreSQL version 9.3 with alarming on important metrics that indicate the health of the database. **WARNING** This template creates a multi-AZ (by default) RDS instance. You will be billed for the AWS resources used if you create a stack from this template. qs-1ndudd5br",
     "Parameters": {
         "VpcId": {
             "Type": "String",
