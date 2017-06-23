@@ -1,15 +1,22 @@
-quickstart-tableau-awsdata
-==========================
+# quickstart-tableau-awsdata
+## Data Warehouse with Tableau Server, Amazon Redshift, and Amazon RDS on the AWS Cloud
 
-Tableau AWS Data Quick Start
+This Quick Start helps you deploy a modern enterprise data warehouse (EDW) environment that is based on Amazon Redshift and includes the analytics and data visualization capabilities of Tableau Server.
 
-This Quick Start is for users who would like to explore a secure, scalable and highly available Tableau Server architecture in AWS that includes supporting AWS database services that are commonly used in advanced analytics scenarios.  It includes a sample data set and sample dashboards, as well as sample processes that demonstrate how computationally intensive analytics workloads can be conducted in AWS database services to improve performance.
+This AWS-validated architecture includes an Amazon Redshift data warehouse, which is an enterprise-class relational database query and management system. Amazon Redshift achieves efficient storage and optimum query performance through massively parallel processing, columnar data storage, and efficient, targeted data compression encoding schemes.
 
-The Quick Start deploys the following architecture within your AWS Account:
+The Quick Start deploys Tableau Server for BI and data visualization capabilities. With Tableau Server deployed on AWS, enterprises can take advantage of collaborative analytics and the price/performance economies and agility provided by the cloud. The Quick Start includes a sample dataset that's loaded to an Amazon Redshift cluster to support efficient creation of aggregates at large data scale. You can also choose to load your own dataset.
 
-![Tableau AWS Data Quick Start Architecture](https://github.com/aws-quickstart/quickstart-tableau-awsdata/quickstart-aws-tableau-architecture.png "Tableau AWS Data Quick Start Architecture")
+The AWS CloudFormation templates included with the Quick Start automate the following:
 
-Authors
--------
+- Deploying Tableau Server with AWS services into a new VPC
+- Deploying Tableau Server with AWS services into an existing VPC 
 
-This Quick Start was created by Tableau, Amazon Web Services and [47Lining](http://www.47lining.com).
+You can also use the AWS CloudFormation templates as a starting point for your own implementation.
+
+![Quick Start architecture for data warehouse modernization on AWS](https://d0.awsstatic.com/partner-network/QuickStart/datasheets/tableau-awsdata-architecture.png)
+
+For architectural details, best practices, step-by-step instructions, and customization options, see the [deployment guide](https://s3.amazonaws.com/quickstart-reference/tableau/awsdata/latest/doc/data-warehouse-modernization-on-aws-with-tableau-and-redshift.pdf).
+
+To post feedback, submit feature ideas, or report bugs, use the **Issues** section of this GitHub repo.
+If you'd like to submit code for this Quick Start, please review the [AWS Quick Start Contributor's Kit](https://aws-quickstart.github.io/). 
