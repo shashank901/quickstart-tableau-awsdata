@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Creates IAM Roles and Instance Profiles that entitle EC2 Instances and Redshift Cluster to access the specified S3 Bucket and Key Prefix. qs-1ndudd5c1",
+    "Description": "Creates IAM Roles and Instance Profiles that entitle EC2 Instances and Redshift Cluster to access the specified S3 Bucket and Key Prefix. (qs-1ndudd5c1)",
     "Parameters": {
         "DatasetS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",

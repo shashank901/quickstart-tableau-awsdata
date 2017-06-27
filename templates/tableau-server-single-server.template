@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "AWS QuickStart Template for Tableau Server instance running on Windows. Installs and configures Tableu Server, substitutes provisioned resources into datasources, and publishes Datasources and Workbook associated with the Sample Dataset to Tableau Server. qs-1ndudd5ar",
+    "Description": "AWS QuickStart Template for Tableau Server instance running on Windows. Installs and configures Tableu Server, substitutes provisioned resources into datasources, and publishes Datasources and Workbook associated with the Sample Dataset to Tableau Server. (qs-1ndudd5ar)",
     "Parameters": {
         "ContentAdminPassword": {
             "Description": "The password for the initial Admin user for Tableau server",
